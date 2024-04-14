@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+ @apply bg-dark-200 text-white min-h-screen text-[0.9rem];
+ font-family: "Oxygen", sans-serif;
+}
