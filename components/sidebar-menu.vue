@@ -1,14 +1,16 @@
 <template>
   <div
-    class="bg-dark-100 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all"
+    class="bg-dark-200  relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all"
+    data-type="container"
     :class="{
       'w-80': menuExpanded,
       'w-20': !menuExpanded,
     }"
   >
     <button
-      class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-100 border border-dark-300 border-l-transparent"
-      title="Minimizar menu"
+      class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+      :title="menuExpanded ? 'Minimizar menu' : 'Maximizar menu'"
+      data-type="expand"
       @click="changeMenuWidthHandler"
     >
       <icon
@@ -30,6 +32,7 @@
       <button
         class="flex gap-6 items-center py-4 text-nowrap"
         title="Limpar tudo"
+        data-type="clear-all"
         :class="{
           'justify-center': !menuExpanded,
         }"
@@ -39,7 +42,7 @@
       </button>
       <span class="mt-6 text-nowrap" :class="{ 'opacity-0': !menuExpanded }"
         >Feito por
-        <a href="https://github.com/aridsm" target="_blank" class="text-lilac"
+        <a href="https://github.com/aridsm" target="_blank" class=" text-dark-text"
           >Ariane Morelato</a
         ></span
       >
@@ -60,6 +63,7 @@ export default defineComponent({
     },
   },
 });
+
 </script>
 
 <style>

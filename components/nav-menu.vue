@@ -2,7 +2,7 @@
   <nav class="flex flex-col pt-6">
     <NuxtLink v-for="link in links" :key="link.title"
       :to="link.to"
-      v-slot="{isActive}"
+      v-slot="{ isActive }"
       :title="link.title"
       >
       <span class="text-nowrap flex gap-6 items-center pl-4 pr-6 py-4 w-full border-l-4 border-l-transparent hover:bg-white/[.05]" 
@@ -33,7 +33,7 @@ export default defineComponent({
           count: 0
         },
         {
-          to: '/',
+          to: '/all',
           title: 'Todas as tarefas',
           icon: 'fa-solid fa-layer-group',
           count: 0

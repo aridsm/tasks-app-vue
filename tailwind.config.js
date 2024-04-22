@@ -13,10 +13,10 @@ module.exports = {
     extend: {
       colors: {
         'dark-text': '#A1A1B6',
-        'dark-100': '#302D3F',
-        'dark-200': '#292636',
-        'dark-300': '#211E2E',
-        'lilac': '#936EE0',
+        'dark-200': '#3C4155',
+        'dark-200': '#2B2F3D',
+        'dark-300': '#262936',
+        'lilac': '#5D52D7',
       }
     },
   },

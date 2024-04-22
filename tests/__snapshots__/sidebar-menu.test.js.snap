@@ -1,0 +1,2049 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sidebar-menu > Expand btn should toggle expand state 1`] = `
+VueWrapper {
+  "__app": {
+    "_component": {
+      "name": "VTU_ROOT",
+      "render": [Function],
+      "setup": [Function],
+    },
+    "_container": <div
+      data-v-app=""
+    >
+      <div
+        class="bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-20"
+        data-type="container"
+      >
+        <button
+          class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+          data-type="expand"
+          title="Maximizar menu"
+        >
+          <icon
+            class="rotate-180"
+            icon="fa-solid fa-chevron-left"
+          />
+        </button>
+        <logo
+          class="mx-5"
+          show-name="false"
+        />
+        <btn
+          class="mt-6 mx-4"
+        >
+          <icon
+            icon="fa-solid fa-plus"
+          />
+        </btn>
+        <nav-menu
+          class="overflow-hidden"
+          menuexpanded="false"
+        />
+        <div
+          class="mt-auto px-6 flex flex-col"
+        >
+          <button
+            class="flex gap-6 items-center py-4 text-nowrap justify-center"
+            title="Limpar tudo"
+          >
+            <icon
+              icon="fa-solid fa-broom"
+            />
+            <!--v-if-->
+          </button>
+          <span
+            class="mt-6 text-nowrap opacity-0"
+          >
+            Feito por 
+            <a
+              class="text-lilac"
+              href="https://github.com/aridsm"
+              target="_blank"
+            >
+              Ariane Morelato
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>,
+    "_context": {
+      "app": [Circular],
+      "components": {
+        "transition": {
+          "name": "transition",
+        },
+        "transition-group": {
+          "name": "transition-group",
+        },
+      },
+      "config": {
+        "compilerOptions": {},
+        "errorHandler": undefined,
+        "globalProperties": {},
+        "isNativeTag": [Function],
+        "optionMergeStrategies": {},
+        "performance": false,
+        "warnHandler": undefined,
+      },
+      "directives": {},
+      "emitsCache": WeakMap {},
+      "mixins": [
+        {
+          "beforeCreate": [Function],
+        },
+      ],
+      "optionsCache": WeakMap {},
+      "propsCache": WeakMap {},
+      "provides": {},
+      "reload": [Function],
+    },
+    "_instance": {
+      "a": null,
+      "accessCache": {},
+      "appContext": {
+        "app": [Circular],
+        "components": {
+          "transition": {
+            "name": "transition",
+          },
+          "transition-group": {
+            "name": "transition-group",
+          },
+        },
+        "config": {
+          "compilerOptions": {},
+          "errorHandler": undefined,
+          "globalProperties": {},
+          "isNativeTag": [Function],
+          "optionMergeStrategies": {},
+          "performance": false,
+          "warnHandler": undefined,
+        },
+        "directives": {},
+        "emitsCache": WeakMap {},
+        "mixins": [
+          {
+            "beforeCreate": [Function],
+          },
+        ],
+        "optionsCache": WeakMap {},
+        "propsCache": WeakMap {},
+        "provides": {},
+        "reload": [Function],
+      },
+      "asyncDep": null,
+      "asyncResolved": false,
+      "attrs": {},
+      "attrsProxy": null,
+      "bc": null,
+      "bm": null,
+      "bu": null,
+      "bum": null,
+      "c": null,
+      "components": null,
+      "ctx": {
+        "VTU_COMPONENT": {
+          "changeMenuWidthHandler": [Function],
+          "menuExpanded": false,
+        },
+      },
+      "da": null,
+      "data": {},
+      "devtoolsRawSetupState": {
+        "VTU_COMPONENT": RefImpl {
+          "__v_isRef": true,
+          "__v_isShallow": false,
+          "_rawValue": {
+            "changeMenuWidthHandler": [Function],
+            "menuExpanded": false,
+          },
+          "_value": {
+            "changeMenuWidthHandler": [Function],
+            "menuExpanded": false,
+          },
+          "dep": undefined,
+        },
+      },
+      "directives": null,
+      "ec": null,
+      "effect": ReactiveEffect {
+        "_depsLength": 3,
+        "_dirtyLevel": 0,
+        "_runnings": 0,
+        "_shouldSchedule": false,
+        "_trackId": 1,
+        "active": true,
+        "allowRecurse": true,
+        "deps": [
+          Map {
+            [Circular] => 1,
+          },
+          Map {
+            [Circular] => 1,
+          },
+          Map {
+            [Circular] => 1,
+          },
+        ],
+        "fn": [Function],
+        "onTrack": undefined,
+        "onTrigger": undefined,
+        "scheduler": [Function],
+        "trigger": [Function],
+      },
+      "emit": [Function],
+      "emitsOptions": null,
+      "emitted": null,
+      "exposeProxy": null,
+      "exposed": null,
+      "inheritAttrs": undefined,
+      "isDeactivated": false,
+      "isMounted": true,
+      "isUnmounted": false,
+      "m": null,
+      "next": null,
+      "parent": null,
+      "props": {},
+      "propsDefaults": {},
+      "propsOptions": [
+        {},
+        [],
+      ],
+      "provides": {},
+      "proxy": {
+        "VTU_COMPONENT": {
+          "changeMenuWidthHandler": [Function],
+          "menuExpanded": false,
+        },
+      },
+      "refs": {
+        "VTU_COMPONENT": {
+          "changeMenuWidthHandler": [Function],
+          "menuExpanded": false,
+        },
+      },
+      "render": [Function],
+      "renderCache": [],
+      "root": [Circular],
+      "rtc": null,
+      "rtg": null,
+      "scope": EffectScope {
+        "_active": true,
+        "cleanups": [],
+        "detached": true,
+        "effects": [
+          ReactiveEffect {
+            "_depsLength": 3,
+            "_dirtyLevel": 0,
+            "_runnings": 0,
+            "_shouldSchedule": false,
+            "_trackId": 1,
+            "active": true,
+            "allowRecurse": true,
+            "deps": [
+              Map {
+                [Circular] => 1,
+              },
+              Map {
+                [Circular] => 1,
+              },
+              Map {
+                [Circular] => 1,
+              },
+            ],
+            "fn": [Function],
+            "onTrack": undefined,
+            "onTrigger": undefined,
+            "scheduler": [Function],
+            "trigger": [Function],
+          },
+        ],
+        "parent": undefined,
+      },
+      "setupContext": null,
+      "setupState": {
+        "VTU_COMPONENT": {
+          "changeMenuWidthHandler": [Function],
+          "menuExpanded": false,
+        },
+      },
+      "slots": {},
+      "slotsProxy": null,
+      "sp": null,
+      "subTree": {
+        "__v_isVNode": true,
+        "__v_skip": true,
+        "anchor": null,
+        "appContext": null,
+        "children": null,
+        "component": {
+          "a": null,
+          "accessCache": {
+            "@@__IMMUTABLE_ITERABLE__@@": 0,
+            "@@__IMMUTABLE_RECORD__@@": 0,
+            "__v_isReadonly": 0,
+            "__v_isRef": 0,
+            "__v_isShallow": 0,
+            "__v_raw": 0,
+            "_isMockFunction": 0,
+            "changeMenuWidthHandler": 4,
+            "constructor": 0,
+            "menuExpanded": 2,
+            "toJSON": 0,
+            Symbol(Symbol.toStringTag): 0,
+          },
+          "appContext": {
+            "app": [Circular],
+            "components": {
+              "transition": {
+                "name": "transition",
+              },
+              "transition-group": {
+                "name": "transition-group",
+              },
+            },
+            "config": {
+              "compilerOptions": {},
+              "errorHandler": undefined,
+              "globalProperties": {},
+              "isNativeTag": [Function],
+              "optionMergeStrategies": {},
+              "performance": false,
+              "warnHandler": undefined,
+            },
+            "directives": {},
+            "emitsCache": WeakMap {},
+            "mixins": [
+              {
+                "beforeCreate": [Function],
+              },
+            ],
+            "optionsCache": WeakMap {},
+            "propsCache": WeakMap {},
+            "provides": {},
+            "reload": [Function],
+          },
+          "asyncDep": null,
+          "asyncResolved": false,
+          "attrs": {},
+          "attrsProxy": null,
+          "bc": null,
+          "bm": null,
+          "bu": null,
+          "bum": null,
+          "c": null,
+          "components": {},
+          "ctx": {
+            "changeMenuWidthHandler": [Function],
+            "menuExpanded": false,
+          },
+          "da": null,
+          "data": {
+            "menuExpanded": false,
+          },
+          "directives": null,
+          "ec": null,
+          "effect": ReactiveEffect {
+            "_depsLength": 1,
+            "_dirtyLevel": 0,
+            "_runnings": 0,
+            "_shouldSchedule": false,
+            "_trackId": 2,
+            "active": true,
+            "allowRecurse": true,
+            "deps": [
+              Map {
+                [Circular] => 2,
+              },
+            ],
+            "fn": [Function],
+            "onTrack": undefined,
+            "onTrigger": undefined,
+            "scheduler": [Function],
+            "trigger": [Function],
+          },
+          "emit": [Function],
+          "emitsOptions": null,
+          "emitted": null,
+          "exposeProxy": null,
+          "exposed": null,
+          "inheritAttrs": undefined,
+          "isDeactivated": false,
+          "isMounted": true,
+          "isUnmounted": false,
+          "m": null,
+          "next": null,
+          "parent": [Circular],
+          "props": {},
+          "propsDefaults": {},
+          "propsOptions": [
+            {},
+            [],
+          ],
+          "provides": {},
+          "proxy": {
+            "changeMenuWidthHandler": [Function],
+            "menuExpanded": false,
+          },
+          "refs": {},
+          "render": [Function],
+          "renderCache": [
+            [Function],
+          ],
+          "root": [Circular],
+          "rtc": null,
+          "rtg": null,
+          "scope": EffectScope {
+            "_active": true,
+            "cleanups": [],
+            "detached": true,
+            "effects": [
+              ReactiveEffect {
+                "_depsLength": 1,
+                "_dirtyLevel": 0,
+                "_runnings": 0,
+                "_shouldSchedule": false,
+                "_trackId": 2,
+                "active": true,
+                "allowRecurse": true,
+                "deps": [
+                  Map {
+                    [Circular] => 2,
+                  },
+                ],
+                "fn": [Function],
+                "onTrack": undefined,
+                "onTrigger": undefined,
+                "scheduler": [Function],
+                "trigger": [Function],
+              },
+            ],
+            "parent": undefined,
+          },
+          "setupContext": null,
+          "setupState": {},
+          "slots": {},
+          "slotsProxy": null,
+          "sp": null,
+          "subTree": {
+            "__v_isVNode": true,
+            "__v_skip": true,
+            "anchor": null,
+            "appContext": null,
+            "children": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": [
+                      "class",
+                    ],
+                    "el": <icon
+                      class="rotate-180"
+                      icon="fa-solid fa-chevron-left"
+                    />,
+                    "key": null,
+                    "patchFlag": 8,
+                    "props": {
+                      "class": "rotate-180",
+                      "icon": "fa-solid fa-chevron-left",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "icon",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "title",
+                ],
+                "el": <button
+                  class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+                  data-type="expand"
+                  title="Maximizar menu"
+                >
+                  <icon
+                    class="rotate-180"
+                    icon="fa-solid fa-chevron-left"
+                  />
+                </button>,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent",
+                  "data-type": "expand",
+                  "onClick": [Function],
+                  "title": "Maximizar menu",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "button",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "show-name",
+                ],
+                "el": <logo
+                  class="mx-5"
+                  show-name="false"
+                />,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "mx-5",
+                  "show-name": false,
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 1,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "logo",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": [],
+                    "dynamicProps": null,
+                    "el": <icon
+                      icon="fa-solid fa-plus"
+                    />,
+                    "key": 1,
+                    "patchFlag": 0,
+                    "props": {
+                      "icon": "fa-solid fa-plus",
+                      "key": 1,
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "icon",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "class",
+                ],
+                "el": <btn
+                  class="mt-6 mx-4"
+                >
+                  <icon
+                    icon="fa-solid fa-plus"
+                  />
+                </btn>,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "mt-6 mx-4",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "btn",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "menuExpanded",
+                ],
+                "el": <nav-menu
+                  class="overflow-hidden"
+                  menuexpanded="false"
+                />,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "overflow-hidden",
+                  "menuExpanded": false,
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 1,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "nav-menu",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": [
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": null,
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <icon
+                          icon="fa-solid fa-broom"
+                        />,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": {
+                          "icon": "fa-solid fa-broom",
+                        },
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 1,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": "icon",
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": "v-if",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": [],
+                        "dynamicProps": null,
+                        "el": <!--v-if-->,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-cmt),
+                      },
+                    ],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <button
+                      class="flex gap-6 items-center py-4 text-nowrap justify-center"
+                      title="Limpar tudo"
+                    >
+                      <icon
+                        icon="fa-solid fa-broom"
+                      />
+                      <!--v-if-->
+                    </button>,
+                    "key": null,
+                    "patchFlag": 2,
+                    "props": {
+                      "class": "flex gap-6 items-center py-4 text-nowrap justify-center",
+                      "title": "Limpar tudo",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 17,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "button",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": [
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": "Feito por ",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": Feito por ,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-txt),
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "ce": undefined,
+                        "children": "Ariane Morelato",
+                        "component": null,
+                        "ctx": null,
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <a
+                          class="text-lilac"
+                          href="https://github.com/aridsm"
+                          target="_blank"
+                        >
+                          Ariane Morelato
+                        </a>,
+                        "key": null,
+                        "patchFlag": -1,
+                        "props": {
+                          "class": "text-lilac",
+                          "href": "https://github.com/aridsm",
+                          "target": "_blank",
+                        },
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 9,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": "a",
+                      },
+                    ],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <span
+                      class="mt-6 text-nowrap opacity-0"
+                    >
+                      Feito por 
+                      <a
+                        class="text-lilac"
+                        href="https://github.com/aridsm"
+                        target="_blank"
+                      >
+                        Ariane Morelato
+                      </a>
+                    </span>,
+                    "key": null,
+                    "patchFlag": 2,
+                    "props": {
+                      "class": "mt-6 text-nowrap opacity-0",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 17,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "span",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": null,
+                "el": <div
+                  class="mt-auto px-6 flex flex-col"
+                >
+                  <button
+                    class="flex gap-6 items-center py-4 text-nowrap justify-center"
+                    title="Limpar tudo"
+                  >
+                    <icon
+                      icon="fa-solid fa-broom"
+                    />
+                    <!--v-if-->
+                  </button>
+                  <span
+                    class="mt-6 text-nowrap opacity-0"
+                  >
+                    Feito por 
+                    <a
+                      class="text-lilac"
+                      href="https://github.com/aridsm"
+                      target="_blank"
+                    >
+                      Ariane Morelato
+                    </a>
+                  </span>
+                </div>,
+                "key": null,
+                "patchFlag": 0,
+                "props": {
+                  "class": "mt-auto px-6 flex flex-col",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "div",
+              },
+            ],
+            "component": null,
+            "ctx": [Circular],
+            "dirs": null,
+            "dynamicChildren": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "class",
+                ],
+                "el": <icon
+                  class="rotate-180"
+                  icon="fa-solid fa-chevron-left"
+                />,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "rotate-180",
+                  "icon": "fa-solid fa-chevron-left",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 1,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "icon",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": [
+                      "class",
+                    ],
+                    "el": <icon
+                      class="rotate-180"
+                      icon="fa-solid fa-chevron-left"
+                    />,
+                    "key": null,
+                    "patchFlag": 8,
+                    "props": {
+                      "class": "rotate-180",
+                      "icon": "fa-solid fa-chevron-left",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "icon",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "title",
+                ],
+                "el": <button
+                  class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+                  data-type="expand"
+                  title="Maximizar menu"
+                >
+                  <icon
+                    class="rotate-180"
+                    icon="fa-solid fa-chevron-left"
+                  />
+                </button>,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent",
+                  "data-type": "expand",
+                  "onClick": [Function],
+                  "title": "Maximizar menu",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "button",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "show-name",
+                ],
+                "el": <logo
+                  class="mx-5"
+                  show-name="false"
+                />,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "mx-5",
+                  "show-name": false,
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 1,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "logo",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <icon
+                  icon="fa-solid fa-plus"
+                />,
+                "key": 1,
+                "patchFlag": 0,
+                "props": {
+                  "icon": "fa-solid fa-plus",
+                  "key": 1,
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 1,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "icon",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": [],
+                    "dynamicProps": null,
+                    "el": <icon
+                      icon="fa-solid fa-plus"
+                    />,
+                    "key": 1,
+                    "patchFlag": 0,
+                    "props": {
+                      "icon": "fa-solid fa-plus",
+                      "key": 1,
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "icon",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "class",
+                ],
+                "el": <btn
+                  class="mt-6 mx-4"
+                >
+                  <icon
+                    icon="fa-solid fa-plus"
+                  />
+                </btn>,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "mt-6 mx-4",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "btn",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "menuExpanded",
+                ],
+                "el": <nav-menu
+                  class="overflow-hidden"
+                  menuexpanded="false"
+                />,
+                "key": null,
+                "patchFlag": 8,
+                "props": {
+                  "class": "overflow-hidden",
+                  "menuExpanded": false,
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 1,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "nav-menu",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": "v-if",
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <!--v-if-->,
+                "key": null,
+                "patchFlag": 0,
+                "props": null,
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 8,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": Symbol(v-cmt),
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <icon
+                      icon="fa-solid fa-broom"
+                    />,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": {
+                      "icon": "fa-solid fa-broom",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "icon",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": "v-if",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": [],
+                    "dynamicProps": null,
+                    "el": <!--v-if-->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": null,
+                "el": <button
+                  class="flex gap-6 items-center py-4 text-nowrap justify-center"
+                  title="Limpar tudo"
+                >
+                  <icon
+                    icon="fa-solid fa-broom"
+                  />
+                  <!--v-if-->
+                </button>,
+                "key": null,
+                "patchFlag": 2,
+                "props": {
+                  "class": "flex gap-6 items-center py-4 text-nowrap justify-center",
+                  "title": "Limpar tudo",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "button",
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": "Feito por ",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": Feito por ,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-txt),
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "ce": undefined,
+                    "children": "Ariane Morelato",
+                    "component": null,
+                    "ctx": null,
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <a
+                      class="text-lilac"
+                      href="https://github.com/aridsm"
+                      target="_blank"
+                    >
+                      Ariane Morelato
+                    </a>,
+                    "key": null,
+                    "patchFlag": -1,
+                    "props": {
+                      "class": "text-lilac",
+                      "href": "https://github.com/aridsm",
+                      "target": "_blank",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 9,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "a",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": null,
+                "el": <span
+                  class="mt-6 text-nowrap opacity-0"
+                >
+                  Feito por 
+                  <a
+                    class="text-lilac"
+                    href="https://github.com/aridsm"
+                    target="_blank"
+                  >
+                    Ariane Morelato
+                  </a>
+                </span>,
+                "key": null,
+                "patchFlag": 2,
+                "props": {
+                  "class": "mt-6 text-nowrap opacity-0",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "span",
+              },
+            ],
+            "dynamicProps": null,
+            "el": <div
+              class="bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-20"
+              data-type="container"
+            >
+              <button
+                class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+                data-type="expand"
+                title="Maximizar menu"
+              >
+                <icon
+                  class="rotate-180"
+                  icon="fa-solid fa-chevron-left"
+                />
+              </button>
+              <logo
+                class="mx-5"
+                show-name="false"
+              />
+              <btn
+                class="mt-6 mx-4"
+              >
+                <icon
+                  icon="fa-solid fa-plus"
+                />
+              </btn>
+              <nav-menu
+                class="overflow-hidden"
+                menuexpanded="false"
+              />
+              <div
+                class="mt-auto px-6 flex flex-col"
+              >
+                <button
+                  class="flex gap-6 items-center py-4 text-nowrap justify-center"
+                  title="Limpar tudo"
+                >
+                  <icon
+                    icon="fa-solid fa-broom"
+                  />
+                  <!--v-if-->
+                </button>
+                <span
+                  class="mt-6 text-nowrap opacity-0"
+                >
+                  Feito por 
+                  <a
+                    class="text-lilac"
+                    href="https://github.com/aridsm"
+                    target="_blank"
+                  >
+                    Ariane Morelato
+                  </a>
+                </span>
+              </div>
+            </div>,
+            "key": null,
+            "patchFlag": 2,
+            "props": {
+              "class": "bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-20",
+              "data-type": "container",
+            },
+            "ref": null,
+            "scopeId": null,
+            "shapeFlag": 17,
+            "slotScopeIds": null,
+            "ssContent": null,
+            "ssFallback": null,
+            "staticCount": 0,
+            "suspense": null,
+            "target": null,
+            "targetAnchor": null,
+            "transition": null,
+            "type": "div",
+          },
+          "suspense": null,
+          "suspenseId": 0,
+          "type": {
+            "__file": "C:/Users/arian/Desktop/Projetos/tasks-app-vue/components/sidebar-menu.vue",
+            "components": {},
+            "data": [Function],
+            "methods": {
+              "changeMenuWidthHandler": [Function],
+            },
+            "render": [Function],
+          },
+          "u": null,
+          "uid": 1,
+          "um": null,
+          "update": [Function],
+          "vnode": [Circular],
+          "withProxy": null,
+        },
+        "ctx": [Circular],
+        "dirs": null,
+        "dynamicChildren": null,
+        "dynamicProps": null,
+        "el": <div
+          class="bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-20"
+          data-type="container"
+        >
+          <button
+            class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+            data-type="expand"
+            title="Maximizar menu"
+          >
+            <icon
+              class="rotate-180"
+              icon="fa-solid fa-chevron-left"
+            />
+          </button>
+          <logo
+            class="mx-5"
+            show-name="false"
+          />
+          <btn
+            class="mt-6 mx-4"
+          >
+            <icon
+              icon="fa-solid fa-plus"
+            />
+          </btn>
+          <nav-menu
+            class="overflow-hidden"
+            menuexpanded="false"
+          />
+          <div
+            class="mt-auto px-6 flex flex-col"
+          >
+            <button
+              class="flex gap-6 items-center py-4 text-nowrap justify-center"
+              title="Limpar tudo"
+            >
+              <icon
+                icon="fa-solid fa-broom"
+              />
+              <!--v-if-->
+            </button>
+            <span
+              class="mt-6 text-nowrap opacity-0"
+            >
+              Feito por 
+              <a
+                class="text-lilac"
+                href="https://github.com/aridsm"
+                target="_blank"
+              >
+                Ariane Morelato
+              </a>
+            </span>
+          </div>
+        </div>,
+        "key": null,
+        "patchFlag": 0,
+        "props": {
+          "ref": "VTU_COMPONENT",
+        },
+        "ref": {
+          "f": false,
+          "i": [Circular],
+          "k": undefined,
+          "r": "VTU_COMPONENT",
+        },
+        "scopeId": null,
+        "shapeFlag": 4,
+        "slotScopeIds": null,
+        "ssContent": null,
+        "ssFallback": null,
+        "staticCount": 0,
+        "suspense": null,
+        "target": null,
+        "targetAnchor": null,
+        "transition": null,
+        "type": {
+          "__file": "C:/Users/arian/Desktop/Projetos/tasks-app-vue/components/sidebar-menu.vue",
+          "components": {},
+          "data": [Function],
+          "methods": {
+            "changeMenuWidthHandler": [Function],
+          },
+          "render": [Function],
+        },
+      },
+      "suspense": null,
+      "suspenseId": 0,
+      "type": {
+        "name": "VTU_ROOT",
+        "render": [Function],
+        "setup": [Function],
+      },
+      "u": null,
+      "uid": 0,
+      "um": null,
+      "update": [Function],
+      "vnode": {
+        "__v_isVNode": true,
+        "__v_skip": true,
+        "anchor": null,
+        "appContext": {
+          "app": [Circular],
+          "components": {
+            "transition": {
+              "name": "transition",
+            },
+            "transition-group": {
+              "name": "transition-group",
+            },
+          },
+          "config": {
+            "compilerOptions": {},
+            "errorHandler": undefined,
+            "globalProperties": {},
+            "isNativeTag": [Function],
+            "optionMergeStrategies": {},
+            "performance": false,
+            "warnHandler": undefined,
+          },
+          "directives": {},
+          "emitsCache": WeakMap {},
+          "mixins": [
+            {
+              "beforeCreate": [Function],
+            },
+          ],
+          "optionsCache": WeakMap {},
+          "propsCache": WeakMap {},
+          "provides": {},
+          "reload": [Function],
+        },
+        "children": null,
+        "component": [Circular],
+        "ctx": null,
+        "dirs": null,
+        "dynamicChildren": null,
+        "dynamicProps": null,
+        "el": <div
+          class="bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-20"
+          data-type="container"
+        >
+          <button
+            class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+            data-type="expand"
+            title="Maximizar menu"
+          >
+            <icon
+              class="rotate-180"
+              icon="fa-solid fa-chevron-left"
+            />
+          </button>
+          <logo
+            class="mx-5"
+            show-name="false"
+          />
+          <btn
+            class="mt-6 mx-4"
+          >
+            <icon
+              icon="fa-solid fa-plus"
+            />
+          </btn>
+          <nav-menu
+            class="overflow-hidden"
+            menuexpanded="false"
+          />
+          <div
+            class="mt-auto px-6 flex flex-col"
+          >
+            <button
+              class="flex gap-6 items-center py-4 text-nowrap justify-center"
+              title="Limpar tudo"
+            >
+              <icon
+                icon="fa-solid fa-broom"
+              />
+              <!--v-if-->
+            </button>
+            <span
+              class="mt-6 text-nowrap opacity-0"
+            >
+              Feito por 
+              <a
+                class="text-lilac"
+                href="https://github.com/aridsm"
+                target="_blank"
+              >
+                Ariane Morelato
+              </a>
+            </span>
+          </div>
+        </div>,
+        "key": null,
+        "patchFlag": 0,
+        "props": null,
+        "ref": null,
+        "scopeId": null,
+        "shapeFlag": 4,
+        "slotScopeIds": null,
+        "ssContent": null,
+        "ssFallback": null,
+        "staticCount": 0,
+        "suspense": null,
+        "target": null,
+        "targetAnchor": null,
+        "transition": null,
+        "type": {
+          "name": "VTU_ROOT",
+          "render": [Function],
+          "setup": [Function],
+        },
+      },
+      "withProxy": null,
+    },
+    "_props": null,
+    "_uid": 0,
+    "component": [Function],
+    "config": {
+      "compilerOptions": {},
+      "errorHandler": undefined,
+      "globalProperties": {},
+      "isNativeTag": [Function],
+      "optionMergeStrategies": {},
+      "performance": false,
+      "warnHandler": undefined,
+    },
+    "directive": [Function],
+    "mixin": [Function],
+    "mount": [Function],
+    "provide": [Function],
+    "runWithContext": [Function],
+    "unmount": [Function],
+    "use": [Function],
+    "version": "3.4.23",
+  },
+  "__setProps": [Function],
+  "cleanUpCallbacks": [
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+  ],
+  "componentVM": {
+    "changeMenuWidthHandler": [Function],
+    "menuExpanded": false,
+  },
+  "isDisabled": [Function],
+  "rootVM": {
+    "VTU_COMPONENT": {
+      "changeMenuWidthHandler": [Function],
+      "menuExpanded": false,
+    },
+  },
+  "wrapperElement": <div
+    class="bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-20"
+    data-type="container"
+  >
+    <button
+      class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent"
+      data-type="expand"
+      title="Maximizar menu"
+    >
+      <icon
+        class="rotate-180"
+        icon="fa-solid fa-chevron-left"
+      />
+    </button>
+    <logo
+      class="mx-5"
+      show-name="false"
+    />
+    <btn
+      class="mt-6 mx-4"
+    >
+      <icon
+        icon="fa-solid fa-plus"
+      />
+    </btn>
+    <nav-menu
+      class="overflow-hidden"
+      menuexpanded="false"
+    />
+    <div
+      class="mt-auto px-6 flex flex-col"
+    >
+      <button
+        class="flex gap-6 items-center py-4 text-nowrap justify-center"
+        title="Limpar tudo"
+      >
+        <icon
+          icon="fa-solid fa-broom"
+        />
+        <!--v-if-->
+      </button>
+      <span
+        class="mt-6 text-nowrap opacity-0"
+      >
+        Feito por 
+        <a
+          class="text-lilac"
+          href="https://github.com/aridsm"
+          target="_blank"
+        >
+          Ariane Morelato
+        </a>
+      </span>
+    </div>
+  </div>,
+}
+`;
+
+exports[`sidebar-menu > should render 1`] = `
+"<div class="bg-dark-200 border-r border-r-dark-300 relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all w-80"><button class="absolute hover:bg-lilac top-3 -right-7 p-2 w-7 rounded-r-md bg-dark-200 border border-dark-300 border-l-transparent" title="Minimizar menu">
+    <icon class="" icon="fa-solid fa-chevron-left"></icon>
+  </button>
+  <logo class="mx-5" show-name="true"></logo>
+  <btn class="mt-6 mx-6"><span>Adicionar tarefa</span></btn>
+  <nav-menu class="overflow-hidden" menuexpanded="true"></nav-menu>
+  <div class="mt-auto px-6 flex flex-col"><button class="flex gap-6 items-center py-4 text-nowrap" title="Limpar tudo">
+      <icon icon="fa-solid fa-broom"></icon><span>Limpar tudo</span>
+    </button><span class="mt-6 text-nowrap">Feito por <a href="https://github.com/aridsm" target="_blank" class="text-lilac">Ariane Morelato</a></span></div>
+</div>"
+`;

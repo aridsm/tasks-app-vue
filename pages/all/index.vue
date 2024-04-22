@@ -1,11 +1,10 @@
 <template>
+  <div>a page allsdddddddddd</div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
-  created() {
-    this.$router.push('/all')
-  }
+
 }
 </script>
 

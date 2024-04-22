@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-4 items-center" :class="{
+  <div class="flex gap-4 items-center h-6" :class="{
     'justify-center':!showName
   }">
     <icon icon="fa-solid fa-box" />
