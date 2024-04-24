@@ -17,7 +17,7 @@ describe('sidebar-menu', () => {
   })
 
   test('Expand button should change container width', async () => {
-    expect(container.classes()).includes('w-80')
+    expect(container.classes()).includes('w-[25vw]')
 
     await sidebarMenu.get('[data-type="expand"]').trigger('click')
 
@@ -25,7 +25,7 @@ describe('sidebar-menu', () => {
 
     await sidebarMenu.get('[data-type="expand"]').trigger('click')
 
-    expect(container.classes()).includes('w-80')
+    expect(container.classes()).includes('w-[25vw]')
 
   })
 

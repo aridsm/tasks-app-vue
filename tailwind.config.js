@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       colors: {
         'dark-text': '#A1A1B6',
-        'dark-200': '#3C4155',
+        'dark-100': '#3C4155',
         'dark-200': '#2B2F3D',
         'dark-300': '#262936',
         'lilac': '#5D52D7',

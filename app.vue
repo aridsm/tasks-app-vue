@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
   <sidebar-menu />
-  <NuxtPage/>
+  <NuxtPage />
   </div>
 </template>

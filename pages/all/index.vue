@@ -1,5 +1,10 @@
 <template>
-  <div>a page allsdddddddddd</div>
+  <page title="Todas as tarefas">
+    <card>
+      <template #header> my header</template>
+      mu body
+    </card>
+  </page>
 </template>
 
 <script>
