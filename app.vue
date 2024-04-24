@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
+  <div class="flex w-screen">
   <sidebar-menu />
-  <NuxtPage />
+  <NuxtPage class="flex-1 min-w-0" />
   </div>
 </template>
