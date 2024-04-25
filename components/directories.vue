@@ -1,6 +1,9 @@
 <template>
   <section>
-    <section-title class="mb-4"> Diretórios ({{ dummyDirectories.length }})</section-title>
+    <div class="flex justify-between items-center mb-6">
+    <section-title> Diretórios ({{ dummyDirectories.length }})</section-title>
+    <btn-add>Adicionar diretório</btn-add>
+  </div>
     <ul class="flex rounded-sm overflow-auto gap-1 pb-2">
       <li
         v-for="directory in dummyDirectories"
@@ -17,10 +20,7 @@
 </template>
 
 <script lang="ts">
-import optionsBtn from "./options-btn.vue";
-import SectionTitle from "./section-title.vue";
 export default {
-  components: { optionsBtn, SectionTitle },
   data() {
     return {
       dummyDirectories: [
