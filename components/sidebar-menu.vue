@@ -20,7 +20,7 @@
         icon="fa-solid fa-chevron-left"
       />
     </button>
-    <logo class="mx-5" :show-name="menuExpanded" />
+    <logo class="px-5" :show-name="menuExpanded" />
     <btn class="mt-6" :class="{ 'mx-6': menuExpanded, 'mx-4': !menuExpanded }">
       <span v-if="menuExpanded">Adicionar tarefa</span>
       <icon v-else icon="fa-solid fa-plus" />

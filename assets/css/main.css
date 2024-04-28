@@ -9,7 +9,7 @@ body {
 }
 
 .x-input {
-    @apply outline-none bg-dark-200 rounded-sm text-white placeholder:text-dark-text py-2 px-4
+    @apply outline-none bg-dark-200 rounded-sm text-white placeholder:text-dark-text py-3 px-4
 }
 
 .input-label {

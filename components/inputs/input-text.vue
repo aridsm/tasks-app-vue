@@ -20,7 +20,7 @@
         :placeholder="placeholder"
         @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)"
       />
-      <icon v-show="icon" :icon="icon" class="absolute right-3 top-3" />
+      <icon v-show="icon" :icon="icon" class="absolute right-4 top-4" />
     </div>
       <text-error>{{ errorMessage }}</text-error>
     </Field>
@@ -52,5 +52,5 @@ export default defineComponent({
 
 <style scoped>
 .input-icon {
-  padding-right: 40px !important;
+  padding-right: 46px !important;
 }</style>

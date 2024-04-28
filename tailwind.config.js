@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         'dark-text': '#A1A1B6',
         'dark-100': '#3C4155',
-        'dark-200': '#2B2F3D',
+        'dark-200': '#313547',
         'dark-300': '#262936',
         'lilac': '#5D52D7',
       }

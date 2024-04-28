@@ -1,5 +1,4 @@
 <template>
-  <ClientOnly>
     <div
       class="flex gap-4 items-center h-6"
       :class="{
@@ -9,7 +8,6 @@
       <icon icon="fa-solid fa-box" />
       <span v-if="showName">LOGO</span>
     </div>
-  </ClientOnly>
 </template>
 
 <script lang="ts">
