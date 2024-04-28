@@ -16,14 +16,21 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.6",
+    "@pinia/nuxt": "^0.5.1",
+    "@vee-validate/nuxt": "^4.12.6",
+    "@vee-validate/yup": "^4.12.6",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/test-utils": "^2.4.5",
+    "dayjs": "^1.11.10",
+    "dayjs-nuxt": "^2.1.9",
     "jsdom": "^24.0.0",
     "nuxt": "^3.11.2",
+    "pinia": "^2.1.7",
     "ts-node-dev": "^2.0.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
-    "webpack": "^5.91.0"
+    "webpack": "^5.91.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",

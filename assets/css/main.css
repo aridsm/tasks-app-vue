@@ -8,6 +8,14 @@ body {
  font-family: "Epilogue", sans-serif;
 }
 
+.x-input {
+    @apply outline-none bg-dark-200 rounded-sm text-white placeholder:text-dark-text py-2 px-4
+}
+
+.input-label {
+    @apply flex items-center gap-2 mb-2 text-white -tracking-tighter text-sm before:block before:w-3 before:h-[2px] before:bg-lilac leading-none
+}
+
 ::-webkit-scrollbar {
 width: 8px;
 height: 8px

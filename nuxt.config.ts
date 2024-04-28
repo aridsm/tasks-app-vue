@@ -7,17 +7,24 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false,
+    },
+  ],
   typescript: {
-    typeCheck: true
+    typeCheck: true,
   },
   modules: [
-    '@nuxtjs/tailwindcss',
-  ],  
+    "@nuxtjs/tailwindcss",
+    "@pinia/nuxt",
+    "dayjs-nuxt",
+    "@vee-validate/nuxt",
+  ],
   css: [
-    '@fortawesome/fontawesome-svg-core/styles.css',
+    "@fortawesome/fontawesome-svg-core/styles.css",
     "@/assets/css/main.css",
   ],
-  plugins: [
-    '~/plugins/fontawesome.ts'
-  ]
-})
+  plugins: ["~/plugins/fontawesome.ts"],
+});

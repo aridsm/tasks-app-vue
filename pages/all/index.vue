@@ -2,14 +2,19 @@
   <page title="Todas as tarefas">
     <card>
       <template #header> my header</template>
-      mu body
+      mu body 
     </card>
   </page>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import * as yup from 'yup';
 
+export default {
+  data() {
+    return {
+    }
+  }
 }
 </script>
 

@@ -1,19 +1,23 @@
 <template>
-  <div class="flex gap-4 items-center h-6" :class="{
-    'justify-center':!showName
-  }">
-    <icon icon="fa-solid fa-box" />
-    <span v-if="showName">LOGO</span>
-  </div>
+  <ClientOnly>
+    <div
+      class="flex gap-4 items-center h-6"
+      :class="{
+        'justify-center': !showName,
+      }"
+    >
+      <icon icon="fa-solid fa-box" />
+      <span v-if="showName">LOGO</span>
+    </div>
+  </ClientOnly>
 </template>
 
-<script lang=ts>
+<script lang="ts">
 export default {
   props: {
-    showName: Boolean
+    showName: Boolean,
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
