@@ -5,9 +5,9 @@
       v-slot="{ isActive }"
       :title="link.title"
       >
-      <span class="text-nowrap flex gap-6 items-center pl-4 pr-6 h-14 w-full border-l-4 border-l-transparent hover:bg-dark-text/[.1]" 
+      <span class="text-nowrap flex gap-6 items-center pl-4 pr-6 h-14 w-full border-l-4 border-l-transparent hover:bg-light-100/[.1] dark:hover:bg-dark-text/[.1]" 
       :class="{
-        'bg-white/[.05] border-l-4 border-l-white': isActive,
+        'bg-light-100/[.1] dark:bg-white/[.05] border-l-4 border-l-white': isActive,
         'justify-center':!menuExpanded
       }">
         <icon :icon="link.icon" />

@@ -28,7 +28,6 @@
 
 <script lang="ts">
 import { months, daysWeek } from "~/utils/dateUtils";
-
 export default defineComponent({
   data() {
     return {

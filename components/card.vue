@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-dark-200 text-white inline-block rounded-sm border border-dark-300 card">
-    <div class="bg-dark-100 px-4 py-[2px]" :class="headerClass">
+  <div class="bg-light-100 dark:bg-dark-200 text-light-text dark:text-white inline-block rounded-sm card">
+    <div class="bg-light-pink text-light-pink-text dark:text-white dark:bg-dark-100 px-4 py-[2px]" :class="headerClass">
       <slot name="header" />
     </div>
     <div class="p-4 ">

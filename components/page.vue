@@ -5,7 +5,7 @@
       </h1>
       <directories />
 
-      <div class="border-t border-t-dark-100 pt-8 mt-8">
+      <div class="border-t dark:border-t-dark-100 border-t-light-text/[.1] pt-8 mt-8">
         <slot />
       </div>
     </div>

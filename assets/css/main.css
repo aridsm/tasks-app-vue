@@ -1,31 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
- @apply bg-dark-300 text-white min-h-screen text-[0.9rem];
- font-family: "Epilogue", sans-serif;
+  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white  min-h-screen text-[0.9rem];
+  font-family: "Epilogue", sans-serif;
 }
 
 .x-input {
-    @apply outline-none bg-dark-200 rounded-sm text-white placeholder:text-dark-text py-3 px-4
+  @apply outline-none bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
 }
 
 .input-label {
-    @apply flex items-center gap-2 mb-2 text-white -tracking-tighter text-sm before:block before:w-3 before:h-[2px] before:bg-lilac leading-none
+  @apply flex items-center gap-2 mb-2 text-white -tracking-tighter text-sm before:block before:w-3 before:h-[2px] before:bg-lilac leading-none;
 }
 
 ::-webkit-scrollbar {
-width: 8px;
-height: 8px
-}   
-    
+  width: 8px;
+  height: 8px;
+}
+
 ::-webkit-scrollbar-track {
-@apply bg-dark-300
+  @apply dark:bg-dark-300 bg-light-200;
 }
 
 ::-webkit-scrollbar-thumb {
-@apply bg-dark-100 hover:bg-dark-text/[.1];
+  @apply bg-light-text/[.1] hover:bg-blue-light dark:bg-dark-100 dark:hover:bg-dark-text/[.1];
 }
-    

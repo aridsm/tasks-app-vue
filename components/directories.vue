@@ -9,7 +9,7 @@
         v-for="directory in dummyDirectories"
         :key="directory.id"
         :title="directory.name"
-        class="py-3 pl-4 pr-3 bg-dark-200 flex items-center gap-3 hover:bg-dark-text/[.1] cursor-pointer text-nowrap"
+        class="py-3 pl-4 pr-3 bg-light-100 dark:bg-dark-200 flex items-center gap-3  cursor-pointer text-nowrap"
         tabindex="0"
       >
         <span class="max-w-60 ">{{ directory.name }}</span>
@@ -35,96 +35,6 @@ export default {
           name: "Tarefas de Casa",
           default: false,
           count: 15,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
-        },
-        {
-          id: 3,
-          name: "Tarefas do trabs",
-          default: false,
-          count: 0,
         },
         {
           id: 3,
