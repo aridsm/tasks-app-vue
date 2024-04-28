@@ -1,8 +1,27 @@
 <template>
   <div class="flex flex-col">
-    <label v-if="label" class="input-label" :for="name" >{{ label }}</label>
-    <Field :name="name" :id="name" :rules="rules" v-slot="{ field, errorMessage }" class="flex flex-col" validateOnInput>
-      <input v-bind="field" :type="type" class="x-input" :placeholder="placeholder" @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)" />
+    <label v-if="label" class="input-label" :for="name">{{ label }}</label>
+    <Field
+      :name="name"
+      :id="name"
+      :rules="rules"
+      v-slot="{ field, errorMessage }"
+      class="flex flex-col"
+      validateOnInput
+    >
+    <div class="relative">
+      <input
+        v-bind="field"
+        :type="type"
+        class="x-input w-full"
+        :class="{
+          'input-icon': icon
+        }"
+        :placeholder="placeholder"
+        @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)"
+      />
+      <icon v-show="icon" :icon="icon" class="absolute right-3 top-3" />
+    </div>
       <text-error>{{ errorMessage }}</text-error>
     </Field>
   </div>
@@ -13,19 +32,25 @@ type types = "text" | "number" | "password";
 
 export default defineComponent({
   props: {
-    modelValue: {type: undefined as any as PropType<string | number>, required: true},
-    type: { type: String as PropType<types>, default: "text" },
+    modelValue: {
+      type: undefined as any as PropType<string | number>,
+      required: true,
+    },
     name: { type: String, required: true },
+    type: { type: String as PropType<types>, default: "text" },
     rules: { type: Object as any, default: undefined },
-    placeholder: { type: String, default: 'Digite...' },
+    placeholder: { type: String, default: "Digite..." },
     label: { type: String },
+    icon: { type: String },
   },
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
   data() {
     return {};
   },
 });
 </script>
 
-<style>
-</style>
+<style scoped>
+.input-icon {
+  padding-right: 40px !important;
+}</style>

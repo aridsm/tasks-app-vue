@@ -1,5 +1,5 @@
 <template>
-  <div
+  <header
     class="bg-dark-200  relative h-screen py-6 border-t-8 border-t-lilac flex flex-col transition-all"
     data-type="container"
     :class="{
@@ -47,7 +47,7 @@
         ></span
       >
     </div>
-  </div>
+  </header>
 </template>
 
 <script lang="ts">

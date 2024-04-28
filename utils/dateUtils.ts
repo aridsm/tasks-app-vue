@@ -8,7 +8,12 @@ enum DayWeek {
     Saturday = 6,
 }
 
-export const daysWeek = {
+export const daysWeek: {
+    [key: number]: {
+        fullName: string,
+        abbreviation: string,
+    }
+} = {
     [DayWeek.Sunday]: {
         fullName: 'Domingo',
         abbreviation: 'Dom'
