@@ -4,12 +4,12 @@
 @tailwind utilities;
 
 body {
-  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white  min-h-screen text-[0.9rem];
+  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white min-h-screen text-[0.9rem];
   font-family: "Epilogue", sans-serif;
 }
 
 .x-input {
-  @apply outline-none bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
+  @apply outline-none border border-dark-text/[.2] dark:border-dark-text/[.1] bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
 }
 
 .input-label {

@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-blue-light dark:bg-dark-200 text-white relative h-screen py-6 border-t-8 border-t-blue-light dark:border-t-lilac flex flex-col transition-all"
+    class="bg-blue-light dark:bg-dark-200 text-white relative h-screen py-6 border-r border-r-dark-text/[.1] border-t-8 border-t-blue-light dark:border-t-lilac flex flex-col transition-all"
     data-type="container"
     :class="{
       'w-80': menuExpanded,
@@ -8,7 +8,7 @@
     }"
   >
     <button
-      class="absolute top-3 -right-6 p-2 w-6 rounded-r-md bg-blue-light dark:bg-dark-200 dark:hover:bg-lilac"
+      class="absolute top-3 -right-6 p-2 w-6 rounded-r-md bg-blue-light dark:bg-dark-200 dark:hover:bg-lilac border border-dark-text/[.1] border-l-transparent"
       :title="menuExpanded ? 'Minimizar menu' : 'Maximizar menu'"
       data-type="expand"
       @click="changeMenuWidthHandler"

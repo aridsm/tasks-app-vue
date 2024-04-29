@@ -9,7 +9,7 @@
         v-for="directory in dummyDirectories"
         :key="directory.id"
         :title="directory.name"
-        class="py-3 pl-4 pr-3 bg-light-100 dark:bg-dark-200 flex items-center gap-3  cursor-pointer text-nowrap"
+        class="py-3 pl-4 pr-3 bg-light-100 dark:bg-dark-200 border border-dark-text/[.2] dark:border-dark-text/[.1] flex items-center gap-3  cursor-pointer text-nowrap"
         tabindex="0"
       >
         <span class="max-w-60 ">{{ directory.name }}</span>
