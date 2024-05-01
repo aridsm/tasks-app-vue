@@ -6,7 +6,6 @@ export const useColorModeStore = defineStore("colorModeStore", {
   }),
   actions: {
     switchColorModeHandler() {
-        console.log(document, 'd')
         if (this.currentMode === ColorMode.Light) {
             document.body.classList.add('dark')
             this.currentMode = ColorMode.Dark

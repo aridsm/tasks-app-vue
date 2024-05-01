@@ -2,6 +2,7 @@
   <div class="flex flex-col">
     <label v-if="label" class="input-label" :for="name">{{ label }}</label>
     <Field
+      v-model="modelValue"
       :name="name"
       :id="name"
       :rules="rules"
@@ -9,19 +10,19 @@
       class="flex flex-col"
       validateOnInput
     >
-    <div class="relative">
-      <input
-        v-bind="field"
-        :type="type"
-        class="x-input w-full"
-        :class="{
-          'input-icon': icon
-        }"
-        :placeholder="placeholder"
-        @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)"
-      />
-      <icon v-show="icon" :icon="icon" class="absolute right-4 top-4" />
-    </div>
+      <div class="relative">
+        <input
+          v-bind="field"
+          :type="type"
+          class="x-input w-full"
+          :class="{
+            'input-icon': icon,
+          }"
+          :placeholder="placeholder"
+          @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)"
+        />
+        <icon v-show="icon" :icon="icon" class="absolute right-4 top-4" />
+      </div>
       <text-error>{{ errorMessage }}</text-error>
     </Field>
   </div>
@@ -53,4 +54,5 @@ export default defineComponent({
 <style scoped>
 .input-icon {
   padding-right: 46px !important;
-}</style>
+}
+</style>

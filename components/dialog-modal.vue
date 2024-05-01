@@ -3,6 +3,7 @@
     <div
       v-if="modelValue"
       class="w-screen h-screen absolute bg-black/[.2] top-0 left-0 z-[99999] grid place-items-center"
+      @click.self="$emit('update:modelValue', false)"
     >
       <card :class="cardClasses">
         <div class="flex justify-between items-center gap-4">
@@ -15,7 +16,7 @@
             <icon icon="fa-solid fa-xmark" />
           </button>
         </div>
-        <div class="mt-2">
+        <div class="mt-6">
           <slot />
         </div>
       </card>

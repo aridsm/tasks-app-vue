@@ -4,10 +4,6 @@
       <template #header> my header</template>
       mu body
     </card>
-    <dialog-modal v-model="dialogOpen" title="Meu títulozinho">
-      o conteúdooo
-    </dialog-modal>
-    <button @click="dialogOpen = true">clique</button>
   </page>
 </template>
 
@@ -17,7 +13,6 @@ import * as yup from "yup";
 export default {
   data() {
     return {
-      dialogOpen: true,
     };
   },
 };

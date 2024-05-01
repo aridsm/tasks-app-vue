@@ -9,11 +9,12 @@ body {
 }
 
 .x-input {
-  @apply outline-none border border-dark-text/[.2] dark:border-dark-text/[.1] bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
+  @apply outline outline-transparent focus:outline-blue-light dark:focus:outline-lilac border border-dark-text/[.2] dark:border-dark-text/[.1] bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
 }
 
+
 .input-label {
-  @apply flex items-center gap-2 mb-2 text-white -tracking-tighter text-sm before:block before:w-3 before:h-[2px] before:bg-lilac leading-none;
+  @apply flex items-center gap-2 mb-2 dark:text-white -tracking-tighter text-sm uppercase leading-none;
 }
 
 ::-webkit-scrollbar {

@@ -2,6 +2,7 @@
   <div class="flex flex-col">
     <label v-if="label" class="input-label" :for="name">{{ label }}</label>
     <Field
+      v-model="modelValue"
       :name="name"
       :id="name"
       :rules="rules"
@@ -21,7 +22,6 @@
 </template>
 
 <script lang="ts">
-type types = "text" | "number" | "password";
 
 export default defineComponent({
   props: {

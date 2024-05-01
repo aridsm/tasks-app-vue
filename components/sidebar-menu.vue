@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts">
-import { useColorModeStore } from "~/state/colorMode";
+import { useColorModeStore } from "~/state/colorMode.store";
 import { ColorMode } from "~/utils/enums/ColorMode";
 
 export default defineComponent({
@@ -111,7 +111,6 @@ export default defineComponent({
       this.menuExpanded = !this.menuExpanded;
     },
     changeColorModeHandler() {
-      console.log("era pra clicar..");
       this.colorModeStore.switchColorModeHandler();
     },
   },
@@ -120,6 +119,6 @@ export default defineComponent({
 
 <style scoped>
 .btn-add-new {
-  @apply bg-light-100 text-blue-light dark:text-white dark:bg-lilac
+  @apply bg-light-100 text-blue-light dark:text-white dark:bg-lilac px-2
 }
 </style>
