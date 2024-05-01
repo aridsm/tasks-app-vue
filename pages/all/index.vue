@@ -7,6 +7,7 @@
     <dialog-modal v-model="dialogOpen" title="Meu títulozinho">
       o conteúdooo
     </dialog-modal>
+    <button @click="dialogOpen = true">clique</button>
   </page>
 </template>
 

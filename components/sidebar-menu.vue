@@ -8,7 +8,7 @@
     }"
   >
     <button
-      class="absolute top-3 -right-6 p-2 w-6 rounded-r-md bg-blue-light dark:bg-dark-200 dark:hover:bg-lilac border border-dark-text/[.1] border-l-transparent"
+      class="absolute top-3 -right-6 w-6 h-10 pr-1 grid place-items-center rounded-r-full bg-blue-light dark:bg-dark-200 dark:hover:bg-lilac border border-dark-text/[.1] border-l-transparent"
       :title="menuExpanded ? 'Minimizar menu' : 'Maximizar menu'"
       data-type="expand"
       @click="changeMenuWidthHandler"
