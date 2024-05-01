@@ -2,22 +2,24 @@
   <page title="Todas as tarefas">
     <card>
       <template #header> my header</template>
-      mu body 
+      mu body
     </card>
+    <dialog-modal v-model="dialogOpen" title="Meu títulozinho">
+      o conteúdooo
+    </dialog-modal>
   </page>
 </template>
 
 <script lang="ts">
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export default {
   data() {
     return {
-    }
-  }
-}
+      dialogOpen: true,
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

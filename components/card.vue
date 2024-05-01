@@ -14,6 +14,3 @@ defineProps({
   headerClass: String
 })
 </script>
-
-<style scoped>
-</style>
