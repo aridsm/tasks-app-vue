@@ -1,4 +1,4 @@
-import { ColorMode } from "~/utils/enums/ColorMode";
+import { ColorMode } from "../utils/enums/ColorMode";
 
 export const useColorModeStore = defineStore("colorModeStore", {
   state: () => ({

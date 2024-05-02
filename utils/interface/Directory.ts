@@ -1,5 +1,5 @@
 export interface Directory {
-    id?: number;
+    id: number;
     name: string;
     description: string;
     default: boolean,

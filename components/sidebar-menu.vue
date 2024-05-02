@@ -87,8 +87,8 @@
 </template>
 
 <script lang="ts">
-import { useColorModeStore } from "~/state/colorMode.store";
-import { ColorMode } from "~/utils/enums/ColorMode";
+import { useColorModeStore } from "../state/colorMode.store";
+import { ColorMode } from "../utils/enums/ColorMode";
 
 export default defineComponent({
   setup() {

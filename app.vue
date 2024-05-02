@@ -27,8 +27,13 @@
 </template>
 
 <script lang="ts">
-import { months, daysWeek } from "~/utils/dateUtils";
-export default defineComponent({
+import { months, daysWeek } from "./utils/dateUtils";
+import dayjs from 'dayjs';
+
+export default {
+  setup() {
+    return { dayjs }
+  },
   data() {
     return {
       search: "" as string,
@@ -37,16 +42,16 @@ export default defineComponent({
   computed: {
     todaysDate() {
       const todaysDate = new Date();
-      const month = this.$dayjs(todaysDate).month();
-      const date = this.$dayjs(todaysDate).date();
-      const day = this.$dayjs(todaysDate).day();
+      const month = this.dayjs(todaysDate).month();
+      const date = this.dayjs(todaysDate).date();
+      const day = this.dayjs(todaysDate).day();
 
       return `${daysWeek[day as number].fullName}, ${date} de ${
         months[month as number]
       }`;
     },
   },
-});
+}
 </script>
 
 <style scoped>

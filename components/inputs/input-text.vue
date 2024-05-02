@@ -31,7 +31,7 @@
 <script lang="ts">
 type types = "text" | "number" | "password";
 
-export default defineComponent({
+export default {
   props: {
     modelValue: {
       type: undefined as any as PropType<string | number>,
@@ -48,7 +48,7 @@ export default defineComponent({
   data() {
     return {};
   },
-});
+};
 </script>
 
 <style scoped>

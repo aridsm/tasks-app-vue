@@ -2,6 +2,7 @@
   <Teleport to="body">
     <div
       v-if="modelValue"
+      data-type="container"
       class="w-screen h-screen absolute bg-black/[.2] top-0 left-0 z-[99999] grid place-items-center"
       @click.self="$emit('update:modelValue', false)"
     >
