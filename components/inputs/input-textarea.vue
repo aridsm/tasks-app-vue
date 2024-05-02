@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <label v-if="label" class="input-label" :for="name">{{ label }}</label>
     <Field
-      v-model="modelValue"
+      v-model="value"
       :name="name"
       :id="name"
       :rules="rules"
@@ -32,9 +32,17 @@ export default defineComponent({
     rows: { type: Number, default: 3 },
     label: { type: String },
   },
-  data() {
-    return {};
-  },
+  emits: ["update:modelValue"],
+  computed: {
+    value: {
+      get() {
+        return this.modelValue
+      },
+      set(value: string | number) {
+        this.$emit('update:modelValue', value)
+      }
+    }
+  }
 });
 </script>
 

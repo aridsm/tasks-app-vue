@@ -60,8 +60,10 @@
         flat
         class="flex gap-3 items-center"
         @click="deleteDirectoryHandler"
-        >Excluir <icon icon="fa-regular fa-trash-can" class="text-lg"
-      /></btn>
+        >
+        Excluir
+        <icon icon="fa-regular fa-trash-can" class="text-lg -mt-1" />
+      </btn>
       <btn
         color="base"
         flat
