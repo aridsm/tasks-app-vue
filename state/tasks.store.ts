@@ -1,9 +1,13 @@
 import type { Task } from "~/utils/interface/Tasks";
 import { defineStore } from "pinia";
+import { Arrangement } from "~/utils/enums/Arrangement";
+import type { SortBy } from "~/utils/enums/SortBy";
 
 export const useTasksStore = defineStore("TasksStore", {
   state: () => ({
     tasks: [] as Task[],
+    arrangement: Arrangement.Grid as Arrangement,
+    sortBy: null as unknown as SortBy,
   }),
   getters: {
     importantTasks(state) {
@@ -22,6 +26,12 @@ export const useTasksStore = defineStore("TasksStore", {
   actions: {
     addNewTask() {
         
+    },
+    setTasksArrangement(arrangement: Arrangement) {
+      this.arrangement = arrangement
+    },
+    setTasksSort(sortBy: SortBy) {
+      this.sortBy = sortBy
     }
   }
 });
