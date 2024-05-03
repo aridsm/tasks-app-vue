@@ -10,7 +10,7 @@
     </div>
     <ul
       v-if="directoryStore.directories.length"
-      class="flex rounded-sm overflow-auto gap-1 pb-2"
+      class="flex rounded-sm overflow-auto gap-2 pb-2"
     >
       <li
         v-for="directory in directoryStore.directories"
@@ -32,7 +32,7 @@
         <options-btn @click.stop="() => openFormNewDirectory(directory)" />
       </li>
     </ul>
-    <p v-else class="text-light-text/[.5]">Nenhum diretório adicionado!</p>
+    <p v-else class="text-light-text/[.5] dark:text-dark-text">Nenhum diretório adicionado!</p>
   </section>
 
   <dialog-modal
@@ -103,7 +103,6 @@ export default {
           id: 0,
           name: "",
           description: "",
-          default: false,
         };
       }
 

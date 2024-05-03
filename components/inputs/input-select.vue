@@ -21,14 +21,14 @@
         <div class="flex items-center gap-2">
           <div
             v-if="clearable && modelValue"
-            class="text-dark-text grid place-items-center w-5 h-5 rounded-full hover:bg-dark-100"
+            class="text-dark-text grid place-items-center w-5 h-5 rounded-full hover:bg-dark-text/[.1] dark:hover:bg-dark-100 hover:text-"
             @click.stop="clearModelValueHandler"
           >
             <icon icon="fa-solid fa-xmark" />
           </div>
           <icon
             icon="fa-solid fa-chevron-down"
-            class="transition"
+            class="transition "
             :class="{
               'rotate-90': itemsShown,
             }"
@@ -40,13 +40,13 @@
 
     <div
       v-if="itemsShown"
-      class="bg-dark-200 absolute top-full left-0 max-w-80 w-max min-w-full z-50"
+      class="bg-light-100 dark:bg-dark-200 absolute top-full left-0 max-w-80 w-max min-w-full z-50"
     >
       <ul class="max-h-56 overflow-auto">
         <li
           v-for="item in items"
           :key="item.id"
-          class="p-3 hover:bg-dark-100 cursor-pointer"
+          class="p-3 hover:bg-gray-100 dark:hover:bg-dark-100 cursor-pointer"
           @click="selectItemHandler(item)"
         >
           {{ item.name }}
