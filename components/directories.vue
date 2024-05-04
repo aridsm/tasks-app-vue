@@ -4,7 +4,7 @@
       <section-title>
         Diretórios ({{ directoryStore.directories.length }})</section-title
       >
-      <btn-add data-type="add-directory" @click="openFormNewDirectory">
+      <btn-add data-type="add-directory" @click="() => openFormNewDirectory()">
         Adicionar diretório
       </btn-add>
     </div>
@@ -24,15 +24,21 @@
             directoryStore.selectedDirectory?.id !== directory.id,
         }"
         tabindex="0"
+        data-type="item-directory"
         @click="directoryStore.selectDirectoryHandler(directory)"
       >
         <span class="max-w-60"
           >{{ directory.name }} ({{ directory.count }})</span
         >
-        <options-btn @click.stop="() => openFormNewDirectory(directory)" />
+        <options-btn
+          data-type="option-directory"
+          @click.stop="() => openFormNewDirectory(directory)"
+        />
       </li>
     </ul>
-    <p v-else class="text-light-text/[.5] dark:text-dark-text">Nenhum diretório adicionado!</p>
+    <p v-else class="text-light-text/[.5] dark:text-dark-text">
+      Nenhum diretório adicionado!
+    </p>
   </section>
 
   <dialog-modal
@@ -59,8 +65,9 @@
         color="red"
         flat
         class="flex gap-3 items-center"
+        data-type="delete-directory"
         @click="deleteDirectoryHandler"
-        >
+      >
         Excluir
         <icon icon="fa-regular fa-trash-can" class="text-lg -mt-1" />
       </btn>
@@ -79,7 +86,7 @@
 </template>
 
 <script lang="ts">
-import type { Directory } from "~/utils/interface/Directory";
+import type { Directory } from "../utils/interface/Directory";
 import { useDirectoriesStore } from "../state/directories.store";
 
 export default {
@@ -91,7 +98,11 @@ export default {
   data() {
     return {
       modalDirectoryOpen: false,
-      form: {} as Directory,
+      form: {
+        id: 0,
+        name: "",
+        description: "",
+      } as Directory,
     };
   },
   methods: {

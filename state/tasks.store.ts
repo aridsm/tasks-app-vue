@@ -1,7 +1,7 @@
-import type { Task } from "~/utils/interface/Tasks";
+import type { Task } from "../utils/interface/Tasks";
 import { defineStore } from "pinia";
-import { Arrangement } from "~/utils/enums/Arrangement";
-import type { SortBy } from "~/utils/enums/SortBy";
+import { Arrangement } from "../utils/enums/Arrangement";
+import type { SortBy } from "../utils/enums/SortBy";
 
 export const useTasksStore = defineStore("TasksStore", {
   state: () => ({

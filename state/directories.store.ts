@@ -8,22 +8,31 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
   }),
   actions: {
     saveDirectoryHandler(directory: Directory) {
+      const nameAlreadyExists = this.directories.find(
+        (dir) => dir.name.trim() === directory.name.trim() && dir.id !== directory.id
+      );
+
       if (directory.id) {
         const index = this.directories.findIndex((d) => d.id === directory.id);
         if (index >= 0) {
-          this.directories.splice(index, 1, directory);
+          if (!nameAlreadyExists) {
+            this.directories.splice(index, 1, directory);
+          }
         }
       } else {
-        const newId = Math.random() * 1000;
-        this.directories.push({
-          ...directory,
-          id: newId,
-          count: 0,
-        });
+        if (!nameAlreadyExists) {
+          const newId = Math.random() * 1000;
+          this.directories.push({
+            ...directory,
+            id: newId,
+            count: 0,
+          });
+        }
       }
     },
     selectDirectoryHandler(directory: Directory) {
-      this.selectedDirectory = directory.id === this.selectedDirectory?.id ? null : directory
+      this.selectedDirectory =
+        directory.id === this.selectedDirectory?.id ? null : directory;
     },
     deleteDirectoryHandler(id: number) {
       const index = this.directories.findIndex((d) => d.id === id);
@@ -31,6 +40,6 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       if (index >= 0) {
         this.directories.splice(index, 1);
       }
-    }
+    },
   },
 });

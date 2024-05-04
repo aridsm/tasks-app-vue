@@ -1,4 +1,5 @@
 import { ColorMode } from "../utils/enums/ColorMode";
+import { defineStore } from "pinia";
 
 export const useColorModeStore = defineStore("colorModeStore", {
   state: () => ({

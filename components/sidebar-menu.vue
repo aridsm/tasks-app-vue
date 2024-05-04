@@ -90,7 +90,7 @@
 import { useColorModeStore } from "../state/colorMode.store";
 import { ColorMode } from "../utils/enums/ColorMode";
 
-export default defineComponent({
+export default {
   setup() {
     const colorModeStore = useColorModeStore();
 
@@ -103,7 +103,7 @@ export default defineComponent({
   },
   computed: {
     modeIsLight() {
-      return this.colorModeStore.currentMode === ColorMode.Light;
+      return this.colorModeStore?.currentMode === ColorMode.Light;
     },
   },
   methods: {
@@ -114,7 +114,7 @@ export default defineComponent({
       this.colorModeStore.switchColorModeHandler();
     },
   },
-});
+};
 </script>
 
 <style scoped>
