@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white min-h-screen text-[0.8rem];
+  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white min-h-screen text-[0.85rem];
   font-family: "Epilogue", sans-serif;
 }
 

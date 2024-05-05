@@ -6,14 +6,15 @@ export interface Task {
     finalDate: Date;
     addedDate: Date;
     directoryId: number;
+    directoryName?: string;
 }
 
 export interface TaskFields {
     name: string;
     description: string;
-    directoryId: number | null;
+    directoryId: number;
     important: boolean;
-    finalDate: Date | null;
+    finalDate: Date;
     id?: number;
     addedDate?: Date;
     directoryName?: string;

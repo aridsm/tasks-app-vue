@@ -1,5 +1,5 @@
 <template>
-  <dialog-modal v-model="value" :title="title" card-classes="w-[32rem] p-2">
+  <dialog-modal v-model="open" :title="title" card-classes="w-[32rem] p-2">
     <input-text
       v-model="formModel.name"
       name="name"
@@ -41,6 +41,7 @@
         flat
         class="flex gap-3 items-center"
         data-type="delete-task"
+        @click="onDeleteTask"
       >
         Excluir
         <icon icon="fa-regular fa-trash-can" class="text-lg -mt-1" />
@@ -48,12 +49,13 @@
       <btn
         color="base"
         flat
-        @click="() => (value = false)"
+        @click="() => (open = false)"
         class="ml-auto px-4"
       >
         Cancelar
       </btn>
-      <btn data-type="save-task">
+      <btn data-type="save-task" 
+        @click="onSaveTask">
         {{ formModel?.id ? "Editar" : "Adicionar" }}
       </btn>
     </div>
@@ -61,6 +63,7 @@
 </template>
 
 <script lang="ts">
+import { useTasksStore } from "~/state/tasks.store";
 import type { Task, TaskFields } from "~/utils/interface/Tasks";
 
 export default {
@@ -72,9 +75,14 @@ export default {
     },
     title: { type: String, default: "Adicionar tarefa" },
   },
+  setup() {
+    const taskStore = useTasksStore()
+
+    return { taskStore }
+  },
   emits: ["update:modelValue", "update:form"],
   computed: {
-    value: {
+    open: {
       get() {
         return this.modelValue;
       },
@@ -91,5 +99,15 @@ export default {
       },
     },
   },
+  methods: {
+    onSaveTask() {
+      this.taskStore.saveTaskHandler(this.formModel)
+      this.open = false
+    },
+    onDeleteTask() {
+      this.taskStore.deleteTaskHandler(this.formModel.id!)
+      this.open = false
+    }
+  }
 };
 </script>

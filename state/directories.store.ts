@@ -21,7 +21,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
         }
       } else {
         if (!nameAlreadyExists) {
-          const newId = Math.random() * 1000;
+          const newId = new Date().getTime();
           this.directories.push({
             ...directory,
             id: newId,

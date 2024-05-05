@@ -124,8 +124,8 @@ export default defineComponent({
       this.form = {
         name: "",
         description: "",
-        directoryId: null,
-        finalDate: null,
+        directoryId: 0,
+        finalDate: new Date(),
         important: false
       };
 
