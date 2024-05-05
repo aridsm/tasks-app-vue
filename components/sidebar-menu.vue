@@ -24,6 +24,7 @@
     <btn
       class="mt-6 btn-add-new"
       :class="{ 'mx-6': menuExpanded, 'mx-4': !menuExpanded }"
+      @click="addNewTaskHandler"
     >
       <span v-if="menuExpanded">Adicionar tarefa</span>
       <icon v-else icon="fa-solid fa-plus" />
@@ -84,9 +85,11 @@
       </span>
     </div>
   </header>
+  <modal-task v-model="modalTaskOpen" v-model:form="form" />
 </template>
 
 <script lang="ts">
+import type { TaskFields } from "~/utils/interface/Tasks";
 import { useColorModeStore } from "../state/colorMode.store";
 import { ColorMode } from "../utils/enums/ColorMode";
 
@@ -99,6 +102,8 @@ export default {
   data() {
     return {
       menuExpanded: true,
+      form: {} as TaskFields,
+      modalTaskOpen: false
     };
   },
   computed: {
@@ -112,6 +117,17 @@ export default {
     },
     changeColorModeHandler() {
       this.colorModeStore.switchColorModeHandler();
+    },
+    addNewTaskHandler() {
+      this.form = {
+        name: "",
+        description: "",
+        directoryId: 0,
+        finalDate: new Date(),
+        important: false
+      };
+
+      this.modalTaskOpen = true;
     },
   },
 };
