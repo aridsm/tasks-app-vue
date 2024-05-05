@@ -4,11 +4,13 @@
       v-model="formModel.name"
       name="name"
       label="Nome"
+      :rules="rules.name"
       data-type="input-name"
     />
     <input-select
       v-model="formModel.directoryId"
       :items="directoryStore.directories"
+      :rules="rules.directoryId"
       name="directory"
       class="mt-4 mb-4"
       label="Diretório"
@@ -35,7 +37,7 @@
       data-type="input-important"
     />
     <input-checkbox
-    v-if="formModel.id"
+      v-if="formModel.id"
       v-model="formModel.completed"
       name="completed"
       label="Marcar como concluída"
@@ -68,6 +70,7 @@
 import { useDirectoriesStore } from "~/state/directories.store";
 import { useTasksStore } from "~/state/tasks.store";
 import type { Task, TaskFields } from "~/utils/interface/Tasks";
+import * as yup from "yup";
 
 export default {
   props: {
@@ -83,6 +86,17 @@ export default {
     const directoryStore = useDirectoriesStore();
 
     return { taskStore, directoryStore };
+  },
+  data() {
+    return {
+      rules: {
+        name: yup.string().required("Campo obrigatório"),
+        directoryId: yup
+          .number()
+          .min(1, "Campo obrigatório")
+          .required("Campo obrigatório"),
+      },
+    };
   },
   emits: ["update:modelValue", "update:form"],
   computed: {
@@ -104,9 +118,16 @@ export default {
     },
   },
   methods: {
-    onSaveTask() {
-      this.taskStore.saveTaskHandler(this.formModel);
-      this.open = false;
+    async onSaveTask() {
+      const directoryValidated = await this.rules.directoryId.validate(
+        this.formModel.directoryId
+      );
+      const nameValidated = await this.rules.name.validate(this.formModel.name);
+
+      if (directoryValidated && nameValidated) {
+        this.taskStore.saveTaskHandler(this.formModel);
+        this.open = false;
+      }
     },
     onDeleteTask() {
       this.taskStore.deleteTaskHandler(this.formModel.id!);

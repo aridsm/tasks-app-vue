@@ -8,6 +8,7 @@
       :rules="rules"
       v-slot="{ field, errorMessage }"
       class="flex flex-col"
+      validateOnMount
     >
       <textarea
         v-bind="field"

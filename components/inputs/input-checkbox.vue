@@ -10,6 +10,7 @@
       :value="true"
       class="flex gap-2 items-center"
       validateOnInput
+      validateOnMount
     >
       <label class="input-label cursor-pointer flex items-center">
         <input

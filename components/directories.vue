@@ -48,6 +48,7 @@
   >
     <input-text
       v-model="form.name"
+      :rules="nameRule"
       name="name"
       label="Nome"
       data-type="input-name"
@@ -88,6 +89,7 @@
 <script lang="ts">
 import type { Directory } from "../utils/interface/Directory";
 import { useDirectoriesStore } from "../state/directories.store";
+import * as yup from "yup";
 
 export default {
   setup() {
@@ -97,6 +99,7 @@ export default {
   },
   data() {
     return {
+      nameRule: yup.string().required("Campo obrigatório"),
       modalDirectoryOpen: false,
       form: {
         id: 0,
@@ -119,9 +122,13 @@ export default {
 
       this.modalDirectoryOpen = true;
     },
-    saveDirectoryHandler() {
-      this.directoryStore.saveDirectoryHandler(this.form);
-      this.modalDirectoryOpen = false;
+    async saveDirectoryHandler() {
+      const nameValidated = await this.nameRule.validate(this.form.name);
+
+      if (nameValidated) {
+        this.directoryStore.saveDirectoryHandler(this.form);
+        this.modalDirectoryOpen = false;
+      }
     },
     deleteDirectoryHandler() {
       if (this.form.id) {

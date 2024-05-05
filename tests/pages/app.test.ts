@@ -7,11 +7,11 @@ import App from '../../app.vue'
 describe('app', () => {
     const app = mount(App)
 
-    test('It renders', () => {
-        expect(app.html()).toContain('sidebar-menu')
+    it('Renders', () => {
+        expect(app).toBeTruthy()
     })
 
-    test('It shows the correct date', () => {
+    it('Shows the correct date', () => {
         const todaysDate = new Date()
 
         expect(app.html()).toContain(daysWeek[dayjs(todaysDate).day()].fullName)

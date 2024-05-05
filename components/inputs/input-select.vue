@@ -7,7 +7,7 @@
       :id="name"
       :rules="rules"
       v-slot="{ errorMessage }"
-      :validateOnMount="true"
+      validateOnMount
       class="flex flex-col"
     >
       <button

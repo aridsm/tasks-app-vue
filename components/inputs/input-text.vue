@@ -9,6 +9,7 @@
       v-slot="{ field, errorMessage }"
       class="flex flex-col"
       validateOnInput
+      validateOnMount
     >
       <div class="relative">
         <input
