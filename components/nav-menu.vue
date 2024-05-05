@@ -39,7 +39,7 @@ export default defineComponent({
           count: 0
         },
         {
-          to: '/done',
+          to: '/completed',
           title: 'Tarefas concluídas',
           icon: 'fa-regular fa-circle-check',
           count: 0
@@ -51,8 +51,8 @@ export default defineComponent({
           count: 0
         },
         {
-          to: '/favorite',
-          title: 'Favoritadas',
+          to: '/important',
+          title: 'Importantes',
           icon: 'fa-regular fa-star',
           count: 0
         }

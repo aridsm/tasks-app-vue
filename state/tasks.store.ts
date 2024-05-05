@@ -2,6 +2,7 @@ import type { Task, TaskFields } from "../utils/interface/Tasks";
 import { defineStore } from "pinia";
 import { Arrangement } from "../utils/enums/Arrangement";
 import type { SortBy } from "../utils/enums/SortBy";
+import dayjs from 'dayjs';
 import { useDirectoriesStore } from "./directories.store";
 import type { Directory } from "../utils/interface/Directory";
 
@@ -25,14 +26,18 @@ export const useTasksStore = defineStore("TasksStore", {
     importantTasks(state) {
       return state.tasks.filter((task: Task) => task.important);
     },
-    tasksAddedToday(state) {
-      return state.tasks.filter((task: Task) => task.important);
+    todaysTasks(state) {
+      return state.tasks.filter((task: Task) => {
+        const todaysDate = dayjs(new Date).format('DD/MM/YYYY')
+        const taskDate = dayjs(task.addedDate).format('DD/MM/YYYY')
+        return todaysDate === taskDate
+      });
     },
     lateTasks(state) {
       return state.tasks.filter((task: Task) => task.important);
     },
-    tasksDone(state) {
-      return state.tasks.filter((task: Task) => task.important);
+    completedTasks(state) {
+      return state.tasks.filter((task: Task) => task.completed);
     },
   },
   actions: {

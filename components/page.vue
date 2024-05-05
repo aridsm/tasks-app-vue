@@ -126,7 +126,8 @@ export default defineComponent({
         description: "",
         directoryId: 0,
         finalDate: new Date(),
-        important: false
+        important: false,
+        completed: false
       };
 
       this.modalTaskOpen = true;

@@ -14,7 +14,7 @@ body {
 
 
 .input-label {
-  @apply flex items-center gap-2 mb-1 dark:text-white -tracking-tighter text-xs uppercase leading-none opacity-70;
+  @apply flex items-center gap-2 mb-1 dark:text-white -tracking-tighter text-xs uppercase leading-none;
 }
 
 ::-webkit-scrollbar {

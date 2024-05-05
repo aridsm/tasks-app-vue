@@ -105,7 +105,8 @@ describe('useDirectoriesStore', () => {
                     directoryName: 'An example',
                     important: false,
                     finalDate: new Date(),
-                    id: 1
+                    id: 1,
+                    completed: false
                 },
                 {
                     name: 'My new task',
@@ -114,7 +115,8 @@ describe('useDirectoriesStore', () => {
                     directoryId: 1,
                     important: false,
                     finalDate: new Date(),
-                    id: 1
+                    id: 1,
+                    completed: false
                 }
             ]
         })

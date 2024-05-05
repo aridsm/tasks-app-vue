@@ -5,6 +5,15 @@ import { useDirectoriesStore } from "../../state/directories.store"
 
 const app = createApp({})
 
+const taskExample = {
+    name: 'My new task',
+    description: 'The description',
+    directoryId: 1,
+    important: false,
+    finalDate: new Date(),
+    completed: false
+}
+
 describe('useTasksStore', () => {
     beforeEach(() => {
         const pinia = createPinia()
@@ -17,13 +26,7 @@ describe('useTasksStore', () => {
 
         expect(taskStore.tasks).toHaveLength(0)
 
-        taskStore.saveTaskHandler({
-            name: 'My new task',
-            description: 'The description',
-            directoryId: 1,
-            important: false,
-            finalDate: new Date(),
-        })
+        taskStore.saveTaskHandler(taskExample)
 
         expect(taskStore.tasks).toHaveLength(1)
     })
@@ -35,11 +38,7 @@ describe('useTasksStore', () => {
 
         taskStore.$patch({
             tasks: [{
-                name: 'My new task',
-                description: 'The description',
-                directoryId: 1,
-                important: false,
-                finalDate: new Date(),
+                ...taskExample,
                 id: 1
             }]
         })
@@ -50,7 +49,8 @@ describe('useTasksStore', () => {
             directoryId: 2,
             important: false,
             finalDate: new Date(),
-            id: 1
+            id: 1,
+            completed: false
         })
 
         expect(taskStore.tasks).toHaveLength(1)
@@ -60,7 +60,8 @@ describe('useTasksStore', () => {
             directoryId: 2,
             important: false,
             finalDate: taskStore.tasks[0].finalDate,
-            id: 1
+            id: 1,
+            completed: false
         })
     })
 
@@ -83,14 +84,7 @@ describe('useTasksStore', () => {
             ]
         })
 
-        taskStore.saveTaskHandler({
-            name: 'My new task',
-            description: 'The description',
-            directoryId: 1,
-            important: false,
-            finalDate: new Date(),
-            id: 0
-        })
+        taskStore.saveTaskHandler(taskExample)
 
         expect(taskStore.tasks[0].directoryName).toBe('Pasta 1')
 
@@ -100,7 +94,8 @@ describe('useTasksStore', () => {
             directoryId: 2,
             important: false,
             finalDate: new Date(),
-            id: taskStore.tasks[0].id
+            id: taskStore.tasks[0].id,
+            completed: false
         })
 
         expect(taskStore.tasks[0].directoryName).toBe('Pasta 2')
@@ -112,12 +107,8 @@ describe('useTasksStore', () => {
         taskStore.$patch({
             tasks: [
                 {
-                    name: 'My new task',
-                    description: 'The description',
-                    directoryId: 1,
-                    important: false,
-                    finalDate: new Date(),
-                    id: 1
+                    ...taskExample,
+                    id: 1,
                 }
             ]
         })

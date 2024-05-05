@@ -1,7 +1,7 @@
 <template>
   <button class=" text-nowrap overflow-hidden uppercase leading-none font-semibold -tracking-tighter text-xs rounded-sm hover:opacity-80 "
   :class="{
-    'bg-transparent': color === 'base' && !flat,
+    'bg-light-text dark:bg-dark-100 text-white': color === 'base' && !flat,
     'bg-blue-light dark:bg-lilac text-white': color === 'blue' && !flat,
     'bg-red-400 dark:bg-lilac text-white': color === 'red' && !flat,
     'text-light-text dark:text-dark-text bg-transparent': color === 'base' && flat,

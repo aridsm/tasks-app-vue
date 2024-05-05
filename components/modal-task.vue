@@ -34,6 +34,14 @@
       class="mt-4"
       data-type="input-important"
     />
+    <input-checkbox
+    v-if="formModel.id"
+      v-model="formModel.completed"
+      name="completed"
+      label="Marcar como concluída"
+      class="mt-4"
+      data-type="input-completed"
+    />
     <div class="flex mt-4 gap-4">
       <btn
         v-if="formModel.id"
@@ -46,16 +54,10 @@
         Excluir
         <icon icon="fa-regular fa-trash-can" class="text-lg -mt-1" />
       </btn>
-      <btn
-        color="base"
-        flat
-        @click="() => (open = false)"
-        class="ml-auto px-4"
-      >
+      <btn color="base" flat @click="() => (open = false)" class="ml-auto px-4">
         Cancelar
       </btn>
-      <btn data-type="save-task" 
-        @click="onSaveTask">
+      <btn data-type="save-task" @click="onSaveTask">
         {{ formModel?.id ? "Editar" : "Adicionar" }}
       </btn>
     </div>
@@ -77,10 +79,10 @@ export default {
     title: { type: String, default: "Adicionar tarefa" },
   },
   setup() {
-    const taskStore = useTasksStore()
-    const directoryStore = useDirectoriesStore()
+    const taskStore = useTasksStore();
+    const directoryStore = useDirectoriesStore();
 
-    return { taskStore, directoryStore}
+    return { taskStore, directoryStore };
   },
   emits: ["update:modelValue", "update:form"],
   computed: {
@@ -103,13 +105,13 @@ export default {
   },
   methods: {
     onSaveTask() {
-      this.taskStore.saveTaskHandler(this.formModel)
-      this.open = false
+      this.taskStore.saveTaskHandler(this.formModel);
+      this.open = false;
     },
     onDeleteTask() {
-      this.taskStore.deleteTaskHandler(this.formModel.id!)
-      this.open = false
-    }
-  }
+      this.taskStore.deleteTaskHandler(this.formModel.id!);
+      this.open = false;
+    },
+  },
 };
 </script>
