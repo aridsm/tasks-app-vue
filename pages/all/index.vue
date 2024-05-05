@@ -2,7 +2,7 @@
   <page title="Todas as tarefas">
     <card v-for="task in dummyTasks" :key="task.id" class="w-full">
       <template #header>
-        <div class="flex justify-between items-center text-sm">
+        <div class="flex justify-between items-center text-xs">
           <span
             ><icon icon="fa-regular fa-folder-open" class="mr-1" />
             {{ task.directoryName }}</span
@@ -11,7 +11,7 @@
         </div>
       </template>
         <div class="flex gap-4 justify-between items-start">
-          <p class="text-lg font-semibold mb-2">{{ task.name }}</p>
+          <p class="text-base font-semibold mb-2">{{ task.name }}</p>
           <options-btn data-type="option-task" />
         </div>
         <p class="text-light-light-text dark:text-dark-text mb-8">

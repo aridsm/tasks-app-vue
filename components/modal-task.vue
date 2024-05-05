@@ -1,5 +1,5 @@
 <template>
-  <dialog-modal v-model="value" :title="title" card-classes="w-[36rem] p-2">
+  <dialog-modal v-model="value" :title="title" card-classes="w-[32rem] p-2">
     <input-text
       v-model="formModel.name"
       name="name"
@@ -24,7 +24,7 @@
       v-model="formModel.description"
       name="description"
       label="Descrição"
-      class="mt-4"
+      class="mt-4 max-h-60"
       data-type="input-description"
     />
     <input-checkbox

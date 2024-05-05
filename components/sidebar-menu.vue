@@ -3,7 +3,7 @@
     class="bg-blue-light dark:bg-dark-200 text-white relative h-screen py-6 border-r border-r-dark-text/[.1] border-t-8 border-t-blue-light dark:border-t-lilac flex flex-col transition-all"
     data-type="container"
     :class="{
-      'w-80': menuExpanded,
+      'w-72': menuExpanded,
       'w-20': !menuExpanded,
     }"
   >

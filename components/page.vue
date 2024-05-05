@@ -1,12 +1,12 @@
 <template>
   <div class="max-w-[1420px] w-full mx-auto">
-    <h1 v-if="title" class="text-2xl font-semibold -tracking-tight mb-8">
+    <h1 v-if="title" class="text-2xl font-semibold -tracking-tight mb-6">
       {{ title }}
     </h1>
     <directories />
 
     <div
-      class="border-t dark:border-t-dark-100 border-t-light-text/[.1] pt-8 mt-8"
+      class="border-t dark:border-t-dark-100 border-t-light-text/[.1] pt-6 mt-6"
     >
       <div class="mb-3 flex justify-between items-center">
         <section-title class="flex gap-3">
@@ -22,7 +22,7 @@
           Adicionar tarefa
         </btn-add>
       </div>
-      <div class="mb-6 flex items-center gap-1">
+      <div class="mb-4 flex items-center gap-1">
         <button
           v-for="button in sortButtons"
           :key="button.id"
@@ -48,7 +48,7 @@
         />
       </div>
       <ul
-        class="grid gap-6"
+        class="grid gap-8"
         :class="{
           'grid-cols-3': tasksStore.arrangement === Arrangement.Grid,
           'grid-cols-1': tasksStore.arrangement === Arrangement.Grid,

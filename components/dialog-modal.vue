@@ -8,7 +8,7 @@
     >
       <card :class="cardClasses" darker>
         <div class="flex justify-between items-center gap-4">
-          <h2 v-if="title" class="text-2xl font-semibold">{{ title }}</h2>
+          <h2 v-if="title" class="text-xl font-semibold">{{ title }}</h2>
           <button
             aria-label="fechar"
             @click="$emit('update:modelValue', false)"
@@ -17,7 +17,7 @@
             <icon icon="fa-solid fa-xmark" />
           </button>
         </div>
-        <div class="mt-6">
+        <div class="mt-4">
           <slot />
         </div>
       </card>

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex justify-between items-center mb-4">
       <section-title>
         Diretórios ({{ directoryStore.directories.length }})</section-title
       >

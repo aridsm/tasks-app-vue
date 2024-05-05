@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white min-h-screen text-[0.9rem];
+  @apply bg-light-200 dark:bg-dark-300 text-light-text dark:text-white min-h-screen text-[0.8rem];
   font-family: "Epilogue", sans-serif;
 }
 
@@ -14,7 +14,7 @@ body {
 
 
 .input-label {
-  @apply flex items-center gap-2 mb-2 dark:text-white -tracking-tighter text-sm uppercase leading-none;
+  @apply flex items-center gap-2 mb-1 dark:text-white -tracking-tighter text-xs uppercase leading-none opacity-70;
 }
 
 ::-webkit-scrollbar {

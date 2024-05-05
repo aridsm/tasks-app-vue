@@ -1,5 +1,5 @@
 <template>
-  <button class=" text-nowrap overflow-hidden uppercase leading-none font-semibold -tracking-tighter text-sm rounded-sm hover:opacity-90 "
+  <button class=" text-nowrap overflow-hidden uppercase leading-none font-semibold -tracking-tighter text-xs rounded-sm hover:opacity-90 "
   :class="{
     'bg-transparent': color === 'base' && !flat,
     'bg-blue-light dark:bg-lilac text-white': color === 'blue' && !flat,
