@@ -35,20 +35,20 @@
 
       <div
         v-if="dateCalendarShown"
-        class="bg-dark-200 absolute top-full left-0 w-max p-2  z-50"
+        class="dark:bg-dark-200 bg-light-100 absolute top-full left-0 w-max p-2  z-50"
       >
         <div
-          class="border border-dark-text/[.1] p-1 rounded-sm flex justify-between items-center"
+          class="border dark:border-dark-text/[.1] p-1 rounded-sm flex justify-between items-center"
         >
           <button
-            class="w-8 h-8 bg-dark-100 hover:bg-lilac grid place-items-center"
+            class="w-8 h-8 dark:bg-dark-100 bg-light-text/[.1] hover:text-white hover:bg-blue-light dark:hover:bg-lilac grid place-items-center"
             @click="selectPreviousMonthHandler"
           >
             <icon icon="fa-solid fa-chevron-left" />
           </button>
           <span>{{ months[currentMonth as number] }} {{ currentYear }}</span>
           <button
-            class="w-8 h-8 bg-dark-100 hover:bg-lilac grid place-items-center"
+            class="w-8 h-8 dark:bg-dark-100 bg-light-text/[.1] hover:text-white hover:bg-blue-light dark:hover:bg-lilac grid place-items-center"
             @click="selectNextMonthHandler"
           >
             <icon icon="fa-solid fa-chevron-right" />
@@ -71,8 +71,8 @@
             class="w-12 h-12 grid place-items-center rounded-sm"
             :class="{
               'text-dark-text cursor-not-allowed': !day.enabled,
-              'hover:bg-dark-100 cursor-pointer text': day.enabled,
-              'bg-lilac hover:bg-lilac': currentDay === day.day && day.enabled,
+              'dark:hover:bg-dark-100 hover:bg-light-text/[.1] cursor-pointer text': day.enabled,
+              'bg-blue-light hover:bg-blue-light dark:bg-lilac dark:hover:bg-lilac ': currentDay === day.day && day.enabled,
             }"
             @click="day.enabled ? selectDayHandler(day.day) : undefined"
           >

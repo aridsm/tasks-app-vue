@@ -6,7 +6,7 @@
       class="w-screen h-screen absolute bg-black/[.2] top-0 left-0 z-[99999] grid place-items-center"
       @click.self="$emit('update:modelValue', false)"
     >
-      <card :class="cardClasses">
+      <card :class="cardClasses" darker>
         <div class="flex justify-between items-center gap-4">
           <h2 v-if="title" class="text-2xl font-semibold">{{ title }}</h2>
           <button

@@ -19,6 +19,7 @@ module.exports = {
         'light-100': '#F5F6F9',
         'light-200': '#F1F1F6',
         'light-text': '#5F5E65',
+        'light-light-text': '#818080',
         'lilac': '#5D52D7',
         'blue-light': '#766ED9',
         'light-pink': '#FFE4E4',

@@ -18,17 +18,21 @@
             >{{ directoryName }} ({{ directoryCount }})</span
           >
         </section-title>
-        <btn-add data-type="add-directory"> Adicionar tarefa </btn-add>
+        <btn-add data-type="add-directory" @click="addNewTaskHandler">
+          Adicionar tarefa
+        </btn-add>
       </div>
       <div class="mb-6 flex items-center gap-1">
         <button
           v-for="button in sortButtons"
           :key="button.id"
           :title="button.title"
-          class="grid place-items-center hover:bg-dark-text/[.1] w-10 h-10 rounded-full "
+          class="grid place-items-center hover:bg-dark-text/[.1] w-10 h-10 rounded-full"
           :class="{
-            'text-light-text/[.5] dark:text-dark-text': tasksStore.arrangement !== button.arrangement,
-            'dark:text-lilac text-blue-light': tasksStore.arrangement === button.arrangement,
+            'text-light-text/[.5] dark:text-dark-text':
+              tasksStore.arrangement !== button.arrangement,
+            'dark:text-lilac text-blue-light':
+              tasksStore.arrangement === button.arrangement,
           }"
           @click="tasksStore.setTasksArrangement(button.arrangement)"
         >
@@ -43,9 +47,18 @@
           placeholder="Ordenar por"
         />
       </div>
-      <slot />
+      <ul
+        class="grid gap-6"
+        :class="{
+          'grid-cols-3': tasksStore.arrangement === Arrangement.Grid,
+          'grid-cols-1': tasksStore.arrangement === Arrangement.Grid,
+        }"
+      >
+        <slot />
+      </ul>
     </div>
   </div>
+  <modal-task v-model="modalTaskOpen" v-model:form="form" />
 </template>
 
 <script lang="ts">
@@ -54,6 +67,7 @@ import directories from "./directories.vue";
 import { useTasksStore } from "~/state/tasks.store";
 import { Arrangement } from "~/utils/enums/Arrangement";
 import { SortByList, SortBy } from "~/utils/enums/SortBy";
+import type { TaskFields } from "~/utils/interface/Tasks";
 
 export default defineComponent({
   components: { directories },
@@ -61,7 +75,7 @@ export default defineComponent({
     const directoryStore = useDirectoriesStore();
     const tasksStore = useTasksStore();
 
-    return { directoryStore, tasksStore, SortByList};
+    return { directoryStore, tasksStore, SortByList, Arrangement };
   },
   props: {
     title: String,
@@ -69,17 +83,18 @@ export default defineComponent({
   data() {
     return {
       sortBy: null as unknown as SortBy,
+      form: {} as TaskFields,
+      modalTaskOpen: false,
     };
   },
   watch: {
     sortBy() {
-      this.tasksStore.setTasksSort(this.sortBy)
-    }
+      this.tasksStore.setTasksSort(this.sortBy);
+    },
   },
   computed: {
     directoryName() {
       return this.directoryStore.selectedDirectory?.name;
-      
     },
     directoryCount() {
       return this.directoryStore.selectedDirectory?.count;
@@ -102,6 +117,19 @@ export default defineComponent({
         ];
       },
       set() {},
+    },
+  },
+  methods: {
+    addNewTaskHandler() {
+      this.form = {
+        name: "",
+        description: "",
+        directoryId: null,
+        finalDate: null,
+        important: false
+      };
+
+      this.modalTaskOpen = true;
     },
   },
 });

@@ -21,7 +21,7 @@
           :placeholder="placeholder"
           @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)"
         />
-        <icon v-show="icon" :icon="icon" class="absolute right-4 top-4" />
+        <icon v-if="icon" :icon="icon" class="absolute right-4 top-4" />
       </div>
       <text-error>{{ errorMessage }}</text-error>
     </Field>
