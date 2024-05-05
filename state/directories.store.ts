@@ -1,5 +1,6 @@
 import type { Directory } from "~/utils/interface/Directory";
 import { defineStore } from "pinia";
+import { useTasksStore } from "./tasks.store";
 
 export const useDirectoriesStore = defineStore("DirectoriesStore", {
   state: () => ({
@@ -19,6 +20,10 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
             this.directories.splice(index, 1, directory);
           }
         }
+        const tasksStore = useTasksStore()
+
+        tasksStore.updateDirectoryName(directory)
+        
       } else {
         if (!nameAlreadyExists) {
           const newId = new Date().getTime();

@@ -8,7 +8,7 @@
     />
     <input-select
       v-model="formModel.directoryId"
-      :items="[]"
+      :items="directoryStore.directories"
       name="directory"
       class="mt-4 mb-4"
       label="Diretório"
@@ -63,6 +63,7 @@
 </template>
 
 <script lang="ts">
+import { useDirectoriesStore } from "~/state/directories.store";
 import { useTasksStore } from "~/state/tasks.store";
 import type { Task, TaskFields } from "~/utils/interface/Tasks";
 
@@ -77,8 +78,9 @@ export default {
   },
   setup() {
     const taskStore = useTasksStore()
+    const directoryStore = useDirectoriesStore()
 
-    return { taskStore }
+    return { taskStore, directoryStore}
   },
   emits: ["update:modelValue", "update:form"],
   computed: {

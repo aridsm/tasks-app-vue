@@ -5,11 +5,11 @@ import { useTasksStore } from "../../state/tasks.store"
 const app = createApp({})
 
 describe('useTasksStore', () => {
-    beforeEach(() => {
-        const pinia = createPinia()
-        app.use(pinia)
-        setActivePinia(pinia)
-    })
+    // beforeEach(() => {
+    //     const pinia = createPinia()
+    //     app.use(pinia)
+    //     setActivePinia(pinia)
+    // })
 
     it.todo('saves a new task')
     it.todo('deletes task')

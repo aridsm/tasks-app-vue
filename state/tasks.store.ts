@@ -2,6 +2,18 @@ import type { Task, TaskFields } from "../utils/interface/Tasks";
 import { defineStore } from "pinia";
 import { Arrangement } from "../utils/enums/Arrangement";
 import type { SortBy } from "../utils/enums/SortBy";
+import { useDirectoriesStore } from "./directories.store";
+import type { Directory } from "../utils/interface/Directory";
+
+function getDirectoryName(directoryId: number) {
+  const directoryStore = useDirectoriesStore();
+
+  const directory: Directory | undefined = directoryStore.directories.find(
+    (d) => d.id === directoryId
+  );
+
+  return directory?.name || undefined;
+}
 
 export const useTasksStore = defineStore("TasksStore", {
   state: () => ({
@@ -28,6 +40,7 @@ export const useTasksStore = defineStore("TasksStore", {
       if (!task.id) {
         const newTask = {
           ...task,
+          directoryName: getDirectoryName(task.directoryId),
           id: new Date().getTime(),
           addedDate: new Date(),
         };
@@ -36,7 +49,10 @@ export const useTasksStore = defineStore("TasksStore", {
         const taskIndex = this.tasks.findIndex((t) => t.id === task.id);
 
         if (taskIndex >= 0) {
-          this.tasks.splice(taskIndex, 1, task as Task);
+          this.tasks.splice(taskIndex, 1, {
+            ...task as Task,
+            directoryName: getDirectoryName(task.directoryId),
+          });
         }
       }
     },
@@ -54,10 +70,18 @@ export const useTasksStore = defineStore("TasksStore", {
       this.sortBy = sortBy;
     },
     toggleImportant(task: Task) {
-      const findTask = this.tasks.find(t => t.id === task.id)
+      const findTask = this.tasks.find((t) => t.id === task.id);
       if (findTask) {
-        findTask.important = !findTask.important
+        findTask.important = !findTask.important;
       }
+    },
+    updateDirectoryName(directory: Directory) {
+      this.tasks = this.tasks.map(task => {
+        if (task.directoryId === directory.id) {
+          task.directoryName = directory.name
+        }
+        return task
+      })
     }
   },
 });

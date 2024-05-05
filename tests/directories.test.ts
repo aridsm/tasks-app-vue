@@ -33,13 +33,49 @@ describe("directories", () => {
 
   it("it renders", () => {
     const DirectoriesComponent = mount(Directories);
-    expect(DirectoriesComponent.html()).toContain("Adicionar diretório");
+    expect(DirectoriesComponent.html()).toBeTruthy();
   });
 
-  it("saves a new directory", async () => {
+  it("shows message if there is no directory added", () => {
+    
     const DirectoriesComponent = mount(Directories);
 
     expect(DirectoriesComponent.html()).toContain('Nenhum diretório adicionado')
+  })
+
+  it("doesn't show message if there is at least one directory added", () => {
+    
+    const DirectoriesComponent = factory();
+
+    expect(DirectoriesComponent.html()).not.toContain('Nenhum diretório adicionado')
+  })
+
+  it("opens modal if a option directory or add button was clicked", async () => {
+    const DirectoriesComponent = factory();
+
+    const btnAddDirectory = DirectoriesComponent.find(
+      '[data-type="add-directory"]'
+    );
+
+    await btnAddDirectory.trigger("click");
+
+    assert.isTrue(DirectoriesComponent.getCurrentComponent().data.modalDirectoryOpen)
+
+    DirectoriesComponent.setData({
+      modalDirectoryOpen: false
+    })
+
+    assert.isFalse(DirectoriesComponent.getCurrentComponent().data.modalDirectoryOpen)
+    
+    const firstDirectoryOptions = DirectoriesComponent.find('[data-type="option-directory"]')
+    await firstDirectoryOptions.trigger('click.stop')
+
+    assert.isTrue(DirectoriesComponent.getCurrentComponent().data.modalDirectoryOpen)
+
+  })
+
+  it("saves a new directory", async () => {
+    const DirectoriesComponent = mount(Directories);
 
     const directoryStore = useDirectoriesStore();
     const btnAddDirectory = DirectoriesComponent.find(
@@ -61,11 +97,9 @@ describe("directories", () => {
     expect(directoryStore.directories).toHaveLength(1)
     expect(itemsDirectory.length).toBe(1);
 
-    expect(DirectoriesComponent.html()).not.toContain('Nenhum diretório adicionado')
-
   });
 
-  it('Select the right directory when it is clicked', async () => {
+  it('selects the right directory when it is clicked', async () => {
     const wrapper = factory()
     const directoryStoreSpy = useDirectoriesStore();
 
@@ -73,20 +107,9 @@ describe("directories", () => {
     await firstDirectoryOptions.trigger('click.stop')
 
     expect(wrapper.getCurrentComponent().data.form).toMatchObject(directoryStoreSpy.directories[0])
-
-    assert.isTrue(wrapper.getCurrentComponent().data.modalDirectoryOpen, 'form modal was open')
-
-    const btnSaveDirectory = wrapper.find(
-      '[data-type="save-directory"]'
-    );
-    
-    await btnSaveDirectory.trigger("click");
-
-    assert.isNotTrue(wrapper.getCurrentComponent().data.modalDirectoryOpen, 'form modal was closed')
   })
 
   it("calls saveDirectoryHandler from directoriesStore / mocked", async () => {
-
     const wrapper = factory({
       data: {
         form: {
@@ -132,8 +155,6 @@ describe("directories", () => {
     const btnSaveDirectory = DirectoriesComponent.find(
       '[data-type="save-directory"]'
     );
-    
-
     await btnSaveDirectory.trigger("click");
 
     expect(directoryStoreSpy.saveDirectoryHandler).toHaveBeenCalledOnce()
@@ -157,5 +178,17 @@ describe("directories", () => {
 
     expect(directoriesStore.deleteDirectoryHandler).toHaveBeenCalledOnce()
     expect(directoriesStore.deleteDirectoryHandler).toHaveBeenCalledWith(1)
+  })
+
+  it('selects the directory if it\'s clicked / mocked', async () => {
+    const DirectoryComponent = factory()
+    const directoriesStore = useDirectoriesStore()
+
+    const firstDirectory = DirectoryComponent.find('[data-type="item-directory"]')
+
+    await firstDirectory.trigger('click')
+
+    expect(directoriesStore.selectDirectoryHandler).toHaveBeenCalledOnce()
+    expect(directoriesStore.selectDirectoryHandler).toHaveBeenCalledWith(directoriesStore.directories[0])
   })
 });

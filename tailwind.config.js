@@ -14,10 +14,10 @@ module.exports = {
       colors: {
         'dark-text': '#A1A1B6',
         'dark-100': '#3C4155',
-        'dark-200': '#313547',
+        'dark-200': '#2D3040',
         'dark-300': '#262936',
         'light-100': '#F5F6F9',
-        'light-200': '#F1F1F6',
+        'light-200': '#EDEEF3',
         'light-text': '#5F5E65',
         'light-light-text': '#818080',
         'lilac': '#5D52D7',

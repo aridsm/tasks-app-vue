@@ -40,7 +40,7 @@
 
     <div
       v-if="itemsShown"
-      class="bg-light-100 dark:bg-dark-200 absolute top-full left-0 max-w-80 w-max min-w-full z-50"
+      class="bg-light-100 dark:bg-dark-200 absolute left-0 max-w-80 w-max min-w-full z-50 items-select"
     >
       <ul class="max-h-56 overflow-auto">
         <li
@@ -85,6 +85,7 @@ export default defineComponent({
     selectItemHandler(item: Item) {
       this.objectItem = item;
       this.$emit("update:modelValue", item.id);
+      this.itemsShown = false
     },
     clearModelValueHandler() {
       this.objectItem = {} as Item;
@@ -125,5 +126,9 @@ export default defineComponent({
 });
 </script>
   
-<style>
+<style scoped>
+.items-select {
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.03);
+  top: calc(100% + 5px)
+}
 </style>

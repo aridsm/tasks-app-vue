@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col  border-dark-text/[.2] dark:border-dark-text/[.1] text-light-text dark:text-white rounded-sm card"
+  <div class="flex flex-col border-dark-text/[.2] dark:border-dark-text/[.1] text-light-text dark:text-white rounded-sm card"
   :class="{
     'bg-light-200 dark:bg-dark-300 border': darker,
     'bg-light-100 dark:bg-dark-200 border': !darker
