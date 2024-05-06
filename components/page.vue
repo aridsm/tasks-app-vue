@@ -6,7 +6,7 @@
     <directories />
 
     <div
-      class="border-t dark:border-t-dark-100 border-t-light-text/[.1] pt-6 mt-6"
+      class="border-t dark:border-t-dark-100 border-t-light-text/[.15] pt-6 mt-6"
     >
       <div class="mb-3 flex justify-between items-center">
         <section-title class="flex gap-3">
@@ -47,15 +47,20 @@
           placeholder="Ordenar por"
         />
       </div>
-      <ul
+      <TransitionGroup
+        name="list"
+        tag="ul"
         class="grid gap-8"
         :class="{
           'grid-cols-3': tasksStore.arrangement === Arrangement.Grid,
           'grid-cols-1': tasksStore.arrangement === Arrangement.Grid,
         }"
       >
-        <slot />
-      </ul>
+        <card-task v-for="task in tasks" :key="task.id" :task="task" />
+      </TransitionGroup>
+      <p v-if="!tasks.length" class="text-light-text/[.5] dark:text-dark-text">
+        Nenhuma tarefa adicionada!
+      </p>
     </div>
   </div>
   <modal-task v-model="modalTaskOpen" v-model:form="form" />
@@ -67,7 +72,8 @@ import directories from "./directories.vue";
 import { useTasksStore } from "~/state/tasks.store";
 import { Arrangement } from "~/utils/enums/Arrangement";
 import { SortByList, SortBy } from "~/utils/enums/SortBy";
-import type { TaskFields } from "~/utils/interface/Tasks";
+import type { Task, TaskFields } from "~/utils/interface/Tasks";
+import type { PropType } from "vue";
 
 export default defineComponent({
   components: { directories },
@@ -79,6 +85,7 @@ export default defineComponent({
   },
   props: {
     title: String,
+    tasks: { type: Array as PropType<Task[]>, required: true },
   },
   data() {
     return {
@@ -127,7 +134,7 @@ export default defineComponent({
         directoryId: 0,
         finalDate: new Date(),
         important: false,
-        completed: false
+        completed: false,
       };
 
       this.modalTaskOpen = true;
@@ -136,4 +143,17 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.2s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-leave-active {
+  position: absolute;
+}
+</style>

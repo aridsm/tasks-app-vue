@@ -35,7 +35,7 @@
 
       <div
         v-if="dateCalendarShown"
-        class="dark:bg-dark-200 bg-light-100 absolute top-full left-0 w-max p-2  z-50"
+        class="dark:bg-dark-200 bg-light-100 absolute top-full left-0 w-max p-2 container-date z-50"
       >
         <div
           class="border dark:border-dark-text/[.1] p-1 rounded-sm flex justify-between items-center"
@@ -227,4 +227,10 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+  
+<style scoped>
+.container-date {
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.08);
+  top: calc(100% + 5px)
+}
+</style>

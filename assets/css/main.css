@@ -9,7 +9,7 @@ body {
 }
 
 .x-input {
-  @apply outline outline-transparent focus:outline-blue-light dark:focus:outline-lilac border border-dark-text/[.3] dark:border-dark-text/[.1] bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
+  @apply outline outline-2 outline-transparent focus:outline-blue-light dark:focus:outline-lilac border border-dark-text/[.3] dark:border-dark-text/[.1] bg-light-100 dark:bg-dark-200 rounded-sm text-light-text dark:text-white placeholder:text-dark-text py-3 px-4;
 }
 
 
@@ -29,3 +29,12 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-light-text/[.1] hover:bg-blue-light dark:bg-dark-100 dark:hover:bg-dark-text/[.1];
 }
+
+::-moz-selection { 
+  color: red;
+  background: yellow;
+  }
+  
+  ::selection {
+  @apply bg-yellow-200/[.6] 
+  }

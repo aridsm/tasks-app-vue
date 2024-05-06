@@ -1,12 +1,5 @@
 <template>
-  <page title="Todas as tarefas">
-  
-   <card-task v-for="task in taskStore.tasks" :key="task.id" :task="task" />
-   
-   <p v-if="!taskStore.tasks.length" class="text-light-text/[.5] dark:text-dark-text">
-      Nenhuma tarefa adicionada!
-    </p>
-  </page>
+  <page title="Todas as tarefas" :tasks="taskStore.tasks" />
 </template>
 
 <script lang="ts">

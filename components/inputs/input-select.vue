@@ -128,7 +128,7 @@ export default defineComponent({
   
 <style scoped>
 .items-select {
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.08);
   top: calc(100% + 5px)
 }
 </style>

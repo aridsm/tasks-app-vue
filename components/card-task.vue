@@ -1,6 +1,7 @@
 <template>
-  <modal-task v-model="modalTaskOpen" v-model:form="form" />
-  <card class="w-full">
+  <li class="w-full h-full">
+  <modal-task v-model="modalTaskOpen" v-model:form="form" title="Editar tarefa" />
+  <card class="w-full h-full">
     <template #header>
       <div class="flex justify-between items-center text-xs">
         <span
@@ -48,6 +49,7 @@
       </div>
     </div>
   </card>
+  </li>
 </template>
 
 <script lang="ts">

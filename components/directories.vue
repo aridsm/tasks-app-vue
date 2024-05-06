@@ -8,7 +8,9 @@
         Adicionar diretório
       </btn-add>
     </div>
-    <ul
+    <TransitionGroup
+      name="list"
+      tag="ul"
       v-if="directoryStore.directories.length"
       class="flex rounded-sm overflow-auto gap-2 pb-2"
     >
@@ -35,7 +37,7 @@
           @click.stop="() => openFormNewDirectory(directory)"
         />
       </li>
-    </ul>
+    </TransitionGroup>
     <p v-else class="text-light-text/[.5] dark:text-dark-text">
       Nenhum diretório adicionado!
     </p>
@@ -140,4 +142,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.2s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-leave-active {
+  position: absolute;
+}
+</style>
