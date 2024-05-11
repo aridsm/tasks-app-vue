@@ -92,7 +92,7 @@
 import type { Directory } from "../utils/interface/Directory";
 import { useDirectoriesStore } from "../state/directories.store";
 import * as yup from "yup";
-import { useAlertStore } from "~/state/alerts.store";
+import { useAlertStore } from "../state/alerts.store";
 
 export default {
   setup() {

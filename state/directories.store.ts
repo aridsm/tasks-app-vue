@@ -1,4 +1,4 @@
-import type { Directory } from "~/utils/interface/Directory";
+import type { Directory } from "../utils/interface/Directory";
 import { defineStore } from "pinia";
 import { useTasksStore } from "./tasks.store";
 
@@ -9,6 +9,8 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
   }),
   actions: {
     async saveDirectoryHandler(directory: Directory) {
+      const tasksStore = useTasksStore();
+
       const nameAlreadyExists = this.directories.find(
         (dir) =>
           dir.name.trim() === directory.name.trim() && dir.id !== directory.id
@@ -19,14 +21,14 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
         if (index >= 0) {
           if (!nameAlreadyExists) {
             this.directories.splice(index, 1, directory);
+            tasksStore.updateDirectoryName(directory);
             return Promise.resolve(directory);
           }
 
+          tasksStore.updateDirectoryName(directory);
+
           return Promise.reject(directory);
         }
-        const tasksStore = useTasksStore();
-
-        tasksStore.updateDirectoryName(directory);
       } else {
         if (!nameAlreadyExists) {
           const newId = new Date().getTime();

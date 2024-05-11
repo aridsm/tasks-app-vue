@@ -2,6 +2,7 @@ import { createPinia, setActivePinia } from "pinia"
 import { createApp } from 'vue'
 import { useTasksStore } from "../../state/tasks.store"
 import { useDirectoriesStore } from "../../state/directories.store"
+import dayjs from "dayjs"
 
 const app = createApp({})
 
@@ -120,10 +121,81 @@ describe('useTasksStore', () => {
 
     it.todo('deletes all tasks')
 
-    it.todo('just return "important" tasks')
-    it.todo('just return "added today" tasks')
+    it('just return "important" tasks', () => {
+        const taskStore = useTasksStore()
+
+        expect(taskStore.tasks).toHaveLength(0)
+
+        taskStore.$patch({
+            tasks: [{
+                ...taskExample,
+                important: false,
+                id: 1
+            },
+            {
+                ...taskExample,
+                important: true,
+                id: 2
+            },
+        ]
+        }) 
+
+        expect(taskStore.importantTasks).length(1)
+        expect(taskStore.importantTasks[0].id).toBe(2)
+    })
+
+    it('just return "added today" tasks', () => {
+        const taskStore = useTasksStore()
+
+        expect(taskStore.tasks).toHaveLength(0)
+
+        taskStore.$patch({
+            tasks: [{
+                ...taskExample,
+                addedDate: dayjs(new Date()).set('hour', 2).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'),
+                id: 1
+            },
+            {
+                ...taskExample,
+                addedDate: dayjs(new Date()).format('2010-05-04[T]HH:mm:ss.SSS[Z]'),
+                id: 2
+            },
+            {
+                ...taskExample,
+                addedDate: new Date(),
+                id: 3
+            }]
+        })
+
+        expect(taskStore.todaysTasks).length(1)
+        expect(taskStore.todaysTasks[0].id).toBe(3)
+
+    })
+
     it.todo('just return "late tasks" tasks')
-    it.todo('just return tasks done')
+
+    it('just return tasks done', () => {
+        const taskStore = useTasksStore()
+
+        expect(taskStore.tasks).toHaveLength(0)
+
+        taskStore.$patch({
+            tasks: [{
+                ...taskExample,
+                id: 1,
+                completed: false
+            },
+            {
+                ...taskExample,
+                id: 2,
+                completed: true
+            },
+        ]
+        })
+
+        expect(taskStore.completedTasks).length(1)
+        expect(taskStore.completedTasks[0].id).toBe(2)
+    })
 
     it.todo('arrange tasks by added first')
     it.todo('arrange tasks by added late')
