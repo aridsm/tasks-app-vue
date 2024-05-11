@@ -8,9 +8,10 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
     selectedDirectory: null as Directory | null,
   }),
   actions: {
-    saveDirectoryHandler(directory: Directory) {
+    async saveDirectoryHandler(directory: Directory) {
       const nameAlreadyExists = this.directories.find(
-        (dir) => dir.name.trim() === directory.name.trim() && dir.id !== directory.id
+        (dir) =>
+          dir.name.trim() === directory.name.trim() && dir.id !== directory.id
       );
 
       if (directory.id) {
@@ -18,12 +19,14 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
         if (index >= 0) {
           if (!nameAlreadyExists) {
             this.directories.splice(index, 1, directory);
+            return Promise.resolve(directory);
           }
-        }
-        const tasksStore = useTasksStore()
 
-        tasksStore.updateDirectoryName(directory)
-        
+          return Promise.reject(directory);
+        }
+        const tasksStore = useTasksStore();
+
+        tasksStore.updateDirectoryName(directory);
       } else {
         if (!nameAlreadyExists) {
           const newId = new Date().getTime();
@@ -32,23 +35,29 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
             id: newId,
             count: 0,
           });
+
+          return Promise.resolve(directory);
         }
+
+        return Promise.reject(directory);
       }
     },
     selectDirectoryHandler(directory: Directory) {
       this.selectedDirectory =
         directory.id === this.selectedDirectory?.id ? null : directory;
     },
-    deleteDirectoryHandler(id: number) {
+    async deleteDirectoryHandler(id: number) {
       const index = this.directories.findIndex((d) => d.id === id);
 
       if (index >= 0) {
         this.directories.splice(index, 1);
 
         if (id === this.selectedDirectory?.id) {
-          this.selectedDirectory = null
+          this.selectedDirectory = null;
         }
+        return Promise.resolve(id);
       }
+      return Promise.reject(id);
     },
   },
 });

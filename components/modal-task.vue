@@ -67,10 +67,11 @@
 </template>
 
 <script lang="ts">
-import { useDirectoriesStore } from "~/state/directories.store";
-import { useTasksStore } from "~/state/tasks.store";
-import type { Task, TaskFields } from "~/utils/interface/Tasks";
+import { useDirectoriesStore } from "../state/directories.store";
+import { useTasksStore } from "../state/tasks.store";
+import type { Task, TaskFields } from "../utils/interface/Tasks";
 import * as yup from "yup";
+import { useAlertStore } from "../state/alerts.store";
 
 export default {
   props: {
@@ -84,8 +85,9 @@ export default {
   setup() {
     const taskStore = useTasksStore();
     const directoryStore = useDirectoriesStore();
+    const alertStore = useAlertStore();
 
-    return { taskStore, directoryStore };
+    return { taskStore, directoryStore, alertStore };
   },
   data() {
     return {
@@ -125,13 +127,29 @@ export default {
       const nameValidated = await this.rules.name.validate(this.formModel.name);
 
       if (directoryValidated && nameValidated) {
-        this.taskStore.saveTaskHandler(this.formModel);
-        this.open = false;
+        await this.taskStore
+          .saveTaskHandler(this.formModel)
+          .then(() => {
+            if (this.form.id) {
+              this.alertStore.show(`A tarefa "${this.form.name}" foi editada!`);
+            } else {
+              this.alertStore.show(`A tarefa "${this.form.name}" foi criada!`);
+            }
+          })
+          .finally(() => {
+            this.open = false;
+          });
       }
     },
-    onDeleteTask() {
-      this.taskStore.deleteTaskHandler(this.formModel.id!);
-      this.open = false;
+    async onDeleteTask() {
+      await this.taskStore
+        .deleteTaskHandler(this.formModel.id!)
+        .then(() => {
+          this.alertStore.show(`A tarefa "${this.form.name}" foi deletada!`);
+        })
+        .finally(() => {
+          this.open = false;
+        });
     },
   },
 };

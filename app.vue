@@ -23,6 +23,7 @@
         <NuxtPage />
       </main>
     </div>
+    <alerts />
   </div>
 </template>
 

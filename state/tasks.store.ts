@@ -41,7 +41,7 @@ export const useTasksStore = defineStore("TasksStore", {
     },
   },
   actions: {
-    saveTaskHandler(task: TaskFields) {
+    async saveTaskHandler(task: TaskFields) {
       if (!task.id) {
         const newTask = {
           ...task,
@@ -50,6 +50,7 @@ export const useTasksStore = defineStore("TasksStore", {
           addedDate: new Date(),
         };
         this.tasks.push(newTask);
+        return Promise.resolve(task)
       } else {
         const taskIndex = this.tasks.findIndex((t) => t.id === task.id);
 
@@ -58,6 +59,7 @@ export const useTasksStore = defineStore("TasksStore", {
             ...task as Task,
             directoryName: getDirectoryName(task.directoryId),
           });
+          return Promise.resolve(task)
         }
       }
     },
@@ -66,7 +68,11 @@ export const useTasksStore = defineStore("TasksStore", {
 
       if (taskIndex >= 0) {
         this.tasks.splice(taskIndex, 1);
+
+        return Promise.resolve(id)
       }
+
+      return Promise.reject(id)
     },
     setTasksArrangement(arrangement: Arrangement) {
       this.arrangement = arrangement;

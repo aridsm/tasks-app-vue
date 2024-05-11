@@ -1,5 +1,6 @@
 <template>
   <Teleport to="body">
+    <Transition>
     <div
       v-if="modelValue"
       data-type="container"
@@ -22,6 +23,7 @@
         </div>
       </card>
     </div>
+  </Transition>
   </Teleport>
 </template>
 
@@ -39,3 +41,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

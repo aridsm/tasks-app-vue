@@ -92,12 +92,15 @@
 import type { Directory } from "../utils/interface/Directory";
 import { useDirectoriesStore } from "../state/directories.store";
 import * as yup from "yup";
+import { useAlertStore } from "~/state/alerts.store";
 
 export default {
   setup() {
     const directoryStore = useDirectoriesStore();
 
-    return { directoryStore };
+    const alertStore = useAlertStore();
+
+    return { directoryStore, alertStore };
   },
   data() {
     return {
@@ -128,15 +131,42 @@ export default {
       const nameValidated = await this.nameRule.validate(this.form.name);
 
       if (nameValidated) {
-        this.directoryStore.saveDirectoryHandler(this.form);
-        this.modalDirectoryOpen = false;
+        await this.directoryStore
+          .saveDirectoryHandler(this.form)
+          .then(() => {
+            if (this.form.id) {
+              this.alertStore.show(
+                `O diretório "${this.form.name}" foi editado!`
+              );
+            } else {
+              this.alertStore.show(
+                `O diretório "${this.form.name}" foi criado!`
+              );
+            }
+          })
+          .catch(() => {
+            this.alertStore.show(
+              `Já existe um diretório com o nome "${this.form.name}"!`
+            );
+          })
+          .finally(() => {
+            this.modalDirectoryOpen = false;
+          });
       }
     },
-    deleteDirectoryHandler() {
+    async deleteDirectoryHandler() {
       if (this.form.id) {
-        this.directoryStore.deleteDirectoryHandler(this.form.id);
+        await this.directoryStore
+          .deleteDirectoryHandler(this.form.id)
+          .then(() => {
+            this.alertStore.show(
+              `O diretório "${this.form.name}" foi deletado!`
+            );
+          })
+          .finally(() => {
+            this.modalDirectoryOpen = false;
+          });;
       }
-      this.modalDirectoryOpen = false;
     },
   },
 };
