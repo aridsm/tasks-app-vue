@@ -2,7 +2,7 @@ import type { Task, TaskFields } from "../utils/interface/Tasks";
 import { defineStore } from "pinia";
 import { Arrangement } from "../utils/enums/Arrangement";
 import type { SortBy } from "../utils/enums/SortBy";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { useDirectoriesStore } from "./directories.store";
 import type { Directory } from "../utils/interface/Directory";
 
@@ -28,9 +28,9 @@ export const useTasksStore = defineStore("TasksStore", {
     },
     todaysTasks(state) {
       return state.tasks.filter((task: Task) => {
-        const todaysDate = dayjs(new Date).format('DD/MM/YYYY')
-        const taskDate = dayjs(task.addedDate).format('DD/MM/YYYY')
-        return todaysDate === taskDate
+        const todaysDate = dayjs(new Date()).format("DD/MM/YYYY");
+        const taskDate = dayjs(task.addedDate).format("DD/MM/YYYY");
+        return todaysDate === taskDate;
       });
     },
     lateTasks(state) {
@@ -50,16 +50,16 @@ export const useTasksStore = defineStore("TasksStore", {
           addedDate: new Date(),
         };
         this.tasks.push(newTask);
-        return Promise.resolve(task)
+        return Promise.resolve(task);
       } else {
         const taskIndex = this.tasks.findIndex((t) => t.id === task.id);
 
         if (taskIndex >= 0) {
           this.tasks.splice(taskIndex, 1, {
-            ...task as Task,
+            ...(task as Task),
             directoryName: getDirectoryName(task.directoryId),
           });
-          return Promise.resolve(task)
+          return Promise.resolve(task);
         }
       }
     },
@@ -69,10 +69,10 @@ export const useTasksStore = defineStore("TasksStore", {
       if (taskIndex >= 0) {
         this.tasks.splice(taskIndex, 1);
 
-        return Promise.resolve(id)
+        return Promise.resolve(id);
       }
 
-      return Promise.reject(id)
+      return Promise.reject(id);
     },
     setTasksArrangement(arrangement: Arrangement) {
       this.arrangement = arrangement;
@@ -87,12 +87,12 @@ export const useTasksStore = defineStore("TasksStore", {
       }
     },
     updateDirectoryName(directory: Directory) {
-      this.tasks = this.tasks.map(task => {
+      this.tasks = this.tasks.map((task) => {
         if (task.directoryId === directory.id) {
-          task.directoryName = directory.name
+          task.directoryName = directory.name;
         }
-        return task
-      })
-    }
+        return task;
+      });
+    },
   },
 });

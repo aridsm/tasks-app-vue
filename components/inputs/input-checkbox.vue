@@ -2,6 +2,7 @@
   <div>
     <Field
       v-slot="{ field, errorMessage }"
+      v-model="value"
       :name="name"
       :id="name"
       type="checkbox"
@@ -19,7 +20,7 @@
           class="hidden"
           v-bind="field"
           :value="true"
-          @input="$emit('update:modelValue', !field.checked)"
+          @input="value = !field.checked"
         />
         <div
           class="border border-dark-text/[.4] rounded-sm w-6 h-6 grid place-items-center bg-light-100 dark:bg-dark-200"
@@ -52,6 +53,16 @@ export default defineComponent({
     label: { type: String, required: true },
   },
   emits: ["update:modelValue"],
+  computed: {
+    value: {
+      get() {
+        return this.modelValue
+      },
+      set(value: string | number) {
+        this.$emit('update:modelValue', value)
+      }
+    }
+  }
 });
 </script>
 
