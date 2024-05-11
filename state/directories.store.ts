@@ -44,6 +44,10 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
 
       if (index >= 0) {
         this.directories.splice(index, 1);
+
+        if (id === this.selectedDirectory?.id) {
+          this.selectedDirectory = null
+        }
       }
     },
   },

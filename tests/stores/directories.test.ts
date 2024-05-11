@@ -130,4 +130,39 @@ describe('useDirectoriesStore', () => {
         expect(tasksStore.tasks[1].directoryName).toBe('Something - edited')
         expect(tasksStore.tasks[0].directoryName).toBe('An example')
     })
+
+    test('If a directory is selected and it\'s deleted, the selected directory becomes null', () => {
+        const directoriesStore = useDirectoriesStore()
+
+        const directoriesExample = [
+            {
+                id: 1,
+                name: 'Something',
+                description: ''
+            },
+            {
+                id: 2,
+                name: 'Something 2',
+                description: ''
+            }
+        ]
+
+        directoriesStore.$patch({
+            directories: [...directoriesExample
+            ],
+            selectedDirectory:   {
+                ...directoriesExample[1]
+            }
+        })
+
+        expect(directoriesStore.selectedDirectory).toMatchObject(directoriesExample[1])
+
+        directoriesStore.deleteDirectoryHandler(directoriesExample[1].id)
+
+        expect(directoriesStore.selectedDirectory).toBeNull()
+    })
+
+    it('Can\'t delete a directory if there are tasks attached', () => {
+
+    })
 })

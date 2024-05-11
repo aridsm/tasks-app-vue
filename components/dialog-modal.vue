@@ -3,7 +3,7 @@
     <div
       v-if="modelValue"
       data-type="container"
-      class="w-screen h-screen overflow-auto absolute bg-black/[.2] top-0 left-0 z-[99999] grid place-items-center"
+      class="w-screen h-screen overflow-auto absolute bg-black/[.2] dark:bg-black/[.3] backdrop-blur-[1px] top-0 left-0 z-[99999] grid place-items-center"
       @click.self="$emit('update:modelValue', false)"
     >
       <card :class="cardClasses" darker>
