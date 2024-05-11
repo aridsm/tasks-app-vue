@@ -12,13 +12,13 @@
       </div>
     </template>
     <div class="flex gap-4 justify-between items-start">
-      <p class="text-base font-semibold mb-2">{{ task.name }}</p>
+      <p :title="task.name" class="text-base font-semibold mb-2 line-clamp-3">{{ task.name }}</p>
       <options-btn
         data-type="option-task"
         @click="() => selectTaskHandler(task)"
       />
     </div>
-    <p class="text-light-light-text dark:text-dark-text mb-8">
+    <p class="text-light-light-text dark:text-dark-text mb-8 line-clamp-3" :title="task.description">
       {{ task.description }}
     </p>
     <div class="mt-auto justify-between items-center flex">
