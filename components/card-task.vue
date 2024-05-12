@@ -30,7 +30,7 @@
       </div>
       <div class="flex gap-4 items-center">
         <span
-          v-if="new Date(task.finalDate).getTime() < todaysDateTime "
+          v-if="taskStore.checkTaskIsLate(task.finalDate)"
           title="Tarefa atrasada"
           ><icon icon="fa-regular fa-clock" class="text-lg text-red-500"
         /></span>

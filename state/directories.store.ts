@@ -43,6 +43,8 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
 
         return Promise.reject(directory);
       }
+      
+      return Promise.reject(directory);
     },
     selectDirectoryHandler(id: number) {
       const router = useRouter()
@@ -52,9 +54,9 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       this.selectedDirectory =
       directory && directory.id === this.selectedDirectory?.id ? null : directory;
 
-        router.push({query: {
-          directoryId: this.selectedDirectory ? this.selectedDirectory.id : undefined
-        }})
+      router.push({query: {
+        directoryId: this.selectedDirectory ? this.selectedDirectory.id : undefined
+      }})
     },
     async deleteDirectoryHandler(id: number) {
       const index = this.directories.findIndex((d) => d.id === id);
@@ -75,7 +77,6 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       let directoryCount = 0
 
       if (directory) {
-        // const taskStore = useTasksStore()
         const directoryTasks = tasks.filter(task => task.directoryId === directoryId)
         directoryCount = directoryTasks.length
       }

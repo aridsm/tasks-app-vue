@@ -36,8 +36,7 @@ export const useTasksStore = defineStore("TasksStore", {
     lateTasks(state) {
       return state.tasks.filter((task: Task) => {
         return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
-          dayjs(task.finalDate).format("DD/MM/YYYY")
-        );
+          dayjs(task.finalDate).format("DD/MM/YYYY"))
       });
     },
     completedTasks(state) {
@@ -99,5 +98,9 @@ export const useTasksStore = defineStore("TasksStore", {
         return task;
       });
     },
+    checkTaskIsLate(date: Date | string) {
+      return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
+        dayjs(date).format("DD/MM/YYYY"))
+    }
   },
 });
