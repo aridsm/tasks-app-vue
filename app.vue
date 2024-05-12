@@ -10,6 +10,7 @@
             placeholder="Pesquisar..."
             icon="fa-solid fa-magnifying-glass"
             class="input-search"
+            @blur="onSearch"
           />
           <div class="flex items-center gap-6 user-header">
             <span>{{ todaysDate }}</span>
@@ -52,6 +53,16 @@ export default {
       }`;
     },
   },
+  methods: {
+    onSearch(search: string) {
+      this.$router.push({query: {...this.$route.query, search: search || undefined} })
+    }
+  },
+  created() {
+    const searchQuery = this.$route.query.search
+
+    if (searchQuery) this.search = searchQuery as string
+  }
 }
 </script>
 

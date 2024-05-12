@@ -2,6 +2,10 @@
   <div class="max-w-[1420px] w-full mx-auto">
     <h1 v-if="title" class="text-2xl font-semibold -tracking-tight mb-6">
       {{ title }} ({{ tasks.length }})
+      <span v-if="search">
+        <icon icon="fa-solid fa-chevron-right" class="text-sm mr-3 ml-1" />
+      </span>
+      <span v-if="search">{{ search }} </span>
     </h1>
     <directories :tasks="tasks" />
 
@@ -58,7 +62,10 @@
       >
         <card-task v-for="task in filteredTasks" :key="task.id" :task="task" />
       </TransitionGroup>
-      <p v-if="!filteredTasks.length" class="text-light-text/[.5] dark:text-dark-text">
+      <p
+        v-if="!filteredTasks.length"
+        class="text-light-text/[.5] dark:text-dark-text"
+      >
         Nenhuma tarefa adicionada!
       </p>
     </div>
@@ -101,16 +108,31 @@ export default defineComponent({
   },
   computed: {
     filteredTasks() {
-      const directoryId = this.$route.query.directoryId
+      const directoryId = this.$route.query.directoryId;
+      let tasks = [...this.tasks];
 
-      if (directoryId) return this.tasks.filter(task => task.directoryId === Number(directoryId))
-      return this.tasks
+      if (directoryId) {
+        tasks = this.tasks.filter(
+          (task) => task.directoryId === Number(directoryId)
+        );
+      }
+
+      if (this.search) {
+        tasks = tasks.filter((task) =>
+          task.name.toLowerCase().includes(this.search.trim().toLowerCase())
+        );
+      }
+
+      return tasks;
     },
     directoryName() {
       return this.directoryStore.selectedDirectory?.name;
     },
     directoryId() {
       return this.directoryStore.selectedDirectory?.id;
+    },
+    search(): string {
+      return (this.$route.query?.search as string) || "";
     },
     sortButtons: {
       get() {
@@ -146,7 +168,10 @@ export default defineComponent({
       this.modalTaskOpen = true;
     },
     directoryCount() {
-      return this.directoryStore.getDirectoryCount(this.directoryId, this.tasks)
+      return this.directoryStore.getDirectoryCount(
+        this.directoryId,
+        this.tasks
+      );
     },
   },
 });

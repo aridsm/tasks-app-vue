@@ -1,7 +1,7 @@
 <template>
   <nav class="flex flex-col pt-6">
     <NuxtLink v-for="link in links" :key="link.title"
-      :to="{path: link.to, query: { directoryId: directoryId }}"
+      :to="{path: link.to, query: { ...$route.query, directoryId }}"
       v-slot="{ isActive }"
       :title="link.title"
       >
@@ -69,7 +69,7 @@ export default defineComponent({
     },
     directoryId() {
       return this.$route.query.directoryId
-    }
+    },
   }
 })
 </script>

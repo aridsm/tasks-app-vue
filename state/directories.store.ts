@@ -48,6 +48,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
     },
     selectDirectoryHandler(id: number) {
       const router = useRouter()
+      const route = useRoute()
 
       const directory = this.directories.find(dir => dir.id === id)
 
@@ -55,7 +56,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       directory && directory.id === this.selectedDirectory?.id ? null : directory;
 
       router.push({query: {
-        directoryId: this.selectedDirectory ? this.selectedDirectory.id : undefined
+       ...route.query, directoryId: this.selectedDirectory ? this.selectedDirectory.id : undefined
       }})
     },
     async deleteDirectoryHandler(id: number) {
