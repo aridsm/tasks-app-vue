@@ -15,7 +15,7 @@
             <icon icon="fa-solid fa-chevron-right" />
           </span>
           <span v-if="directoryName"
-            >{{ directoryName }} ({{ directoryCount }})</span
+            >{{ directoryName }} ({{ directoryCount() }})</span
           >
         </section-title>
         <btn-add data-type="add-directory" @click="addNewTaskHandler">
@@ -103,8 +103,8 @@ export default defineComponent({
     directoryName() {
       return this.directoryStore.selectedDirectory?.name;
     },
-    directoryCount() {
-      return this.directoryStore.selectedDirectory?.count;
+    directoryId() {
+      return this.directoryStore.selectedDirectory?.id;
     },
     sortButtons: {
       get() {
@@ -138,6 +138,9 @@ export default defineComponent({
       };
 
       this.modalTaskOpen = true;
+    },
+    directoryCount() {
+      return this.directoryStore.getDirectoryCount(this.directoryId)
     },
   },
 });

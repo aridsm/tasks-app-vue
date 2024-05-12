@@ -30,7 +30,7 @@
         @click="directoryStore.selectDirectoryHandler(directory)"
       >
         <span class="max-w-60"
-          >{{ directory.name }} ({{ directory.count }})</span
+          >{{ directory.name }} ({{ directoryStore.getDirectoryCount(directory.id) }})</span
         >
         <options-btn
           data-type="option-directory"

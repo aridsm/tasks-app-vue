@@ -61,5 +61,18 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       }
       return Promise.reject(id);
     },
+    getDirectoryCount(directoryId: number | undefined) {
+      const directory = this.directories.find(dir => dir.id === directoryId)
+
+      let directoryCount = 0
+
+      if (directory) {
+        const taskStore = useTasksStore()
+        const directoryTasks = taskStore.tasks.filter(task => task.directoryId === directoryId)
+        directoryCount = directoryTasks.length
+      }
+
+      return directoryCount
+    }
   },
 });

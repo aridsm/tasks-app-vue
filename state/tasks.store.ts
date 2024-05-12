@@ -35,7 +35,9 @@ export const useTasksStore = defineStore("TasksStore", {
     },
     lateTasks(state) {
       return state.tasks.filter((task: Task) => {
-        return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(dayjs(task.finalDate).format("DD/MM/YYYY"))
+        return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
+          dayjs(task.finalDate).format("DD/MM/YYYY")
+        );
       });
     },
     completedTasks(state) {
@@ -61,15 +63,16 @@ export const useTasksStore = defineStore("TasksStore", {
             ...(task as Task),
             directoryName: getDirectoryName(task.directoryId),
           });
+
           return Promise.resolve(task);
         }
       }
     },
     deleteTaskHandler(id: number) {
-      const taskIndex = this.tasks.findIndex((t) => t.id === id);
+      const task = this.tasks.find((t) => t.id === id);
 
-      if (taskIndex >= 0) {
-        this.tasks.splice(taskIndex, 1);
+      if (task) {
+        this.tasks.splice(this.tasks.indexOf(task), 1);
 
         return Promise.resolve(id);
       }
