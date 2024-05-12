@@ -27,10 +27,12 @@
         }"
         tabindex="0"
         data-type="item-directory"
-        @click="directoryStore.selectDirectoryHandler(directory)"
+        @click="directoryStore.selectDirectoryHandler(directory?.id)"
       >
         <span class="max-w-60"
-          >{{ directory.name }} ({{ directoryStore.getDirectoryCount(directory.id) }})</span
+          >{{ directory.name }} ({{
+            directoryStore.getDirectoryCount(directory.id, tasks)
+          }})</span
         >
         <options-btn
           data-type="option-directory"
@@ -93,6 +95,7 @@ import type { Directory } from "../utils/interface/Directory";
 import { useDirectoriesStore } from "../state/directories.store";
 import * as yup from "yup";
 import { useAlertStore } from "../state/alerts.store";
+import type { Task } from "~/utils/interface/Tasks";
 
 export default {
   setup() {
@@ -101,6 +104,9 @@ export default {
     const alertStore = useAlertStore();
 
     return { directoryStore, alertStore };
+  },
+  props: {
+    tasks: { type: Array as PropType<Task[]>, required: true },
   },
   data() {
     return {
@@ -165,9 +171,13 @@ export default {
           })
           .finally(() => {
             this.modalDirectoryOpen = false;
-          });;
+          });
       }
     },
+  },
+  created() {
+    const directoryId = this.$route.query.directoryId;
+    if (directoryId) this.directoryStore.selectDirectoryHandler(Number(directoryId));
   },
 };
 </script>

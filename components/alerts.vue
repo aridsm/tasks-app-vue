@@ -3,7 +3,7 @@
     <TransitionGroup
       name="list"
       tag="ul"
-      class="flex flex-col gap-2 absolute right-4 bottom-4 w-80 overflow-hidden"
+      class="flex flex-col gap-2 absolute right-4 top-4 w-80 overflow-hidden"
     >
       <li
         v-for="alert in alertStore.alerts"

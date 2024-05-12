@@ -1,11 +1,12 @@
 import type { Directory } from "../utils/interface/Directory";
 import { defineStore } from "pinia";
 import { useTasksStore } from "./tasks.store";
+import type { Task } from "~/utils/interface/Tasks";
 
 export const useDirectoriesStore = defineStore("DirectoriesStore", {
   state: () => ({
     directories: [] as Directory[],
-    selectedDirectory: null as Directory | null,
+    selectedDirectory: null as Directory | null | undefined,
   }),
   actions: {
     async saveDirectoryHandler(directory: Directory) {
@@ -35,7 +36,6 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
           this.directories.push({
             ...directory,
             id: newId,
-            count: 0,
           });
 
           return Promise.resolve(directory);
@@ -44,9 +44,17 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
         return Promise.reject(directory);
       }
     },
-    selectDirectoryHandler(directory: Directory) {
+    selectDirectoryHandler(id: number) {
+      const router = useRouter()
+
+      const directory = this.directories.find(dir => dir.id === id)
+
       this.selectedDirectory =
-        directory.id === this.selectedDirectory?.id ? null : directory;
+      directory && directory.id === this.selectedDirectory?.id ? null : directory;
+
+        router.push({query: {
+          directoryId: this.selectedDirectory ? this.selectedDirectory.id : undefined
+        }})
     },
     async deleteDirectoryHandler(id: number) {
       const index = this.directories.findIndex((d) => d.id === id);
@@ -61,14 +69,14 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       }
       return Promise.reject(id);
     },
-    getDirectoryCount(directoryId: number | undefined) {
+    getDirectoryCount(directoryId: number | undefined, tasks: Task[]) {
       const directory = this.directories.find(dir => dir.id === directoryId)
 
       let directoryCount = 0
 
       if (directory) {
-        const taskStore = useTasksStore()
-        const directoryTasks = taskStore.tasks.filter(task => task.directoryId === directoryId)
+        // const taskStore = useTasksStore()
+        const directoryTasks = tasks.filter(task => task.directoryId === directoryId)
         directoryCount = directoryTasks.length
       }
 

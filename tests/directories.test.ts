@@ -10,7 +10,7 @@ function factory({data} = { data: {}}) {
       plugins: [createTestingPinia({
         initialState: {
           DirectoriesStore: {
-            directories: [{id: 1, name: 'dir 1', description: 'desc 1', count: 0}, {id: 2, name: 'dir 2', description: 'desc 2', count: 0}]
+            directories: [{id: 1, name: 'dir 1', description: 'desc 1'}, {id: 2, name: 'dir 2', description: 'desc 2'}]
           }
         }
       })]
@@ -160,7 +160,7 @@ describe("directories", () => {
     expect(directoryStoreSpy.saveDirectoryHandler).toHaveBeenCalledOnce()
 
     expect(directoryStoreSpy.saveDirectoryHandler).toHaveBeenCalledWith(expect.objectContaining({
-      id: 1, name: 'Novo nome', description: 'desc 1', count: 0
+      id: 1, name: 'Novo nome', description: 'desc 1'
     }))
 
   });
@@ -189,6 +189,6 @@ describe("directories", () => {
     await firstDirectory.trigger('click')
 
     expect(directoriesStore.selectDirectoryHandler).toHaveBeenCalledOnce()
-    expect(directoriesStore.selectDirectoryHandler).toHaveBeenCalledWith(directoriesStore.directories[0])
+    expect(directoriesStore.selectDirectoryHandler).toHaveBeenCalledWith(directoriesStore.directories[0].id)
   })
 });

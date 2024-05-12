@@ -1,9 +1,9 @@
 <template>
   <div class="max-w-[1420px] w-full mx-auto">
     <h1 v-if="title" class="text-2xl font-semibold -tracking-tight mb-6">
-      {{ title }}
+      {{ title }} ({{ tasks.length }})
     </h1>
-    <directories />
+    <directories :tasks="tasks" />
 
     <div
       class="border-t dark:border-t-dark-100 border-t-light-text/[.15] pt-6 mt-6"
@@ -56,9 +56,9 @@
           'grid-cols-1': tasksStore.arrangement === Arrangement.Grid,
         }"
       >
-        <card-task v-for="task in tasks" :key="task.id" :task="task" />
+        <card-task v-for="task in filteredTasks" :key="task.id" :task="task" />
       </TransitionGroup>
-      <p v-if="!tasks.length" class="text-light-text/[.5] dark:text-dark-text">
+      <p v-if="!filteredTasks.length" class="text-light-text/[.5] dark:text-dark-text">
         Nenhuma tarefa adicionada!
       </p>
     </div>
@@ -100,6 +100,12 @@ export default defineComponent({
     },
   },
   computed: {
+    filteredTasks() {
+      const directoryId = this.$route.query.directoryId
+
+      if (directoryId) return this.tasks.filter(task => task.directoryId === Number(directoryId))
+      return this.tasks
+    },
     directoryName() {
       return this.directoryStore.selectedDirectory?.name;
     },
@@ -140,7 +146,7 @@ export default defineComponent({
       this.modalTaskOpen = true;
     },
     directoryCount() {
-      return this.directoryStore.getDirectoryCount(this.directoryId)
+      return this.directoryStore.getDirectoryCount(this.directoryId, this.tasks)
     },
   },
 });
