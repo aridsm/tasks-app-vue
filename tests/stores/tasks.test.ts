@@ -172,7 +172,32 @@ describe('useTasksStore', () => {
 
     })
 
-    it.todo('just return "late tasks" tasks')
+    it('just return "late tasks" tasks', () => {
+        
+        const taskStore = useTasksStore()
+
+        expect(taskStore.tasks).toHaveLength(0)
+
+        taskStore.$patch({
+            tasks: [{
+                ...taskExample,
+                finalDate: dayjs(new Date()).set('hour', 2).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'),
+                id: 1
+            },
+            {
+                ...taskExample,
+                finalDate: dayjs(new Date()).format('2010-05-04[T]HH:mm:ss.SSS[Z]'),
+                id: 2
+            },
+            {
+                ...taskExample,
+                finalDate:dayjs(new Date()).set('hour', 15).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'),
+                id: 3
+            }]
+        })
+
+        expect(taskStore.lateTasks).length(2)
+    })
 
     it('just return tasks done', () => {
         const taskStore = useTasksStore()

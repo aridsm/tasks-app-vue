@@ -1,8 +1,8 @@
 <template>
   <div class="flex w-screen">
     <sidebar-menu />
-    <div class="flex-1 min-w-0 px-12 pt-8 pb-12 flex flex-col max-h-screen overflow-auto">
-      <main class="max-w-[1420px] w-full mx-auto">
+    <div class="flex-1 min-w-0 px-12 pt-8 pb-12 flex flex-col max-h-screen overflow-scroll">
+      <main class="max-w-[1300px] w-full mx-auto">
         <div class="flex items-center gap-6 mb-8">
           <input-text
             v-model="search"

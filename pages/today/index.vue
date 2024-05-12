@@ -1,5 +1,5 @@
 <template>
-  <page title="Adicionadas hoje" :tasks="taskStore.importantTasks" />
+  <page title="Adicionadas hoje" :tasks="taskStore.todaysTasks" />
 </template>
 
 <script lang="ts">

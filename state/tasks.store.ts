@@ -35,10 +35,7 @@ export const useTasksStore = defineStore("TasksStore", {
     },
     lateTasks(state) {
       return state.tasks.filter((task: Task) => {
-        const finalDate = new Date(task.finalDate).getTime()
-        const todaysDateTime = new Date().getTime()
-
-        return finalDate < todaysDateTime
+        return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(dayjs(task.finalDate).format("DD/MM/YYYY"))
       });
     },
     completedTasks(state) {

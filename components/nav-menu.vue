@@ -19,42 +19,51 @@
 </template>
 
 <script lang="ts">
+import { useTasksStore } from '../state/tasks.store';
+
 export default defineComponent({
+  setup() {
+    const taskStore = useTasksStore()
+
+    return {
+      taskStore
+    }
+  },
   props: {
     menuExpanded: Boolean
   },
-  data() {
-    return {
-      links: [
+  computed: {
+    links() {
+      return [
         {
           to: '/today',
           title: 'Adicionadas hoje',
           icon: 'fa-regular fa-calendar-days',
-          count: 0
+          count: this.taskStore.todaysTasks.length,
         },
         {
           to: '/all',
           title: 'Todas as tarefas',
           icon: 'fa-solid fa-layer-group',
-          count: 0
+          count: this.taskStore.tasks.length
         },
         {
           to: '/completed',
           title: 'Tarefas concluídas',
           icon: 'fa-regular fa-circle-check',
-          count: 0
+          count: this.taskStore.completedTasks.length,
         },
         {
           to: '/late',
           title: 'Tarefas atrasadas',
           icon: 'fa-regular fa-clock',
-          count: 0
+          count: this.taskStore.lateTasks.length,
         },
         {
           to: '/important',
           title: 'Importantes',
           icon: 'fa-regular fa-star',
-          count: 0
+          count: this.taskStore.importantTasks.length,
         }
       ]
     }
