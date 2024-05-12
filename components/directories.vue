@@ -138,7 +138,8 @@ export default {
 
       if (nameValidated) {
         await this.directoryStore
-          .saveDirectoryHandler(this.form).then(() => {
+          .saveDirectoryHandler(this.form)
+          .then(() => {
             if (this.form.id) {
               this.alertStore.show(
                 `O diretório "${this.form.name}" foi editado!`
@@ -176,7 +177,12 @@ export default {
   },
   created() {
     const directoryId = this.$route?.query?.directoryId;
-    if (directoryId) this.directoryStore.selectDirectoryHandler(Number(directoryId));
+    if (
+      directoryId &&
+      this.directoryStore.selectedDirectory?.id !== Number(directoryId)
+    ) {
+      this.directoryStore.selectDirectoryHandler(Number(directoryId));
+    }
   },
 };
 </script>
