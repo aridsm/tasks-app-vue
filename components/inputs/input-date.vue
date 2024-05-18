@@ -71,8 +71,8 @@
             class="w-12 h-12 grid place-items-center rounded-sm"
             :class="{
               'text-dark-text cursor-not-allowed': !day.enabled,
-              'dark:hover:bg-dark-100 hover:bg-light-text/[.1] cursor-pointer text': day.enabled,
-              'bg-blue-light hover:bg-blue-light dark:bg-lilac dark:hover:bg-lilac ': currentDay === day.day && day.enabled,
+              'hover:bg-light-text/[.1] dark:hover:bg-dark-100 cursor-pointer': currentDay !== day.day && day.enabled,
+              'bg-blue-light hover:bg-blue-light text-white dark:bg-lilac dark:hover:bg-lilac cursor-pointer': currentDay === day.day && day.enabled,
             }"
             @click="day.enabled ? selectDayHandler(day.day) : undefined"
           >
