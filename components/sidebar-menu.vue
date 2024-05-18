@@ -69,6 +69,7 @@
         :class="{
           'justify-center': !menuExpanded,
         }"
+        @click="clearAll"
       >
         <icon icon="fa-solid fa-broom" />
         <span v-if="menuExpanded">Limpar tudo</span>
@@ -92,12 +93,16 @@
 import type { TaskFields } from "~/utils/interface/Tasks";
 import { useColorModeStore } from "../state/colorMode.store";
 import { ColorMode } from "../utils/enums/ColorMode";
+import { useTasksStore } from "~/state/tasks.store";
+import { useDirectoriesStore } from "~/state/directories.store";
 
 export default {
   setup() {
     const colorModeStore = useColorModeStore();
+    const taskStore = useTasksStore();
+    const directoriesStore = useDirectoriesStore();
 
-    return { colorModeStore };
+    return { colorModeStore, taskStore, directoriesStore};
   },
   data() {
     return {
@@ -130,6 +135,10 @@ export default {
 
       this.modalTaskOpen = true;
     },
+    clearAll() {
+      this.directoriesStore.clearAllDirectories()
+      this.taskStore.clearAllTasks()
+    }
   },
 };
 </script>

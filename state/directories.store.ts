@@ -43,21 +43,28 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
 
         return Promise.reject(directory);
       }
-      
+
       return Promise.reject(directory);
     },
     selectDirectoryHandler(id: number) {
-      const router = useRouter()
-      const route = useRoute()
+      const router = useRouter();
+      const route = useRoute();
 
-      const directory = this.directories.find(dir => dir.id === id)
+      const directory = this.directories.find((dir) => dir.id === id);
 
       this.selectedDirectory =
-      directory && directory.id === this.selectedDirectory?.id ? null : directory;
+        directory && directory.id === this.selectedDirectory?.id
+          ? null
+          : directory;
 
-      router.push({query: {
-       ...route.query, directoryId: this.selectedDirectory ? this.selectedDirectory.id : undefined
-      }})
+      router.push({
+        query: {
+          ...route.query,
+          directoryId: this.selectedDirectory
+            ? this.selectedDirectory.id
+            : undefined,
+        },
+      });
     },
     async deleteDirectoryHandler(id: number) {
       const index = this.directories.findIndex((d) => d.id === id);
@@ -73,16 +80,22 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       return Promise.reject(id);
     },
     getDirectoryCount(directoryId: number | undefined, tasks: Task[]) {
-      const directory = this.directories.find(dir => dir.id === directoryId)
+      const directory = this.directories.find((dir) => dir.id === directoryId);
 
-      let directoryCount = 0
+      let directoryCount = 0;
 
       if (directory) {
-        const directoryTasks = tasks.filter(task => task.directoryId === directoryId)
-        directoryCount = directoryTasks.length
+        const directoryTasks = tasks.filter(
+          (task) => task.directoryId === directoryId
+        );
+        directoryCount = directoryTasks.length;
       }
 
-      return directoryCount
-    }
+      return directoryCount;
+    },
+    clearAllDirectories() {
+      this.directories = [];
+      this.selectedDirectory = null;
+    },
   },
 });
