@@ -3,7 +3,7 @@
   <modal-task v-model="modalTaskOpen" v-model:form="form" title="Editar tarefa" />
   <card class="w-full h-full">
     <template #header>
-      <div class="flex justify-between items-center text-xs">
+      <div class="flex justify-between items-center gap-2 text-[10px] sm:text-xs">
         <span
           ><icon icon="fa-regular fa-folder-open" class="mr-1" />
           {{ task.directoryName }}</span
@@ -12,7 +12,7 @@
       </div>
     </template>
     <div class="flex gap-4 justify-between items-start">
-      <p :title="task.name" class="text-base font-semibold mb-2 line-clamp-3">{{ task.name }}</p>
+      <p :title="task.name" class="text-sm sm:text-base font-semibold mb-2 line-clamp-3">{{ task.name }}</p>
       <options-btn
         data-type="option-task"
         @click="() => selectTaskHandler(task)"

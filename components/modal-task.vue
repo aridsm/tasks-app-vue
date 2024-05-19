@@ -1,5 +1,5 @@
 <template>
-  <dialog-modal v-model="open" :title="title" card-classes="w-[32rem] p-2">
+  <dialog-modal v-model="open" :title="title" card-classes="max-w-[32rem] w-full p-2">
     <input-text
       v-model="formModel.name"
       name="name"

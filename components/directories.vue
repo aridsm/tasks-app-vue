@@ -40,7 +40,7 @@
         />
       </li>
     </TransitionGroup>
-    <p v-else class="text-light-text/[.5] dark:text-dark-text">
+    <p v-else class="text-light-text/[.5] dark:text-dark-text text-center sm:text-start">
       Nenhum diretório adicionado!
     </p>
   </section>
@@ -48,7 +48,7 @@
   <dialog-modal
     v-model="modalDirectoryOpen"
     :title="!form.id ? 'Adicionar novo diretório' : 'Editar diretório'"
-    card-classes="w-[32rem] p-2"
+    card-classes="max-w-[32rem] w-full p-2"
   >
     <input-text
       v-model="form.name"

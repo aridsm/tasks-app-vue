@@ -1,37 +1,37 @@
 <template>
-  <div class="max-w-[1420px] w-full mx-auto">
-    <h1 v-if="title" class="text-2xl font-semibold -tracking-tight mb-6">
+  <div class="w-full mx-auto">
+    <h1 v-if="title" class="text-xl sm:text-2xl font-semibold -tracking-tight mb-4 sm:mb-6">
       {{ title }} ({{ tasks.length }})
       <span v-if="search">
-        <icon icon="fa-solid fa-chevron-right" class="text-sm mr-3 ml-1" />
+        <icon icon="fa-solid fa-chevron-right" class="text-sm mr-3 ml-1 text-blue-light" />
       </span>
-      <span v-if="search">{{ search }} </span>
+      <span v-if="search" class="text-blue-light">{{ search }} </span>
     </h1>
     <directories :tasks="tasks" />
 
     <div
       class="border-t dark:border-t-dark-100 border-t-light-text/[.15] pt-6 mt-6"
     >
-      <div class="mb-3 flex justify-between items-center">
+      <div class="mb-3 flex gap-4 justify-between items-center">
         <section-title class="flex gap-3">
           Tarefas
           <span v-if="directoryName">
             <icon icon="fa-solid fa-chevron-right" />
           </span>
-          <span v-if="directoryName"
+          <span v-if="directoryName" class="c break-all"
             >{{ directoryName }} ({{ directoryCount() }})</span
           >
         </section-title>
-        <btn-add data-type="add-directory" @click="addNewTaskHandler">
+        <btn-add class="whitespace-nowrap" data-type="add-directory" @click="addNewTaskHandler">
           Adicionar tarefa
         </btn-add>
       </div>
       <div class="mb-4 flex items-center gap-1">
         <button
-          v-for="button in sortButtons"
+          v-for="button in arrangementButtons"
           :key="button.id"
           :title="button.title"
-          class="grid place-items-center hover:bg-dark-text/[.1] w-10 h-10 rounded-full"
+          class="hidden sm:grid place-items-center hover:bg-dark-text/[.1] w-10 h-10 rounded-full"
           :class="{
             'text-light-text/[.5] dark:text-dark-text':
               tasksStore.arrangement !== button.arrangement,
@@ -47,16 +47,16 @@
           :items="SortByList"
           clearable
           name="sort-by"
-          class="w-[18rem] ml-auto"
+          class="w-52 sm:w-[18rem] ml-auto"
           placeholder="Ordenar por"
         />
       </div>
       <TransitionGroup
         name="list"
         tag="ul"
-        class="grid gap-8"
+        class="grid gap-4 md:gap-6 lg:gap-8"
         :class="{
-          'grid-cols-3': tasksStore.arrangement === Arrangement.Grid,
+          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': tasksStore.arrangement === Arrangement.Grid,
           'grid-cols-1': tasksStore.arrangement === Arrangement.Grid,
         }"
       >
@@ -64,7 +64,7 @@
       </TransitionGroup>
       <p
         v-if="!filteredTasks.length"
-        class="text-light-text/[.5] dark:text-dark-text"
+        class="text-light-text/[.5] dark:text-dark-text text-center sm:text-start"
       >
         Nenhuma tarefa adicionada!
       </p>
@@ -134,7 +134,7 @@ export default defineComponent({
     search(): string {
       return (this.$route.query?.search as string) || "";
     },
-    sortButtons: {
+    arrangementButtons: {
       get() {
         return [
           {

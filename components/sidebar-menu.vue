@@ -1,14 +1,14 @@
 <template>
   <header
-    class="bg-blue-light dark:bg-dark-200 text-white relative h-screen py-6 border-r border-r-dark-text/[.1] border-t-8 border-t-blue-light dark:border-t-lilac flex flex-col transition-all"
+    class="absolute bottom-0 md:top-0 left-0 z-50 h-16 md:h-screen lg:relative flex md:flex-col bg-blue-light dark:bg-dark-200 text-white md:py-6 md:border-r border-r-dark-text/[.1] md:border-t-8 md:border-t-blue-light md:dark:border-t-lilac transition-all"
     data-type="container"
     :class="{
-      'w-72': menuExpanded,
-      'w-20': !menuExpanded,
+      'w-full md:w-72': menuExpanded,
+      'w-full md:w-20': !menuExpanded,
     }"
   >
     <button
-      class="absolute top-3 -right-6 w-6 h-10 pr-1 grid place-items-center rounded-r-full bg-blue-light dark:bg-dark-200 dark:hover:bg-lilac border border-dark-text/[.1] border-l-transparent"
+      class="hidden md:grid place-items-center  absolute top-3 -right-6 w-6 h-10 pr-1 rounded-r-full bg-blue-light dark:bg-dark-200 dark:hover:bg-lilac border border-dark-text/[.1] border-l-transparent"
       :title="menuExpanded ? 'Minimizar menu' : 'Maximizar menu'"
       data-type="expand"
       @click="changeMenuWidthHandler"
@@ -20,9 +20,9 @@
         icon="fa-solid fa-chevron-left"
       />
     </button>
-    <logo class="px-5" :show-name="menuExpanded" />
+    <logo class="px-5 hidden md:flex" :show-name="menuExpanded" />
     <btn
-      class="mt-6 btn-add-new"
+      class="hidden md:block mt-6 btn-add-new"
       :class="{ 'mx-6': menuExpanded, 'mx-4': !menuExpanded }"
       @click="addNewTaskHandler"
     >
@@ -33,14 +33,14 @@
     <nav-menu class="overflow-hidden" :menuExpanded="menuExpanded" />
 
     <div
-      class="mt-auto flex flex-col"
+      class="ml-auto md:ml-0 md:mt-auto flex md:flex-col"
       :class="{
         'px-6': menuExpanded,
         'px-4 items-center': !menuExpanded,
       }"
     >
       <button
-        class="h-14 flex gap-3 items-center"
+        class="px-2 md:px-0 h-full md:h-14 hidden md:flex gap-3 items-center"
         :title="
           modeIsLight ? 'Mudar para modo escuro' : 'Mudar para modo claro'
         "
@@ -63,7 +63,7 @@
         ></icon>
       </button>
       <button
-        class="flex gap-6 items-center h-14 text-nowrap"
+        class="flex gap-6 items-center md:h-14 text-nowrap px-2 md:px-0 "
         title="Limpar tudo"
         data-type="clear-all"
         :class="{
@@ -74,7 +74,7 @@
         <icon icon="fa-solid fa-broom" />
         <span v-if="menuExpanded">Limpar tudo</span>
       </button>
-      <span class="h-14 text-nowrap flex items-center">
+      <span class="px-2 md:px-0  md:h-14 text-nowrap flex items-center">
         <a
           href="https://github.com/aridsm"
           target="_blank"
@@ -138,7 +138,7 @@ export default {
     clearAll() {
       this.directoriesStore.clearAllDirectories()
       this.taskStore.clearAllTasks()
-    }
+    },
   },
 };
 </script>

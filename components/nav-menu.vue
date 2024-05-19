@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-col pt-6">
+  <nav class="flex md:flex-col md:pt-6">
     <NuxtLink
       v-for="link in links"
       :key="link.title"
@@ -8,9 +8,9 @@
       :title="link.title"
     >
       <span
-        class="text-nowrap flex gap-6 items-center pl-4 pr-6 h-14 w-full border-l-4 border-l-transparent hover:bg-light-100/[.1] dark:hover:bg-dark-text/[.1]"
+        class="text-nowrap flex gap-6 items-center px-4 md:px-6 h-full md:h-14 w-full border-l-4 border-l-transparent hover:bg-light-100/[.1] dark:hover:bg-dark-text/[.1]"
         :class="{
-          'bg-light-100/[.1] dark:bg-white/[.05] border-l-4 border-l-white':
+          'bg-light-100/[.1] dark:bg-white/[.05] border-b-4 border-b-white md:border-b-0 md:border-l-4 md:border-l-white':
             isActive,
           'justify-center': !menuExpanded,
         }"

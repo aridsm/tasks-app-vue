@@ -4,10 +4,10 @@
     'bg-light-200 dark:bg-dark-300 border': darker,
     'bg-light-100 dark:bg-dark-200 border': !darker
   }">
-    <div v-if="$slots.header" class="text-pink-700 bg-pink-600/[.1] dark:text-white dark:bg-dark-100 px-4 py-2" :class="headerClass">
+    <div v-if="$slots.header" class="text-pink-700 bg-pink-600/[.1] dark:text-white dark:bg-dark-100 px-2 py-1 sm:px-4 sm:py-2" :class="headerClass">
       <slot name="header" />
     </div>
-    <div class="p-4 flex-1 flex flex-col">
+    <div class="p-2 sm:p-4 flex-1 flex flex-col">
     <slot />
   </div>
   </div>
