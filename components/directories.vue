@@ -40,7 +40,10 @@
         />
       </li>
     </TransitionGroup>
-    <p v-else class="text-light-text/[.5] dark:text-dark-text text-center sm:text-start">
+    <p
+      v-else
+      class="text-light-text/[.5] dark:text-dark-text text-center sm:text-start"
+    >
       Nenhum diretório adicionado!
     </p>
   </section>
@@ -137,10 +140,10 @@ export default {
       const nameValidated = await this.nameRule.validate(this.form.name);
 
       if (nameValidated) {
-        await this.directoryStore
-          .saveDirectoryHandler(this.form)
-          .then(() => {
-            if (this.form.id) {
+        try {
+          await this.directoryStore.saveDirectoryHandler(this.form)
+
+          if (this.form.id) {
               this.alertStore.show(
                 `O diretório "${this.form.name}" foi editado!`
               );
@@ -149,29 +152,24 @@ export default {
                 `O diretório "${this.form.name}" foi criado!`
               );
             }
-          })
-          .catch(() => {
-            this.alertStore.show(
+        }  catch (err) {
+          this.alertStore.show(
               `Já existe um diretório com o nome "${this.form.name}"!`
             );
-          })
-          .finally(() => {
-            this.modalDirectoryOpen = false;
-          });
+        }
       }
     },
     async deleteDirectoryHandler() {
       if (this.form.id) {
-        await this.directoryStore
-          .deleteDirectoryHandler(this.form.id)
-          .then(() => {
-            this.alertStore.show(
-              `O diretório "${this.form.name}" foi deletado!`
-            );
-          })
-          .finally(() => {
-            this.modalDirectoryOpen = false;
-          });
+        try {
+          await this.directoryStore.deleteDirectoryHandler(this.form.id);
+
+          this.alertStore.show(`O diretório "${this.form.name}" foi deletado!`);
+
+          this.modalDirectoryOpen = false;
+        } catch (err) {
+          this.alertStore.show(`Não foi possível deletar o diretório"${this.form.name}"!`);
+        }
       }
     },
   },
