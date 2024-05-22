@@ -22,6 +22,7 @@
           :placeholder="placeholder"
           @input="(e: Event) => $emit('update:modelValue', (e.target as HTMLInputElement).value)"
           @blur="(e: Event) => $emit('blur', (e.target as HTMLInputElement).value)"
+          @keypress.enter="(e: Event) => $emit('enter', (e.target as HTMLInputElement).value)"
         />
         <icon v-if="icon" :icon="icon" class="absolute right-4 top-4" />
       </div>
@@ -46,7 +47,7 @@ export default {
     label: { type: String },
     icon: { type: String },
   },
-  emits: ["update:modelValue", "blur"],
+  emits: ["update:modelValue", "blur", "enter"],
   computed: {
     value: {
       get() {

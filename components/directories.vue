@@ -141,21 +141,21 @@ export default {
 
       if (nameValidated) {
         try {
-          await this.directoryStore.saveDirectoryHandler(this.form)
+          await this.directoryStore.saveDirectoryHandler(this.form);
 
           if (this.form.id) {
-              this.alertStore.show(
-                `O diretório "${this.form.name}" foi editado!`
-              );
-            } else {
-              this.alertStore.show(
-                `O diretório "${this.form.name}" foi criado!`
-              );
-            }
-        }  catch (err) {
-          this.alertStore.show(
-              `Já existe um diretório com o nome "${this.form.name}"!`
+            this.alertStore.show(
+              `O diretório "${this.form.name}" foi editado!`
             );
+          } else {
+            this.alertStore.show(`O diretório "${this.form.name}" foi criado!`);
+          }
+
+          this.modalDirectoryOpen = false;
+        } catch (err) {
+          this.alertStore.show(
+            `Já existe um diretório com o nome "${this.form.name}"!`
+          );
         }
       }
     },
@@ -168,7 +168,9 @@ export default {
 
           this.modalDirectoryOpen = false;
         } catch (err) {
-          this.alertStore.show(`Não foi possível deletar o diretório"${this.form.name}"!`);
+          this.alertStore.show(
+            `Não foi possível deletar o diretório"${this.form.name}"!`
+          );
         }
       }
     },

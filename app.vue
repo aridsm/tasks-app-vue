@@ -17,6 +17,7 @@
             icon="fa-solid fa-magnifying-glass"
             class="input-search col-span-3 md:col-span-1"
             @blur="onSearch"
+            @enter="onSearch"
           />
           <div
             class="flex items-center gap-4 lg:gap-6 user-header col-start-2 col-span-2 row-start-1"
