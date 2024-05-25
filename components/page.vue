@@ -1,9 +1,15 @@
 <template>
   <div class="w-full mx-auto">
-    <h1 v-if="title" class="text-xl sm:text-2xl font-semibold -tracking-tight mb-4 sm:mb-6">
+    <h1
+      v-if="title"
+      class="text-xl sm:text-2xl font-semibold -tracking-tight mb-4 sm:mb-6"
+    >
       {{ title }} ({{ tasks.length }})
       <span v-if="search">
-        <icon icon="fa-solid fa-chevron-right" class="text-sm mr-3 ml-1 text-blue-light" />
+        <icon
+          icon="fa-solid fa-chevron-right"
+          class="text-sm mr-3 ml-1 text-blue-light"
+        />
       </span>
       <span v-if="search" class="text-blue-light">{{ search }} </span>
     </h1>
@@ -22,7 +28,11 @@
             >{{ directoryName }} ({{ directoryCount() }})</span
           >
         </section-title>
-        <btn-add class="whitespace-nowrap" data-type="add-directory" @click="addNewTaskHandler">
+        <btn-add
+          class="whitespace-nowrap"
+          data-type="add-directory"
+          @click="addNewTaskHandler"
+        >
           Adicionar tarefa
         </btn-add>
       </div>
@@ -56,7 +66,8 @@
         tag="ul"
         class="grid gap-4 md:gap-6 lg:gap-8"
         :class="{
-          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3': tasksStore.arrangement === Arrangement.Grid,
+          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3':
+            tasksStore.arrangement === Arrangement.Grid,
           'grid-cols-1': tasksStore.arrangement === Arrangement.Grid,
         }"
       >
@@ -123,6 +134,20 @@ export default defineComponent({
         );
       }
 
+      if (this.sortBy === SortBy.AddedFirst) {
+        tasks = this.sortByAddedFirst(tasks);
+      } else if (this.sortBy === SortBy.AddedLast) {
+        tasks = this.sortByAddedLast(tasks);
+      } else if (this.sortBy === SortBy.AscendingFinalDate) {
+        tasks = this.sortByAscendingFinalDate(tasks);
+      } else if (this.sortBy === SortBy.DescendingFinalDate) {
+        tasks = this.sortByDescendingFinalDate(tasks);
+      } else if (this.sortBy === SortBy.AlphaOrder) {
+        tasks = this.sortByAlphaOrder(tasks);
+      } else if (this.sortBy === SortBy.ReverseAlphaOrder) {
+        tasks = this.sortByReverseAlphaOrder(tasks);
+      }
+
       return tasks;
     },
     directoryName() {
@@ -172,6 +197,98 @@ export default defineComponent({
         this.directoryId,
         this.tasks
       );
+    },
+    sortByAddedFirst(tasks: Task[]) {
+      return tasks.sort((a, b) => {
+        const timeA = a.addedDate.getTime();
+        const timeB = b.addedDate.getTime();
+
+        if (timeA < timeB) {
+          return -1;
+        }
+
+        if (timeA > timeB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByAddedLast(tasks: Task[]) {
+      return tasks.sort((a, b) => {
+        const timeA = a.addedDate.getTime();
+        const timeB = b.addedDate.getTime();
+
+        if (timeA > timeB) {
+          return -1;
+        }
+
+        if (timeA < timeB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByAscendingFinalDate(tasks: Task[]) {
+      return tasks.sort((a, b) => {
+        const timeA = new Date(a.finalDate).getTime();
+        const timeB = new Date(b.finalDate).getTime();
+
+        if (timeA < timeB) {
+          return -1;
+        }
+
+        if (timeA > timeB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByDescendingFinalDate(tasks: Task[]) {
+      return tasks.sort((a, b) => {
+        const timeA = new Date(a.finalDate).getTime();
+        const timeB = new Date(b.finalDate).getTime();
+
+        if (timeA > timeB) {
+          return -1;
+        }
+
+        if (timeA < timeB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByAlphaOrder(tasks: Task[]) {
+      return tasks.sort((a, b) => {
+
+        if (a.name < b.name) {
+          return -1;
+        }
+
+        if (a.name > b.name) {
+          return 1;
+        }
+
+        return 0;
+      });
+    },
+    sortByReverseAlphaOrder(tasks: Task[]) {
+      return tasks.sort((a, b) => {
+
+        if (a.name > b.name) {
+          return -1;
+        }
+
+        if (a.name < b.name) {
+          return 1;
+        }
+
+        return 0;
+      });
     },
   },
 });
