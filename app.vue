@@ -52,6 +52,7 @@
       </main>
     </div>
     <alerts />
+    <confirmation/>
   </div>
 </template>
 
@@ -62,12 +63,14 @@ import dayjs from "dayjs";
 import { ColorMode } from "./utils/enums/ColorMode";
 import { useTasksStore } from "./state/tasks.store";
 import { useDirectoriesStore } from "./state/directories.store";
+import { useConfirmation } from "./state/confirmation.store";
 
 export default {
   setup() {
     const colorModeStore = useColorModeStore();
     const directories = useDirectoriesStore()
     const tasks = useTasksStore()
+    const confirmationStore = useConfirmation()
     return { dayjs, colorModeStore, directories, tasks };
   },
   data() {

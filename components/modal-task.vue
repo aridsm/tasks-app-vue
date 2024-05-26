@@ -51,7 +51,7 @@
         flat
         class="flex gap-3 items-center"
         data-type="delete-task"
-        @click="onDeleteTask"
+        @click="confirmDelete"
       >
         Excluir
         <icon icon="fa-regular fa-trash-can" class="text-lg -mt-1" />
@@ -72,6 +72,7 @@ import { useTasksStore } from "../state/tasks.store";
 import type { Task, TaskFields } from "../utils/interface/Tasks";
 import * as yup from "yup";
 import { useAlertStore } from "../state/alerts.store";
+import { useConfirmation } from "~/state/confirmation.store";
 
 export default {
   props: {
@@ -86,8 +87,9 @@ export default {
     const taskStore = useTasksStore();
     const directoryStore = useDirectoriesStore();
     const alertStore = useAlertStore();
+    const confirmation = useConfirmation();
 
-    return { taskStore, directoryStore, alertStore };
+    return { taskStore, directoryStore, alertStore, confirmation };
   },
   data() {
     return {
@@ -149,8 +151,12 @@ export default {
         })
         .finally(() => {
           this.open = false;
+          this.confirmation.showConfirmation = false
         });
     },
+    confirmDelete() {
+      this.confirmation.show(`Tem certeza de que deseja excluir a tarefa "${this.form.name}"?`, this.onDeleteTask)
+    }
   },
 };
 </script>

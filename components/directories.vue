@@ -74,7 +74,7 @@
         flat
         class="flex gap-3 items-center"
         data-type="delete-directory"
-        @click="deleteDirectoryHandler"
+        @click="confirmDelete"
       >
         Excluir
         <icon icon="fa-regular fa-trash-can" class="text-lg -mt-1" />
@@ -99,14 +99,16 @@ import { useDirectoriesStore } from "../state/directories.store";
 import * as yup from "yup";
 import { useAlertStore } from "../state/alerts.store";
 import type { Task } from "~/utils/interface/Tasks";
+import { useConfirmation } from "~/state/confirmation.store";
 
 export default {
   setup() {
     const directoryStore = useDirectoriesStore();
 
     const alertStore = useAlertStore();
+    const confirmation = useConfirmation();
 
-    return { directoryStore, alertStore };
+    return { directoryStore, alertStore, confirmation};
   },
   props: {
     tasks: { type: Array as PropType<Task[]>, required: true },
@@ -171,9 +173,14 @@ export default {
           this.alertStore.show(
             `Não foi possível deletar o diretório"${this.form.name}"!`
           );
+        } finally {
+          this.confirmation.showConfirmation = false
         }
       }
     },
+    confirmDelete() {
+      this.confirmation.show(`Tem certeza de que deseja excluir o diretório "${this.form.name}"?`, this.deleteDirectoryHandler)
+    }
   },
   mounted() {
     const directoryId = this.$route?.query?.directoryId;

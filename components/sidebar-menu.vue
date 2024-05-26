@@ -69,7 +69,7 @@
         :class="{
           'justify-center': !menuExpanded,
         }"
-        @click="clearAll"
+        @click="confirmClearAll"
       >
         <icon icon="fa-solid fa-broom" />
         <span v-if="menuExpanded">Limpar tudo</span>
@@ -95,14 +95,16 @@ import { useColorModeStore } from "../state/colorMode.store";
 import { ColorMode } from "../utils/enums/ColorMode";
 import { useTasksStore } from "~/state/tasks.store";
 import { useDirectoriesStore } from "~/state/directories.store";
+import { useConfirmation } from "~/state/confirmation.store";
 
 export default {
   setup() {
     const colorModeStore = useColorModeStore();
     const taskStore = useTasksStore();
     const directoriesStore = useDirectoriesStore();
+    const confirmation = useConfirmation()
 
-    return { colorModeStore, taskStore, directoriesStore};
+    return { colorModeStore, taskStore, directoriesStore, confirmation};
   },
   data() {
     return {
@@ -138,7 +140,11 @@ export default {
     clearAll() {
       this.directoriesStore.clearAllDirectories()
       this.taskStore.clearAllTasks()
+      this.confirmation.showConfirmation = false
     },
+    confirmClearAll() {
+      this.confirmation.show('Tem certeza de que deseja excluir todas as tarefas e diretórios?', this.clearAll)
+    }
   },
 };
 </script>

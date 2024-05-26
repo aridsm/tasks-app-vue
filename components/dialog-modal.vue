@@ -4,7 +4,8 @@
     <div
       v-if="modelValue"
       data-type="container"
-      class="w-screen h-screen overflow-auto absolute bg-black/[.2] dark:bg-black/[.3] backdrop-blur-[1px] top-0 left-0 z-[99999] grid place-items-center py-4 px-2"
+      class="w-screen h-screen overflow-auto absolute bg-black/[.2] dark:bg-black/[.3] backdrop-blur-[1px] top-0 left-0 grid place-items-center py-4 px-2"
+      :style="{'z-index': zIndex}"
       @click.self="$emit('update:modelValue', false)"
     >
       <card :class="cardClasses" darker>
@@ -13,7 +14,7 @@
           <button
             aria-label="fechar"
             @click="$emit('update:modelValue', false)"
-            class="hover:bg-dark-text/[.1] w-8 h-8 rounded-full grid place-items-center"
+            class="hover:bg-dark-text/[.1] w-8 h-8 rounded-full grid place-items-center ml-auto z-50"
           >
             <icon icon="fa-solid fa-xmark" />
           </button>
@@ -33,6 +34,9 @@ export default {
     modelValue: Boolean,
     title: String,
     cardClasses: String,
+    zIndex: {
+      type: Number, default: 99999
+    }
   },
   data() {
     return {
