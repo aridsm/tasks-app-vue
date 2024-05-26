@@ -3,6 +3,9 @@ import { defineStore } from "pinia";
 import { useTasksStore } from "./tasks.store";
 import type { Task } from "~/utils/interface/Tasks";
 
+
+const LOCAL_STORAGE_KEY = 'directories'
+
 export const useDirectoriesStore = defineStore("DirectoriesStore", {
   state: () => ({
     directories: [] as Directory[],
@@ -23,6 +26,8 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
           if (!nameAlreadyExists) {
             this.directories.splice(index, 1, directory);
             tasksStore.updateDirectoryName(directory);
+
+            setToLocalStorage(LOCAL_STORAGE_KEY, directory)
             return Promise.resolve(directory);
           }
 
@@ -33,12 +38,16 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       } else {
         if (!nameAlreadyExists) {
           const newId = new Date().getTime();
-          this.directories.push({
+
+          const newDirectory = {
             ...directory,
             id: newId,
-          });
+          }
+          this.directories.push(newDirectory);
 
-          return Promise.resolve(directory);
+          setToLocalStorage(LOCAL_STORAGE_KEY, newDirectory)
+
+          return Promise.resolve(newDirectory);
         }
 
         return Promise.reject(directory);
@@ -71,6 +80,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
 
       if (index >= 0) {
         this.directories.splice(index, 1);
+        removeFromLocalStorage(LOCAL_STORAGE_KEY, id)
 
         if (id === this.selectedDirectory?.id) {
           this.selectedDirectory = null;
@@ -96,6 +106,10 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
     clearAllDirectories() {
       this.directories = [];
       this.selectedDirectory = null;
+      clearFromLocalStorage(LOCAL_STORAGE_KEY)
     },
+    getDirectoriesFromLocalStorage() {
+     this.directories = getFromLocalStorage(LOCAL_STORAGE_KEY) || []
+    }
   },
 });

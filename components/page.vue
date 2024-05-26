@@ -297,7 +297,7 @@ export default defineComponent({
 <style>
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
 }
 .list-enter-from,
 .list-leave-to {
@@ -305,6 +305,6 @@ export default defineComponent({
   transform: translateX(30px);
 }
 .list-leave-active {
-  position: absolute;
+  position: relative;
 }
 </style>

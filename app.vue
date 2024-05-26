@@ -60,11 +60,15 @@ import { useColorModeStore } from "./state/colorMode.store";
 import { months, daysWeek } from "./utils/dateUtils";
 import dayjs from "dayjs";
 import { ColorMode } from "./utils/enums/ColorMode";
+import { useTasksStore } from "./state/tasks.store";
+import { useDirectoriesStore } from "./state/directories.store";
 
 export default {
   setup() {
     const colorModeStore = useColorModeStore();
-    return { dayjs, colorModeStore };
+    const directories = useDirectoriesStore()
+    const tasks = useTasksStore()
+    return { dayjs, colorModeStore, directories, tasks };
   },
   data() {
     return {
@@ -101,6 +105,10 @@ export default {
 
     if (searchQuery) this.search = searchQuery as string;
   },
+  beforeMount() {
+    this.directories.getDirectoriesFromLocalStorage()
+    this.tasks.getTasksFromLocalStorage()
+  }
 };
 </script>
 

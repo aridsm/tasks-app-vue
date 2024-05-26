@@ -175,7 +175,7 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     const directoryId = this.$route?.query?.directoryId;
     if (
       directoryId &&

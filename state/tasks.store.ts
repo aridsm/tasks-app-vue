@@ -6,6 +6,8 @@ import dayjs from "dayjs";
 import { useDirectoriesStore } from "./directories.store";
 import type { Directory } from "../utils/interface/Directory";
 
+const LOCAL_STORAGE_KEY = 'takss'
+
 function getDirectoryName(directoryId: number) {
   const directoryStore = useDirectoriesStore();
 
@@ -54,16 +56,20 @@ export const useTasksStore = defineStore("TasksStore", {
           addedDate: new Date(),
         };
         this.tasks.push(newTask);
+        
+        setToLocalStorage(LOCAL_STORAGE_KEY, newTask)
         return Promise.resolve(task);
       } else {
         const taskIndex = this.tasks.findIndex((t) => t.id === task.id);
 
         if (taskIndex >= 0) {
-          this.tasks.splice(taskIndex, 1, {
+          const editedTask = {
             ...(task as Task),
             directoryName: getDirectoryName(task.directoryId),
-          });
+          }
+          this.tasks.splice(taskIndex, 1, editedTask);
 
+          setToLocalStorage(LOCAL_STORAGE_KEY, editedTask)
           return Promise.resolve(task);
         }
       }
@@ -73,6 +79,7 @@ export const useTasksStore = defineStore("TasksStore", {
 
       if (task) {
         this.tasks.splice(this.tasks.indexOf(task), 1);
+        removeFromLocalStorage(LOCAL_STORAGE_KEY, id)
 
         return Promise.resolve(id);
       }
@@ -98,6 +105,9 @@ export const useTasksStore = defineStore("TasksStore", {
         }
         return task;
       });
+
+      
+      setArrayToLocalStorage(LOCAL_STORAGE_KEY, this.tasks)
     },
     checkTaskIsLate(date: Date | string) {
       return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
@@ -106,7 +116,11 @@ export const useTasksStore = defineStore("TasksStore", {
     },
     clearAllTasks() {
       this.tasks = [];
+      clearFromLocalStorage(LOCAL_STORAGE_KEY)
       this.sortBy = null;
     },
+    getTasksFromLocalStorage() {
+     this.tasks = getFromLocalStorage(LOCAL_STORAGE_KEY) || []
+    }
   },
 });
