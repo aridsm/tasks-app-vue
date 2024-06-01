@@ -9,13 +9,14 @@
       <p class="text-center">
         {{confirmationStore.message}}
       </p>
-      <btn color="base" @click="confirmationStore.action">Confirmar</btn>
+      <btn 
+        data-type="btn-confirmation" color="base" @click="confirmationStore.action">Confirmar</btn>
     </div>
   </dialog-modal>
 </template>
 
 <script lang="ts">
-import { useConfirmation } from '~/state/confirmation.store';
+import { useConfirmation } from '../state/confirmation.store';
 
 export default {
   setup() {

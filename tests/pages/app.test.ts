@@ -4,6 +4,17 @@ import dayjs from 'dayjs';
 import { months, daysWeek } from "../../utils/dateUtils";
 import App from '../../app.vue'
 
+
+
+vi.mock("dayjs", () => ({
+    resolve: vi.fn(),
+  }));
+  
+//   const mockDayjs = {
+//     push: vi.fn()
+//   }
+  
+
 describe('app', () => {
     const app = mount(App)
 

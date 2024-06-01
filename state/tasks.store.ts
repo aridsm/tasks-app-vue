@@ -5,8 +5,9 @@ import type { SortBy } from "../utils/enums/SortBy";
 import dayjs from "dayjs";
 import { useDirectoriesStore } from "./directories.store";
 import type { Directory } from "../utils/interface/Directory";
+import * as localStorageUtil from "../utils/localStorage";
 
-const LOCAL_STORAGE_KEY = 'takss'
+const LOCAL_STORAGE_KEY = "takss";
 
 function getDirectoryName(directoryId: number) {
   const directoryStore = useDirectoriesStore();
@@ -37,8 +38,8 @@ export const useTasksStore = defineStore("TasksStore", {
     },
     lateTasks(state) {
       return state.tasks.filter((task: Task) => {
-        return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
-          dayjs(task.finalDate).format("DD/MM/YYYY")
+        return dayjs(dayjs(new Date()).format("YYYY-MM-DD")).isAfter(
+          dayjs(task.finalDate).format("YYYY-MM-DD")
         );
       });
     },
@@ -56,8 +57,8 @@ export const useTasksStore = defineStore("TasksStore", {
           addedDate: new Date(),
         };
         this.tasks.push(newTask);
-        
-        setToLocalStorage(LOCAL_STORAGE_KEY, newTask)
+
+        localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, newTask);
         return Promise.resolve(task);
       } else {
         const taskIndex = this.tasks.findIndex((t) => t.id === task.id);
@@ -66,10 +67,10 @@ export const useTasksStore = defineStore("TasksStore", {
           const editedTask = {
             ...(task as Task),
             directoryName: getDirectoryName(task.directoryId),
-          }
+          };
           this.tasks.splice(taskIndex, 1, editedTask);
 
-          setToLocalStorage(LOCAL_STORAGE_KEY, editedTask)
+          localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, editedTask);
           return Promise.resolve(task);
         }
       }
@@ -79,7 +80,7 @@ export const useTasksStore = defineStore("TasksStore", {
 
       if (task) {
         this.tasks.splice(this.tasks.indexOf(task), 1);
-        removeFromLocalStorage(LOCAL_STORAGE_KEY, id)
+        localStorageUtil.removeFromLocalStorage(LOCAL_STORAGE_KEY, id);
 
         return Promise.resolve(id);
       }
@@ -106,8 +107,7 @@ export const useTasksStore = defineStore("TasksStore", {
         return task;
       });
 
-      
-      setArrayToLocalStorage(LOCAL_STORAGE_KEY, this.tasks)
+      localStorageUtil.setArrayToLocalStorage(LOCAL_STORAGE_KEY, this.tasks);
     },
     checkTaskIsLate(date: Date | string) {
       return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
@@ -116,11 +116,12 @@ export const useTasksStore = defineStore("TasksStore", {
     },
     clearAllTasks() {
       this.tasks = [];
-      clearFromLocalStorage(LOCAL_STORAGE_KEY)
+      localStorageUtil.clearFromLocalStorage(LOCAL_STORAGE_KEY);
       this.sortBy = null;
     },
     getTasksFromLocalStorage() {
-     this.tasks = getFromLocalStorage(LOCAL_STORAGE_KEY) || []
-    }
+      this.tasks =
+        localStorageUtil.getFromLocalStorage(LOCAL_STORAGE_KEY) || [];
+    },
   },
 });

@@ -85,15 +85,15 @@
 </template>
 
 <script lang="ts">
-import { useDirectoriesStore } from "~/state/directories.store";
+import { useDirectoriesStore } from "../state/directories.store";
 import directories from "./directories.vue";
-import { useTasksStore } from "~/state/tasks.store";
-import { Arrangement } from "~/utils/enums/Arrangement";
-import { SortByList, SortBy } from "~/utils/enums/SortBy";
-import type { Task, TaskFields } from "~/utils/interface/Tasks";
+import { useTasksStore } from "../state/tasks.store";
+import { Arrangement } from "../utils/enums/Arrangement";
+import { SortByList, SortBy } from "../utils/enums/SortBy";
+import type { Task, TaskFields } from "../utils/interface/Tasks";
 import type { PropType } from "vue";
 
-export default defineComponent({
+export default {
   components: { directories },
   setup() {
     const directoryStore = useDirectoriesStore();
@@ -119,7 +119,7 @@ export default defineComponent({
   },
   computed: {
     filteredTasks() {
-      const directoryId = this.$route.query.directoryId;
+      const directoryId = this.$route.query?.directoryId;
       let tasks = [...this.tasks];
 
       if (directoryId) {
@@ -291,7 +291,7 @@ export default defineComponent({
       });
     },
   },
-});
+};
 </script>
 
 <style>

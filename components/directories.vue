@@ -99,7 +99,7 @@ import { useDirectoriesStore } from "../state/directories.store";
 import * as yup from "yup";
 import { useAlertStore } from "../state/alerts.store";
 import type { Task } from "~/utils/interface/Tasks";
-import { useConfirmation } from "~/state/confirmation.store";
+import { useConfirmation } from "../state/confirmation.store";
 
 export default {
   setup() {
@@ -184,6 +184,7 @@ export default {
   },
   mounted() {
     const directoryId = this.$route?.query?.directoryId;
+    // console.log('On MOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUNTED', this.$route?.query?.directoryId)
     if (
       directoryId &&
       this.directoryStore.selectedDirectory?.id !== Number(directoryId)

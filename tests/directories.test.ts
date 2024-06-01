@@ -1,9 +1,9 @@
 import { createPinia, setActivePinia } from "pinia";
 import { mount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import { useRouter } from "vue-router";
 import Directories from "../components/directories.vue";
 import { useDirectoriesStore } from "../state/directories.store";
+import { useConfirmation } from "../state/confirmation.store";
 
 vi.mock("vue-router", () => ({
   resolve: vi.fn(),
@@ -14,7 +14,6 @@ const mockRoute = {}
 const mockRouter = {
   push: vi.fn()
 }
-
 
 function factory({ data } = { data: {} }) {
   return mount(Directories, {
@@ -33,7 +32,7 @@ function factory({ data } = { data: {} }) {
       ],
       mocks: {
         $route: mockRoute,
-        $router: mockRouter
+        $router: mockRouter,
       }
     },
     data() {
@@ -207,9 +206,10 @@ describe("directories", () => {
     );
   });
 
-  it("calls deleteDirectoryHandler from directoriesStore / mocked", async () => {
+  it("calls show (to delete the directory) from confirmationStore / mocked", async () => {
     const DirectoryComponent = factory();
     const directoriesStore = useDirectoriesStore();
+    const confirmationStore = useConfirmation();
 
     const firstDirectoryOptions = DirectoryComponent.find(
       '[data-type="option-directory"]'
@@ -222,8 +222,11 @@ describe("directories", () => {
 
     await deleteButton.trigger("click");
 
-    expect(directoriesStore.deleteDirectoryHandler).toHaveBeenCalledOnce();
-    expect(directoriesStore.deleteDirectoryHandler).toHaveBeenCalledWith(1);
+    expect(confirmationStore.show).toHaveBeenCalledOnce();
+    expect(confirmationStore.show).toHaveBeenCalledWith(
+      `Tem certeza de que deseja excluir o diretório "${directoriesStore.directories[0].name}"?`,
+      DirectoryComponent.vm.deleteDirectoryHandler
+    );
   });
 
   it("selects the directory if it's clicked / mocked", async () => {

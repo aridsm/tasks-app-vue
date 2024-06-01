@@ -2,6 +2,7 @@ import type { Directory } from "../utils/interface/Directory";
 import { defineStore } from "pinia";
 import { useTasksStore } from "./tasks.store";
 import type { Task } from "~/utils/interface/Tasks";
+import * as localStorageUtil from '../utils/localStorage'
 
 
 const LOCAL_STORAGE_KEY = 'directories'
@@ -27,7 +28,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
             this.directories.splice(index, 1, directory);
             tasksStore.updateDirectoryName(directory);
 
-            setToLocalStorage(LOCAL_STORAGE_KEY, directory)
+            localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, directory)
             return Promise.resolve(directory);
           }
 
@@ -45,7 +46,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
           }
           this.directories.push(newDirectory);
 
-          setToLocalStorage(LOCAL_STORAGE_KEY, newDirectory)
+          localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, newDirectory)
 
           return Promise.resolve(newDirectory);
         }
@@ -80,7 +81,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
 
       if (index >= 0) {
         this.directories.splice(index, 1);
-        removeFromLocalStorage(LOCAL_STORAGE_KEY, id)
+        localStorageUtil.removeFromLocalStorage(LOCAL_STORAGE_KEY, id)
 
         if (id === this.selectedDirectory?.id) {
           this.selectedDirectory = null;
@@ -106,10 +107,10 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
     clearAllDirectories() {
       this.directories = [];
       this.selectedDirectory = null;
-      clearFromLocalStorage(LOCAL_STORAGE_KEY)
+      localStorageUtil.clearFromLocalStorage(LOCAL_STORAGE_KEY)
     },
     getDirectoriesFromLocalStorage() {
-     this.directories = getFromLocalStorage(LOCAL_STORAGE_KEY) || []
+     this.directories = localStorageUtil.getFromLocalStorage(LOCAL_STORAGE_KEY) || []
     }
   },
 });

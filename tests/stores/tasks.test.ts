@@ -12,6 +12,7 @@ const taskExample = {
     directoryId: 1,
     important: false,
     finalDate: new Date(),
+    addedDate: new Date(),
     completed: false
 }
 
@@ -119,7 +120,28 @@ describe('useTasksStore', () => {
         expect(taskStore.tasks).toHaveLength(0)
     })
 
-    it.todo('deletes all tasks')
+    it('deletes all tasks', () => {
+        const taskStore = useTasksStore()
+
+        expect(taskStore.tasks).toHaveLength(0)
+
+        taskStore.$patch({
+            tasks: [{
+                ...taskExample,
+                id: 1
+            },
+            {
+                ...taskExample,
+                id: 2
+            },
+            ]
+        })
+
+        expect(taskStore.tasks).length(2)
+        taskStore.clearAllTasks()
+        expect(taskStore.tasks).length(0)
+
+    })
 
     it('just return "important" tasks', () => {
         const taskStore = useTasksStore()
@@ -166,7 +188,6 @@ describe('useTasksStore', () => {
                 id: 3
             }]
         })
-
         expect(taskStore.todaysTasks).length(1)
         expect(taskStore.todaysTasks[0].id).toBe(3)
 
@@ -195,7 +216,6 @@ describe('useTasksStore', () => {
                 id: 3
             }]
         })
-
         expect(taskStore.lateTasks).length(2)
     })
 
@@ -221,8 +241,5 @@ describe('useTasksStore', () => {
         expect(taskStore.completedTasks).length(1)
         expect(taskStore.completedTasks[0].id).toBe(2)
     })
-
-    it.todo('arrange tasks by added first')
-    it.todo('arrange tasks by added late')
 
 })
