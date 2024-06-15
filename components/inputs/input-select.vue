@@ -42,11 +42,12 @@
 
     <div
       v-if="itemsShown"
-      class="bg-light-100 dark:bg-dark-200 absolute left-0 max-w-80 w-max min-w-full z-50 items-select"
+      class="bg-light-100 dark:bg-dark-200 absolute left-0 max-w-80 w-max min-w-full z-50 items-select p-2"
     >
-      <ul class="max-h-56 overflow-auto" data-type="items-list">
+      <input-text v-model="search" name="search-select" class="mb-2" placeholder="Pesquisar..."/>
+      <ul  v-if="filteredItems.length" class="max-h-56 overflow-auto" data-type="items-list">
         <li
-          v-for="item in items"
+          v-for="item in filteredItems"
           :key="item.id"
           class="p-3 hover:bg-gray-100 dark:hover:bg-dark-100 cursor-pointer"
           data-type="items-list-item"
@@ -55,6 +56,7 @@
           {{ item.name }}
         </li>
       </ul>
+      <p v-else class="mt-4 mb-2 text-center">Nenhum item encontrado!</p>
     </div>
   </div>
 </template>
@@ -84,6 +86,7 @@ export default {
       itemsShown: false,
       mappedItems: {} as Map<number, Item>,
       objectItem: {} as Item,
+      search: ''
     };
   },
   computed: {
@@ -95,6 +98,9 @@ export default {
         this.$emit("update:modelValue", value);
       },
     },
+    filteredItems() {
+      return this.items.filter(item => item.name.trim().toLowerCase().includes(this.search.trim().toLowerCase()))
+    }
   },
   methods: {
     selectItemHandler(item: Item) {
