@@ -6,10 +6,11 @@ export default defineConfig({
     plugins: [Vue({
         template: {
           compilerOptions: {
-            isCustomElement: (tag) => ['section-title', 'sidebar-menu', 'user-img', 'NuxtPage', 'btn-add', 'options-btn', 'input-text', 'icon', 'input-textarea', 'btn', 'dialog-modal'].includes(tag),
+            isCustomElement: (tag) => ['section-title', 'sidebar-menu', 'user-img', 'card-task', 'NuxtPage', 'btn-add', 'options-btn', 'input-text', 'icon', 'input-textarea', 'btn', 'dialog-modal', 'input-select'].includes(tag),
           }
         }
-      })],
+      }),
+    ],
     test: {
         globals: true,
         environment: 'jsdom'

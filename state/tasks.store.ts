@@ -110,8 +110,8 @@ export const useTasksStore = defineStore("TasksStore", {
       localStorageUtil.setArrayToLocalStorage(LOCAL_STORAGE_KEY, this.tasks);
     },
     checkTaskIsLate(date: Date | string) {
-      return dayjs(dayjs(new Date()).format("DD/MM/YYYY")).isAfter(
-        dayjs(date).format("DD/MM/YYYY")
+      return dayjs(dayjs(new Date()).format("YYYY-MM-DD")).isAfter(
+        dayjs(date).format("YYYY-MM-DD")
       );
     },
     clearAllTasks() {

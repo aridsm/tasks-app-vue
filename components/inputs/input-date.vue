@@ -1,9 +1,9 @@
 <template>
   <ClientOnly>
-    <div :ref="`select-${name}`" class="flex flex-col relative ">
+    <div :ref="`select-${name}`" class="flex flex-col relative">
       <label v-if="label" class="input-label" :for="name">{{ label }}</label>
       <Field
-        v-model="modelValue"
+        v-model="value"
         :name="name"
         :id="name"
         :rules="rules"
@@ -13,15 +13,17 @@
       >
         <button
           class="x-input flex justify-between items-center"
+          data-type="button-date"
           @click="openItemsListHandler"
         >
           <span v-if="!modelValue" class="text-dark-text">{{
             placeholder
           }}</span>
-          <p v-else>{{ $dayjs(modelValue).format("DD/MM/YYYY") }}</p>
+          <p v-else>{{ dayjs(modelValue).format("DD/MM/YYYY") }}</p>
           <div class="flex items-center gap-4">
             <div
               v-show="clearable && modelValue"
+              data-type="button-clearable"
               class="text-dark-text grid place-items-center w-5 h-5 rounded-full hover:bg-dark-100"
               @click.stop="clearModelValueHandler"
             >
@@ -71,8 +73,10 @@
             class="w-12 h-12 grid place-items-center rounded-sm"
             :class="{
               'text-dark-text cursor-not-allowed': !day.enabled,
-              'hover:bg-light-text/[.1] dark:hover:bg-dark-100 cursor-pointer': currentDay !== day.day && day.enabled,
-              'bg-blue-light hover:bg-blue-light text-white dark:bg-lilac dark:hover:bg-lilac cursor-pointer': currentDay === day.day && day.enabled,
+              'hover:bg-light-text/[.1] dark:hover:bg-dark-100 cursor-pointer':
+                currentDay !== day.day && day.enabled,
+              'bg-blue-light hover:bg-blue-light text-white dark:bg-lilac dark:hover:bg-lilac cursor-pointer':
+                currentDay === day.day && day.enabled,
             }"
             @click="day.enabled ? selectDayHandler(day.day) : undefined"
           >
@@ -85,9 +89,15 @@
 </template>
 
 <script lang="ts">
-export { months, daysWeek } from "~/utils/dateUtils";
+export { months, daysWeek } from "../../utils/dateUtils";
+import dayjs from "dayjs";
+import { Field } from "vee-validate";
 
-export default defineComponent({
+export default {
+  setup() {
+    return { dayjs };
+  },
+  components: { Field },
   props: {
     modelValue: {
       type: null as any as PropType<null | Date | string>,
@@ -107,20 +117,28 @@ export default defineComponent({
     };
   },
   computed: {
+    value: {
+      get() {
+        return this.modelValue;
+      },
+      set(value: string | number) {
+        this.$emit("update:modelValue", value);
+      },
+    },
     currentMonth(): number {
-      return this.$dayjs(this.dummyDate).month();
+      return this.dayjs(this.dummyDate).month();
     },
     currentYear(): number {
-      return this.$dayjs(this.dummyDate).year();
+      return this.dayjs(this.dummyDate).year();
     },
     currentDay(): number {
-      return this.$dayjs(this.dummyDate).date();
+      return this.dayjs(this.dummyDate).date();
     },
     daysArr() {
       const selectedDate = this.dummyDate;
       const days = [];
 
-      const daysInMonth = this.$dayjs(selectedDate).daysInMonth();
+      const daysInMonth = this.dayjs(selectedDate).daysInMonth();
 
       // dias habilitados para escolher (do mês selecionado)
       for (let i = 1; i <= daysInMonth; i++) {
@@ -131,10 +149,10 @@ export default defineComponent({
         });
       }
 
-      const firstDayWeekOfMonth = this.$dayjs(selectedDate).date(1).day();
+      const firstDayWeekOfMonth = this.dayjs(selectedDate).date(1).day();
 
-      const previousMonthTotalDays = this.$dayjs(selectedDate)
-        .month(this.$dayjs(selectedDate).month() - 1)
+      const previousMonthTotalDays = this.dayjs(selectedDate)
+        .month(this.dayjs(selectedDate).month() - 1)
         .daysInMonth();
 
       // últimos dias do mês anterior (p/ completar o calendário no início)
@@ -150,8 +168,8 @@ export default defineComponent({
         });
       }
 
-      const lastDayWeekOfMonth = this.$dayjs(selectedDate)
-        .date(this.$dayjs(selectedDate).daysInMonth())
+      const lastDayWeekOfMonth = this.dayjs(selectedDate)
+        .date(this.dayjs(selectedDate).daysInMonth())
         .day();
       const lastDayWeekIndex = 6; // 7 dias
 
@@ -182,8 +200,8 @@ export default defineComponent({
     selectPreviousMonthHandler() {
       const selectedDate = this.dummyDate;
 
-      const newDate = this.$dayjs(selectedDate)
-        .month(this.$dayjs(selectedDate).month() - 1)
+      const newDate = this.dayjs(selectedDate)
+        .month(this.dayjs(selectedDate).month() - 1)
         .format("YYYY-MM-DD[T]HH:mm:ss");
 
       this.dummyDate = newDate;
@@ -191,14 +209,14 @@ export default defineComponent({
     selectNextMonthHandler() {
       const selectedDate = this.dummyDate;
 
-      const newDate = this.$dayjs(selectedDate)
-        .month(this.$dayjs(selectedDate).month() + 1)
+      const newDate = this.dayjs(selectedDate)
+        .month(this.dayjs(selectedDate).month() + 1)
         .format("YYYY-MM-DD[T]HH:mm:ss");
 
       this.dummyDate = newDate;
     },
     selectDayHandler(day: number) {
-      const newDate = this.$dayjs(this.dummyDate)
+      const newDate = this.dayjs(this.dummyDate)
         .date(day)
         .format("YYYY-MM-DD[T]HH:mm:ss");
       this.dummyDate = newDate;
@@ -224,13 +242,12 @@ export default defineComponent({
   beforeUnmount() {
     window.removeEventListener("click", this.checkClickOutsideHandler);
   },
-});
+};
 </script>
 
-  
 <style scoped>
 .container-date {
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.08);
-  top: calc(100% + 5px)
+  top: calc(100% + 5px);
 }
 </style>

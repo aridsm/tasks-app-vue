@@ -1,5 +1,9 @@
 <template>
-  <dialog-modal v-model="open" :title="title" card-classes="max-w-[32rem] w-full p-2">
+  <dialog-modal
+    v-model="open"
+    :title="title"
+    card-classes="max-w-[32rem] w-full p-2"
+  >
     <input-text
       v-model="formModel.name"
       name="name"
@@ -72,7 +76,7 @@ import { useTasksStore } from "../state/tasks.store";
 import type { Task, TaskFields } from "../utils/interface/Tasks";
 import * as yup from "yup";
 import { useAlertStore } from "../state/alerts.store";
-import { useConfirmation } from "~/state/confirmation.store";
+import { useConfirmation } from "../state/confirmation.store";
 
 export default {
   props: {
@@ -123,40 +127,45 @@ export default {
   },
   methods: {
     async onSaveTask() {
-      const directoryValidated = await this.rules.directoryId.validate(
-        this.formModel.directoryId
-      );
-      const nameValidated = await this.rules.name.validate(this.formModel.name);
+      try {
+        const directoryValidated = await this.rules.directoryId.validate(
+          this.formModel.directoryId
+        );
+        const nameValidated = await this.rules.name.validate(
+          this.formModel.name
+        );
 
-      if (directoryValidated && nameValidated) {
-        await this.taskStore
-          .saveTaskHandler(this.formModel)
-          .then(() => {
-            if (this.form.id) {
-              this.alertStore.show(`A tarefa "${this.form.name}" foi editada!`);
-            } else {
-              this.alertStore.show(`A tarefa "${this.form.name}" foi criada!`);
-            }
-          })
-          .finally(() => {
-            this.open = false;
-          });
+        if (directoryValidated && nameValidated) {
+          await this.taskStore.saveTaskHandler(this.formModel);
+          if (this.form.id) {
+            this.alertStore.show(`A tarefa "${this.form.name}" foi editada!`);
+          } else {
+            this.alertStore.show(`A tarefa "${this.form.name}" foi criada!`);
+          }
+
+          this.open = false;
+        }
+      } catch (err: any) {
+        console.log(err);
       }
     },
     async onDeleteTask() {
-      await this.taskStore
-        .deleteTaskHandler(this.formModel.id!)
-        .then(() => {
-          this.alertStore.show(`A tarefa "${this.form.name}" foi deletada!`);
-        })
-        .finally(() => {
-          this.open = false;
-          this.confirmation.showConfirmation = false
-        });
+      try {
+        await this.taskStore.deleteTaskHandler(this.formModel.id!);
+        this.alertStore.show(`A tarefa "${this.form.name}" foi deletada!`);
+      } catch (err: any) {
+        console.log(err);
+      } finally {
+        this.open = false;
+        this.confirmation.showConfirmation = false;
+      }
     },
     confirmDelete() {
-      this.confirmation.show(`Tem certeza de que deseja excluir a tarefa "${this.form.name}"?`, this.onDeleteTask)
-    }
+      this.confirmation.show(
+        `Tem certeza de que deseja excluir a tarefa "${this.form.name}"?`,
+        this.onDeleteTask
+      );
+    },
   },
 };
 </script>

@@ -16,10 +16,10 @@
       <label class="input-label cursor-pointer flex items-center">
         <input
           type="checkbox"
-          :name="name"
           class="hidden"
           v-bind="field"
-          :value="true"
+          :name="name"
+          data-type="input"
           @input="value = !field.checked"
         />
         <div
@@ -42,7 +42,10 @@
 </template>
 
 <script lang="ts">
-export default defineComponent({
+import { Field } from "vee-validate";
+
+export default {
+  components: { Field },
   props: {
     modelValue: {
       type: undefined as any as PropType<null | boolean>,
@@ -56,14 +59,14 @@ export default defineComponent({
   computed: {
     value: {
       get() {
-        return this.modelValue
+        return this.modelValue;
       },
       set(value: string | number) {
-        this.$emit('update:modelValue', value)
-      }
-    }
-  }
-});
+        this.$emit("update:modelValue", value);
+      },
+    },
+  },
+};
 </script>
 
 <style></style>

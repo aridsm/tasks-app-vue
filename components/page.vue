@@ -25,12 +25,12 @@
             <icon icon="fa-solid fa-chevron-right" />
           </span>
           <span v-if="directoryName" class="c break-all"
-            >{{ directoryName }} ({{ directoryCount() }})</span
+            >{{ directoryName }} ({{ directoryCount }})</span
           >
         </section-title>
         <btn-add
           class="whitespace-nowrap"
-          data-type="add-directory"
+          data-type="add-task"
           @click="addNewTaskHandler"
         >
           Adicionar tarefa
@@ -159,6 +159,12 @@ export default {
     search(): string {
       return (this.$route.query?.search as string) || "";
     },
+    directoryCount() {
+      return this.directoryStore.getDirectoryCount(
+        this.directoryId,
+        this.tasks
+      );
+    },
     arrangementButtons: {
       get() {
         return [
@@ -191,12 +197,6 @@ export default {
       };
 
       this.modalTaskOpen = true;
-    },
-    directoryCount() {
-      return this.directoryStore.getDirectoryCount(
-        this.directoryId,
-        this.tasks
-      );
     },
     sortByAddedFirst(tasks: Task[]) {
       return tasks.sort((a, b) => {

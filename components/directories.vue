@@ -184,7 +184,6 @@ export default {
   },
   mounted() {
     const directoryId = this.$route?.query?.directoryId;
-    // console.log('On MOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUNTED', this.$route?.query?.directoryId)
     if (
       directoryId &&
       this.directoryStore.selectedDirectory?.id !== Number(directoryId)
