@@ -73,12 +73,16 @@
       >
         <card-task v-for="task in filteredTasks" :key="task.id" :task="task" />
       </TransitionGroup>
+      <div v-if="!filteredTasks.length" 
+      class="text-light-text/[.5] dark:text-dark-text text-center sm:text-start">
+      <p v-if="search">Nenhum resultado para a pesquisa "{{ search }}"</p>
       <p
-        v-if="!filteredTasks.length"
-        class="text-light-text/[.5] dark:text-dark-text text-center sm:text-start"
+        v-else
       >
         Nenhuma tarefa adicionada!
       </p>
+
+      </div>
     </div>
   </div>
   <modal-task v-model="modalTaskOpen" v-model:form="form" />

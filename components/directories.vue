@@ -179,7 +179,7 @@ export default {
       }
     },
     confirmDelete() {
-      this.confirmation.show(`Tem certeza de que deseja excluir o diretório "${this.form.name}"?`, this.deleteDirectoryHandler)
+      this.confirmation.show(`Tem certeza de que deseja excluir o diretório "${this.form.name}"? Todas suas tarefas serão excluídas!`, this.deleteDirectoryHandler)
     }
   },
   mounted() {

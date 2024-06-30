@@ -2,10 +2,9 @@ import type { Directory } from "../utils/interface/Directory";
 import { defineStore } from "pinia";
 import { useTasksStore } from "./tasks.store";
 import type { Task } from "~/utils/interface/Tasks";
-import * as localStorageUtil from '../utils/localStorage'
+import * as localStorageUtil from "../utils/localStorage";
 
-
-const LOCAL_STORAGE_KEY = 'directories'
+const LOCAL_STORAGE_KEY = "directories";
 
 export const useDirectoriesStore = defineStore("DirectoriesStore", {
   state: () => ({
@@ -28,7 +27,7 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
             this.directories.splice(index, 1, directory);
             tasksStore.updateDirectoryName(directory);
 
-            localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, directory)
+            localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, directory);
             return Promise.resolve(directory);
           }
 
@@ -43,10 +42,10 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
           const newDirectory = {
             ...directory,
             id: newId,
-          }
+          };
           this.directories.push(newDirectory);
 
-          localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, newDirectory)
+          localStorageUtil.setToLocalStorage(LOCAL_STORAGE_KEY, newDirectory);
 
           return Promise.resolve(newDirectory);
         }
@@ -80,8 +79,19 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
       const index = this.directories.findIndex((d) => d.id === id);
 
       if (index >= 0) {
+        const tasksStore = useTasksStore();
+        const directoryTasks = tasksStore.tasks.filter(
+          (task) => task.directoryId === id
+        );
+
+        if (directoryTasks.length) {
+          for (let task of directoryTasks) {
+            tasksStore.deleteTaskHandler(task.id);
+          }
+        }
+
         this.directories.splice(index, 1);
-        localStorageUtil.removeFromLocalStorage(LOCAL_STORAGE_KEY, id)
+        localStorageUtil.removeFromLocalStorage(LOCAL_STORAGE_KEY, id);
 
         if (id === this.selectedDirectory?.id) {
           this.selectedDirectory = null;
@@ -107,10 +117,11 @@ export const useDirectoriesStore = defineStore("DirectoriesStore", {
     clearAllDirectories() {
       this.directories = [];
       this.selectedDirectory = null;
-      localStorageUtil.clearFromLocalStorage(LOCAL_STORAGE_KEY)
+      localStorageUtil.clearFromLocalStorage(LOCAL_STORAGE_KEY);
     },
     getDirectoriesFromLocalStorage() {
-     this.directories = localStorageUtil.getFromLocalStorage(LOCAL_STORAGE_KEY) || []
-    }
+      this.directories =
+        localStorageUtil.getFromLocalStorage(LOCAL_STORAGE_KEY) || [];
+    },
   },
 });
